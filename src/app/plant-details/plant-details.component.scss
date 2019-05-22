@@ -1,0 +1,13 @@
+@import "../../assets/style/scss/variables";
+@import "../../assets/style/scss/mixins";
+@import "../../assets/style/scss/placeholders";
+@import "../../assets/style/scss/basegeneral";
+.txt-grey-normal {
+    @extend %txt-main-text-arial-grey;
+}
+.plant-main-info {
+    list-style: none;
+    li span::before {
+        color: $primaryColor;
+    }
+}
