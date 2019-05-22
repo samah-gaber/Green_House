@@ -3,7 +3,7 @@
     @include text($samt, $rootFontSize*7.1, $primaryColor, 'normal');
 }
 %txt-header-samt-dark {
-    @include text($samt, $rootFontSize*10, $darkColo, 'normal'r);
+    @include text($samt, $rootFontSize*10, $darkColor, 'normal');
 }
 %txt-title-diwany-dark {
     @include text($diwany, $rootFontSize*3.5, $darkColor, 'normal');
@@ -24,5 +24,5 @@
     @include text('Arial, Helvetica, sans-serif', $rootFontSize, $lightTextGreyColor, 'normal');
 }
 %txt-faint-text-arial-grey {
-    @include text('Arial, Helvetica, sans-serif', $rootFontSize*1.3, $faintTextGreyColor);
+    @include text('Arial, Helvetica, sans-serif', $rootFontSize*1.3, $faintTextGreyColor, 'normal');
 }
