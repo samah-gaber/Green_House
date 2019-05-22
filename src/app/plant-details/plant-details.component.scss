@@ -1,7 +1,4 @@
-@import "../../assets/style/scss/variables";
-@import "../../assets/style/scss/mixins";
-@import "../../assets/style/scss/placeholders";
-@import "../../assets/style/scss/basegeneral";
+@import "../../styles";
 .txt-grey-normal {
     @extend %txt-main-text-arial-grey;
 }
