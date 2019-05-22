@@ -1,0 +1,28 @@
+// fonts
+%txt-header-samt-primary {
+    @include text($samt, $rootFontSize*7.1, $primaryColor, 'normal');
+}
+%txt-header-samt-dark {
+    @include text($samt, $rootFontSize*10, $darkColo, 'normal'r);
+}
+%txt-title-diwany-dark {
+    @include text($diwany, $rootFontSize*3.5, $darkColor, 'normal');
+}
+%txt-text-arial-dark {
+    @include text('Arial, Helvetica, sans-serif', $rootFontSize*2.1, $darkColor, 'bold');
+}
+%txt-text-arial-dark {
+    @include text('Arial, Helvetica, sans-serif', $rootFontSize*1.7, $darkColor, 'bold');
+}
+%txt-main-text-arial-grey {
+    @include text('Arial, Helvetica, sans-serif', $rootFontSize*1.7, $mainTextGreyColor, 'normal');
+}
+%txt-main-text-arial-grey {
+    @include text('Arial, Helvetica, sans-serif', $rootFontSize*1.7, $mainTextGreyColor, 'bold');
+}
+%txt-light-text-arial-grey {
+    @include text('Arial, Helvetica, sans-serif', $rootFontSize, $lightTextGreyColor, 'normal');
+}
+%txt-faint-text-arial-grey {
+    @include text('Arial, Helvetica, sans-serif', $rootFontSize*1.3, $faintTextGreyColor);
+}
