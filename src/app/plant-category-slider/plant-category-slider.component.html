@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="row">
+      <div class="col-12 text-center"><h2>النباتات </h2></div>
+      <div class="col-12 text-center">
+          <ul class="nav justify-content-center">
+              <li class="nav-item">
+                <a class="nav-link active" (click)="buttonOneClick($event)" >الأكثر رواجا</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" (click)="buttonTwoClick($event)" >الخضروات</a>
+              </li>
+              <li class="nav-item">
+                <button class="nav-link"(click)="buttonClick($event)">الفواكه</button>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#">أعشاب المطبخ</a>
+                </li>
+               <li class="nav-item">
+                <a class="nav-link" href="#">الورود</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#">أشجار الزينة</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#">العطريات</a>
+              </li>
+
+            </ul>
+      </div>
+
+      <ngb-carousel *ngIf="images">
+          <ng-template ngbSlide>
+            <img [src]="images[0]" alt="Random first slide">
+            <div class="carousel-caption">
+              <h3>10 seconds between slides...</h3>
+              <p>This carousel uses customized default values.</p>
+            </div>
+
+          </ng-template>
+          <ng-template ngbSlide>
+            <img [src]="images[1]" alt="Random second slide">
+            <div class="carousel-caption">
+              <h3>No mouse events...</h3>
+              <p>This carousel doesn't pause or resume on mouse events</p>
+            </div>
+          </ng-template>
+          <ng-template ngbSlide>
+            <img [src]="images[2]"  alt="Random third slide">
+            <div class="carousel-caption">
+              <h3>No keyboard...</h3>
+              <p>This carousel uses customized default values.</p>
+            </div>
+          </ng-template>
+          <ng-template ngbSlide>
+            <img [src]="images[3]" alt="Random fourth slide">
+            <div class="carousel-caption">
+              <h3>And no wrap after last slide.</h3>
+              <p>This carousel uses customized default values.</p>
+            </div>
+          </ng-template>
+        </ngb-carousel>
+
+  </div>
+</div>
