@@ -1,0 +1,23 @@
+// import scss files
+@import "../../styles";
+// section title style
+.sec-style {
+  @extend %sec-layout;
+}
+// component style
+.plantations-comments {
+  position: relative;
+  background-color: lightcyan;
+  i {
+    color: $faintTextGreyColor;
+    position: absolute;
+    font-size: 40px;
+    top: 60%;
+  }
+  i.fa-chevron-left {
+    left: 8%;
+  }
+  i.fa-chevron-right {
+      right: 8%;
+  }
+}

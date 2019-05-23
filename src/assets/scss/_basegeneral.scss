@@ -1,6 +1,8 @@
 // fonts
-@include fontFace($diwany, "/assets/fonts/ArabicDiwany.ttf");
-@include fontFace($samt, "/assets/fonts/ArabicSamt.ttf");
+@include fontFace($diwany, "/assets/fonts/ArbFONTS-MCS Diwany4 S_I normal..ttf");
+// @include fontFace($diwany, "/assets/fonts/ArabicDiwany.ttf");
+@include fontFace($samt, "/assets/fonts/arbfonts-samt-7017.ttf");
+// @include fontFace($samt, "/assets/fonts/ArabicSamt.ttf");
 // using icomoon
 @font-face {
   font-family: "icomoon";

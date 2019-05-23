@@ -1,10 +1,54 @@
+// import scss files
 @import "../../styles";
-.txt-grey-normal {
-    @extend %txt-main-text-arial-grey;
+
+// fonts
+.txt-arial-darkGrey-normal-24 {
+  @extend %txt-arial-darkGrey-normal-24;
 }
-.plant-main-info {
-    list-style: none;
-    li span::before {
+.txt-arial-dark-bold-14 {
+  @extend %txt-arial-dark-bold-14;
+}
+.txt-arial-primary-bold-14 {
+  @extend %txt-arial-primary-bold-14;
+}
+.txt-arial-dark-bold-24 {
+  @extend %txt-arial-dark-bold-24;
+}
+.txt-arial-primary-bold-24 {
+  @extend %txt-arial-primary-bold-24;
+}
+.txt-diwany-dark-50 {
+  @extend %txt-diwany-dark-50;
+}
+
+// plant details sec
+.plant-details-sec {
+    .container {
+        border-color: $separatorTextGreyColor;
+    }
+    .plant-main-info {
+      list-style: none;
+      li span::before {
         color: $primaryColor;
+        font-size: 3rem;
+    }
+           li:hover span::before {
+                color: $secondaryColor;
+            }
+    }
+    .plant-extra-info {
+      ul {
+        list-style: none;
+        li::before {
+          font-family: "Font Awesome 5 Free";
+          font-weight: 400;
+          content: "\f192";
+          color: $darkColor;
+          margin-left: 5px;
+        }
+        p {
+            display: inline-block;
+        }
+      }
     }
 }
