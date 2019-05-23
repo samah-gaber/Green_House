@@ -1,0 +1,6 @@
+// import scss files
+@import "../../styles";
+// section title style
+.sec-style {
+    @extend %sec-layout;
+}

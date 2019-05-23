@@ -1,0 +1,14 @@
+<div class="plantations-comments sec-style">
+  <div class="container m-auto">
+    <div class="sec-title">
+      <h3 class="text-center">تعليقات الخبراء</h3>
+    </div>
+    <ngb-carousel #myCarousel="ngbCarousel" [showNavigationArrows]='showNavigationArrows' [showNavigationIndicators]='showNavigationIndicators'>
+      <ng-template ngbSlide *ngFor="let comment of plantationCommentsArr">
+        <app-plantation-single-comment [plantationComment]='comment'></app-plantation-single-comment>
+      </ng-template>
+    </ngb-carousel>
+    <i class="fas fa-chevron-left" (click)='previousSlide()'></i>
+    <i class="fas fa-chevron-right" (click)='nextSlide()'></i>
+  </div>
+</div>
