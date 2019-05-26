@@ -1,0 +1,28 @@
+// import scss files
+@import "../../styles";
+
+.txt-diwany-dark-24 {
+    @extend %txt-diwany-dark-24;
+}
+.txt-arial-darkGrey-normal-24 {
+    @extend %txt-arial-darkGrey-normal-24;
+}
+
+.media {
+    i {
+        color: $primaryColor;
+        font-size: 100px;
+        border: 3px solid $primaryColor;
+        padding: 1.8rem;
+    }
+    p.signature::before {
+        display: inline-block;
+        margin: 0 10px;
+        height: 3px;
+        content: " ";
+        text-shadow: none;
+        background-color: $secondaryColor;
+        width: 3rem;
+    }
+}
+
