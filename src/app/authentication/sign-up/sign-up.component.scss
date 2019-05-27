@@ -1,0 +1,48 @@
+// import scss files
+@import "../../../styles";
+
+.form {
+    margin-right: 15%;
+    input, select {
+        border: none;
+        border-bottom: 1px solid $darkColor;
+        display: inline-block !important;
+        width: 70%;
+        &[formControlName="userName"] {
+            margin-right: 20%;
+        }
+        &[formControlName="userEmail"] {
+            margin-right: 5%;
+        }
+        &[formControlName="password"] {
+            margin-right: 12%;
+        }
+        &[formControlName="confirmPassword"] {
+            margin-right: 6%;
+        }
+        &[formControlName="country"] {
+            margin-right: 19%;
+        }
+        &[formControlName="gender"][value="female"] {
+            margin-right: 10%;
+        }
+        &[formControlName="gender"] {
+            width: 5%;
+        }
+        &#datePicker {
+            margin-right: 12%;
+            width: 65%;
+        }
+    }
+    .ng-invalid.ng-touched {
+        border-color: $redColor;
+    }
+    button[disabled] {
+        background-color: #fcb7a4;
+        border-color: #fcb7a4;
+    }
+    
+    .error-message {
+        color: $redColor;
+    }
+}

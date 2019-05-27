@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { PlantDetailsPageComponent } from './plant-details-page/plant-details-page.component';
 
 const routes: Routes = [
   {
-    path: 'plantdetails', component: PlantDetailsPageComponent
+    path: 'plantdetails', loadChildren: './plant-details-page-module/plant-details-page.module#PlantDetailsPageModule'
+  },
+  {
+    path: 'users', loadChildren: './authentication/authentication.module#AuthenticationModule'
   }
 ];
 
