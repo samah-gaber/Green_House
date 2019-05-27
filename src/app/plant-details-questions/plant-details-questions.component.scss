@@ -1,9 +1,6 @@
 // import scss files
 @import "../../styles";
-// section title style
-.sec-style {
-  @extend %sec-layout;
-}
+
 .question {
   border-bottom: 1px solid $separatorTextGreyColor;
 }

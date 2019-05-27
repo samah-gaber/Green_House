@@ -1,9 +1,5 @@
 // import scss files
 @import "../../styles";
-// section title style
-.sec-style {
-  @extend %sec-layout;
-}
 // component style
 .plantations-comments {
   position: relative;

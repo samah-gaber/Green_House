@@ -1,0 +1,42 @@
+<div class="container m-auto py-5">
+  <div class="row align-items-center">
+    <div class="col-md-4 logo">
+      <img src="../../../assets/imgs/logo-lg.png" alt="LOGO" class="img-fluid mb-5">
+      <h2 class="txt-samt-dark-140">جرين هاوس</h2>
+    </div>
+    <div class="col-10 col-md-6 offset-md-3 form">
+      <h3 class="txt-arial-dark-bold-50 mb-5">تسجيل الدخول</h3>
+      <div class="form-container">
+        <form [formGroup]="signinForm" (ngSubmit)="onSignin(signinForm)" class="text-right">
+          <div class="form-group mb-5"> 
+            <label class="txt-arial-dark-bold-24 label-email">
+              بريدك الإليكترونى
+            </label>
+            <input type="email" formControlName="userEmail" class="form-control" placeholder="البريد الاليكترونى"/>
+              <div *ngIf="userEmail.invalid && (userEmail.touched || userEmail.dirty)" class="error-message">
+                  <div *ngIf="userEmail.errors.required" class="error-message">يجب ملء خانة البريد الاليكترونى</div>
+                  <div *ngIf="userEmail.errors.email" class="error-message">البريد الاليكترونى يجب ان يكون صحيحا</div>
+              </div>
+            </div>
+            <div class="form-group mb-5"> 
+              <label class="txt-arial-dark-bold-24 label-password">
+                  كلمة المرور
+                </label>
+              <input
+                type="password"
+                formControlName="password"
+                class="form-control"
+                placeholder="كلمة المرور"
+              />
+              <div *ngIf="password.invalid && (password.touched || password.dirty)" class="error-message">
+                  <div *ngIf="password.errors.required" class="error-message">يجب ملء خانة كلمة المرور</div>
+              </div>
+            </div>
+          <button type="submit" class="btn-custom btn-custom-primary my-5" [disabled]="signinForm.invalid">تسجيل الدخول</button>
+        </form>
+        <small>ليس لديك حساب؟ قم </small>
+        <a routerLink="/users/signup" queryParamsHandling="preserve">بالتسجيل الآن</a>
+      </div>
+    </div>
+  </div>
+</div>

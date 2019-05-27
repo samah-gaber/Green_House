@@ -13,9 +13,7 @@
 .txt-arial-faintGrey-normal-24 {
     @extend %txt-arial-faintGrey-normal-24;
 }
-.txt-arial-dark-bold-24 {
-    @extend %txt-arial-dark-bold-24;
-}
+
 .reply-count {
     border: 2px solid $darkColor;
     padding: 5px 10px;

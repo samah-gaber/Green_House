@@ -53,6 +53,9 @@
 %txt-arial-darkGrey-normal-20 {
     @include text('Arial, Helvetica, sans-serif', $rootFontSize*1.1, $mainTextGreyColor, 'bold');
 }
+%txt-arial-dark-bold-50 {
+    @include text('Arial, Helvetica, sans-serif', $rootFontSize*3.1, $darkColor, 'bold');
+}
 // general lay out
 %sec-layout {
     padding: 3.1rem 0;

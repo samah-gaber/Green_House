@@ -1,26 +1,6 @@
 // import scss files
 @import "../../styles";
 
-// fonts
-.txt-arial-darkGrey-normal-24 {
-  @extend %txt-arial-darkGrey-normal-24;
-}
-.txt-arial-dark-bold-14 {
-  @extend %txt-arial-dark-bold-14;
-}
-.txt-arial-primary-bold-14 {
-  @extend %txt-arial-primary-bold-14;
-}
-.txt-arial-dark-bold-24 {
-  @extend %txt-arial-dark-bold-24;
-}
-.txt-arial-primary-bold-24 {
-  @extend %txt-arial-primary-bold-24;
-}
-.txt-diwany-dark-50 {
-  @extend %txt-diwany-dark-50;
-}
-
 // plant details sec
 .plant-details-sec {
     .container {

@@ -1,13 +1,6 @@
 // import scss files
 @import "../../styles";
 
-.txt-diwany-dark-24 {
-    @extend %txt-diwany-dark-24;
-}
-.txt-arial-darkGrey-normal-24 {
-    @extend %txt-arial-darkGrey-normal-24;
-}
-
 .media {
     i {
         color: $primaryColor;
