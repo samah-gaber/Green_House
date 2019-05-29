@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import {LandingPageModuleModule} from './landing-page/landing-page-module.module';
 import { PlantDetailsPageModule } from './plant-details-page-module/plant-details-page.module';
 
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [
     RouterModule,
+    LandingPageModuleModule,
     PlantDetailsPageModule
   ]
 })
