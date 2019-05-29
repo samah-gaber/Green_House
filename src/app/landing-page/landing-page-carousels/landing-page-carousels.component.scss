@@ -1,0 +1,65 @@
+@import "../../../styles.scss";
+
+
+::ng-deep .carousel  {
+  position: relative;
+  .carousel-indicators {
+    position: absolute;
+    bottom: 20%;
+    li {
+      display: block;
+      background-color: transparent;
+      border: 1px solid $primaryColor;
+      &.active {
+        background-color: $primaryColor;
+      }
+    }
+  }
+  .carousel-control-prev, .carousel-control-next {
+    display: none !important;
+  }
+}
+
+.main-carousel {
+  .carousel-caption {
+    position: absolute;
+    top: 15%;
+    right: 10%;
+    width: 40%;
+  }
+  i {
+    color: $separatorTextGreyColor;
+    // opacity: 0.8;
+    position: absolute;
+    font-size: 40px;
+    top: 50%;
+    cursor: pointer;
+    &.fa-chevron-circle-left {
+      left: 5%;
+    }
+    &.fa-chevron-circle-right {
+        right: 5%;
+    }
+    &:hover {
+      color: #ECEAEA;
+    }
+  }
+}
+
+.mobile-carousel {
+  display: none;
+  .carousel-caption {
+    position: absolute;
+    bottom: 20%;
+  }
+}
+
+// media query
+@media only screen and (max-width: 768px) {
+  .main-carousel {
+    display: none;
+  }
+  .mobile-carousel {
+    display: block;
+  }
+}

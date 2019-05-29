@@ -7,6 +7,7 @@ import { NgbCarousel, NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./plantation-comments-carousel.component.scss']
 })
 export class PlantationCommentsCarouselComponent implements OnInit {
+
   plantationCommentsArr = [
     {
       name: '1مشتل البلكونة',

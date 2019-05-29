@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { UserSignedIn, UserSignedUp } from '../authentication/user-interface';
+import { UserSignedUp, UserSignedIn } from '../interfaces/user-interface';
 
 @Injectable()
 
@@ -14,18 +14,18 @@ export class UserService {
 
   submitNewUser(userSignedUp: UserSignedUp) {
       this.http.post<UserSignedUp>( this.urlSignUp, userSignedUp ).subscribe (
-          (res) => {
+          res => {
               console.log(res);
-              this.setAuthToken(res.token);            
+            //   this.setAuthToken(res.token);            
             },
-          (error) => console.log(error)
+          error => console.log(error)
       );
   }
   logInUser(userSignedIn: UserSignedIn ) {
       this.http.post( this.urlSignUp, userSignedIn ).subscribe (
           (res) => {
               console.log(res);
-              this.setAuthToken(res.token);
+            //   this.setAuthToken(res.token);
         },
         (error) => console.log(error)
     );

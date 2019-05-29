@@ -1,0 +1,12 @@
+// import sytle files
+@import "../../../styles.scss";
+
+#active {
+    background-color: $secondaryColor;
+    color: $whiteColor;
+    border-radius: 20px;
+    padding: 5px 15px;
+}
+.plantsGallery p {
+    margin-top: -30px;
+}

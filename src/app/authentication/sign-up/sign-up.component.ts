@@ -9,8 +9,8 @@ import {
 } from "@angular/forms";
 import { CustomValidators } from 'ng2-validation';
 import { validateConfig } from "@angular/router/src/config";
-import { UserSignedUp } from "../user-interface";
 import { UserService } from '../../services/user.service';
+import { UserSignedUp } from '../../interfaces/user-interface';
 
 
 @Component({

@@ -10,7 +10,7 @@ import { PlantationSingleCommentComponent } from '../plantation-single-comment/p
 import { SingleQuestionComponent } from '../single-question/single-question.component';
 import { PlantDetailsQuestionsComponent } from '../plant-details-questions/plant-details-questions.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+// import { BlockAnonUserModalComponent } from './block-anon-user-modal/block-anon-user-modal.component';
 const routes: Routes = [
   {
     path: '', component: PlantDetailsPageComponent
@@ -26,7 +26,8 @@ const routes: Routes = [
     PlantationCommentsCarouselComponent,
     PlantationSingleCommentComponent,
     PlantDetailsQuestionsComponent,
-    SingleQuestionComponent
+    SingleQuestionComponent,
+    // BlockAnonUserModalComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,42 @@
+// import sytle files
+@import "../../../styles.scss";
+
+.plant-img {
+    position: relative;
+    .overlay {
+        position: absolute;
+        top: 8.5%;
+        left: 10%;
+        width: 82%;
+        height: 79%;
+        background-color: rgba($primaryColor, 0.6);
+        display: none;
+    }
+    &:hover {
+        .overlay {
+            display: block;
+            box-shadow: 10px 10px 20px 0px rgba(209,209,209,1);
+        }
+        transform: translate(-5px, -5px);
+        transition-duration: 0.3s;
+    }
+}
+.icons {
+    background-color: $whiteColor;
+    border-radius: 20px;
+    position: relative;
+    top: 50%;
+    width: 50%;
+    right: 25%;
+    padding: 5px 10px;
+    i {
+        font-size: 20px;
+        color: $lightTextGreyColor;
+        &.fa-heart {
+            margin-right: 15px;
+        }
+        &:hover {
+            color: $secondaryColor;
+        }
+    }
+}

@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-
+import { MDBModalService, MDBModalRef } from 'angular-bootstrap-md';
+import { AuthService } from '../services/auth.service';
+import { BlockAnonUserModalComponent } from '../plant-details-page-module/block-anon-user-modal/block-anon-user-modal.component';
 @Component({
   selector: 'app-plantation-order-single-card',
   templateUrl: './plantation-order-single-card.component.html',
@@ -7,10 +9,23 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class PlantationOrderSingleCardComponent implements OnInit {
 
+  modalRef: MDBModalRef;
   @Input() plantationCard;
-  constructor() { }
+  constructor( 
+    private modalService: MDBModalService,
+    private authUser: AuthService
+  ) { }
 
   ngOnInit() {
+  }
+
+  addToCart() {
+    if(this.authUser.isAuthenticated()) {
+      console.log("user logged in");
+    } 
+    // else {
+    //   this.modalRef = this.modalService.show(BlockAnonUserModalComponent);
+    // }
   }
 
 }

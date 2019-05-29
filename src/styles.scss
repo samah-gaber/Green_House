@@ -58,8 +58,14 @@ $Green-House-theme: mat-light-theme($Green-House-primary, $Green-House-accent, $
 .txt-arial-primary-bold-14 {
   @extend %txt-arial-primary-bold-14;
 }
+.txt-arial-secondary-bold-14 {
+  @extend %txt-arial-secondary-bold-14;
+}
 .txt-arial-dark-bold-24 {
   @extend %txt-arial-dark-bold-24;
+}
+.txt-arial-dark-bold-20 {
+  @extend %txt-arial-dark-bold-20;
 }
 .txt-arial-primary-bold-24 {
   @extend %txt-arial-primary-bold-24;
@@ -70,15 +76,44 @@ $Green-House-theme: mat-light-theme($Green-House-primary, $Green-House-accent, $
 .txt-arial-darkGrey-normal-20 {
   @extend %txt-arial-darkGrey-normal-20;
 }
+.txt-arial-lightGrey-normal-20 {
+  @extend %txt-arial-lightGrey-normal-20;
+}
 .txt-diwany-dark-24 {
     @extend %txt-diwany-dark-24;
 }
-.txt-samt-dark-140 {
-  @extend %txt-samt-dark-140;
+.txt-samt-dark-120 {
+  @extend %txt-samt-dark-120;
 }
 .txt-arial-dark-bold-50 {
   @extend %txt-arial-dark-bold-50;
 }
+.txt-arial-darkGrey-normal-14 {
+  @extend %txt-arial-darkGrey-normal-14;
+}
+.txt-arial-white-bold-18 {
+  @extend %txt-arial-white-bold-18;
+}
+.txt-samt-primary-100 {
+  @extend %txt-samt-primary-100;
+}
+.txt-arial-dark-bold-30 {
+  @extend %txt-arial-dark-bold-30;
+}
+.txt-arial-lightGrey-bold-30 {
+  @extend %txt-arial-lightGrey-bold-30;
+}
+.txt-diwany-primary-24 {
+  @extend %txt-diwany-primary-24;
+}
+.txt-kaushan-primary-60 {
+  @extend %txt-kaushan-primary-60;
+}
+.txt-arial-white-normal-14 {
+  @extend %txt-arial-white-normal-14;
+}
+
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 

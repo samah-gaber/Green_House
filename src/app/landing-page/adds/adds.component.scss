@@ -1,0 +1,32 @@
+@import "../../../styles.scss";
+
+.plantations-adds {
+    .main-add-carousel {
+        .carousel-caption {
+            width: 70%;
+            position: absolute;
+            bottom: 30%;
+            right: -2%;
+          }
+    }
+    .mobile-add-carousel {
+        display: none;
+        .carousel-caption {
+            position: absolute;
+            bottom: 17%;
+            right: 19%;
+        }
+    }
+}
+
+// media query
+@media only screen and (max-width: 768px) {
+    .plantations-adds {
+        .main-add-carousel {
+          display: none;
+        }
+        .mobile-add-carousel {
+          display: block;
+        }
+    }
+  }
