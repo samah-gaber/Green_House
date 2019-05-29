@@ -1,0 +1,21 @@
+<div class="plants-categories sec-style">
+  <div class="container m-auto">
+    <div class="sec-title">
+      <h3 class="text-center">النباتات</h3>
+    </div>
+    <ul class="nav justify-content-center py-4" id="plant-categories">
+        <li class="nav-item mx-4 category" *ngFor="let cat of plantCategories">
+            <a class="nav-link active txt-arial-dark-bold-24" (click)='showCat($event)'><b>{{cat.name}}</b></a>
+        </li>
+    </ul>
+    <div class="plantsGallery">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 col-6" *ngFor="let plant of singleCatPlants">
+            <app-single-plant [singlePlant] = plant></app-single-plant>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

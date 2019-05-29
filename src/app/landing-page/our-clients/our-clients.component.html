@@ -1,0 +1,16 @@
+<div class="our-clients sec-style">
+  <div class="container m-auto">
+    <div class="sec-title">
+      <h3 class="text-center">عملاءنا</h3>
+    </div>
+    <ul class="nav justify-content-center" id="plant-categories">
+      <div class="row w-100">
+        <div class="col-md-3 col-6" *ngFor="let plantation of plantations">
+          <li class="nav-item mx-4 category">
+              <a class="nav-link active txt-arial-lightGrey-bold-30" (click)='showCat($event)'><b>{{plantation.name}}</b></a>
+          </li>
+        </div>
+      </div>
+    </ul>
+  </div>
+</div>

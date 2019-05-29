@@ -2,45 +2,45 @@
   <div class="container m-auto border-bottom pb-5">
     <div class="bread-crumps text-right py-4">
       <p class="txt-arial-dark-bold-14">
-        <span class="ml-2"><a> الرئيسية</a></span>
+        <span class="ml-2"><a routerLink="/" class="txt-arial-dark-bold-14"> الرئيسية</a></span>
         <i class="fas fa-chevron-left ml-2"></i>
         <span class="txt-arial-primary-bold-14">روزمارى </span>
       </p>
     </div>
     <div class="row">
-      <div class="plant-name col-12 mb-5">
+      <div class="plant-name col-12">
         <div class="row">
-          <div class="col-8 col-md-2">
+          <div class="col-5 col-md-2">
             <img
               src="https://picsum.photos/id/98/200/300"
               alt=""
               class="img-fluid"
             />
           </div>
-          <div class="col-8 col-md-3 mr-5">
-            <ul class="plant-main-info text-right">
+          <div class="col-7 col-md-3 mr-md-5">
+            <ul class="plant-main-info text-right pr-0">
               <li class="mb-3">
                 <p class="txt-arial-darkGrey-normal-24">
                   <span class="icon-plantation ml-2" title="الاسم"></span>
-                  روزمارى
+                  {{plantDetails.name}}
                 </p>
               </li>
               <li class="mb-3">
                 <p class="txt-arial-darkGrey-normal-24">
                   <span class="icon-plant ml-2" title="النوع"></span>
-                  أعشاب مطبخ
+                  {{plantDetails.category}} 
                 </p>
               </li>
               <li class="mb-3">
                 <p class="txt-arial-darkGrey-normal-24">
                   <span class="icon-lighting ml-2" title="الموسم"></span>
-                  طوال السنة
+                  {{plantDetails.season}}
                 </p>
               </li>
               <li class="mb-3">
                 <p class="txt-arial-darkGrey-normal-24">
                   <span class="icon-planting1 ml-2" title="التربة"></span>
-                  تربة زراعية
+                  {{plantDetails.soil}}
                 </p>
               </li>
             </ul>
@@ -52,10 +52,7 @@
           <details>
             <summary class="txt-arial-dark-bold-24">طريقة الزراعة</summary>
             <p>
-              لوريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايت,سيت دو
-              أيوسمود تيمبور أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا . يوت
-              انيم أد مينيم فينايم,كيواس نوستريد أنكايديديونتيوت لابوري ات دولار
-              ماجنا أليكيوا
+              {{plantDetails.steps}}
             </p>
           </details>
         </div>

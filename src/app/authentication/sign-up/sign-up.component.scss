@@ -42,7 +42,35 @@
         border-color: #fcb7a4;
     }
     
-    .error-message {
+    .error-msg {
         color: $redColor;
+    }
+}
+
+// media queries
+@media only screen and (max-width: 768px) {
+    .signup-form {
+        .form {
+            text-align: right;
+            margin-right: 0%;
+        }
+        input, select {
+            display: block !important;
+            margin-right: 0% !important;
+            width: 100% !important;
+        }
+        input[type='radio'] {
+            display: inline-block !important;
+            width: 5% !important;
+            &[formControlName="gender"][value="female"] {
+                margin-right: 10% !important;
+            }
+        }
+        .logo-mob {
+            display: block;
+        }
+        .logo-lg {
+            display: none;
+        }
     }
 }

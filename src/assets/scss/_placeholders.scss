@@ -1,60 +1,87 @@
 // fonts
 %txt-samt-primary-100 {
-    @include text($samt, $rootFontSize*6.2, $primaryColor, 'normal');
+    @include text($samt, $rootFontSize*7, $primaryColor, normal);
 }
-%txt-samt-dark-140 {
-    @include text($samt, $rootFontSize*8.8, $darkColor, 'normal');
+%txt-samt-dark-120 {
+    @include text($samt, $rootFontSize*7.5, $darkColor, normal);
 }
 %txt-diwany-dark-50 {
-    @include text($diwany, $rootFontSize*3.1, $darkColor, 'normal');
+    @include text($diwany, $rootFontSize*3.1, $darkColor, normal);
 }
 %txt-diwany-dark-24 {
-    @include text($diwany, $rootFontSize*1.5, $darkColor, 'normal');
+    @include text($diwany, $rootFontSize*1.5, $darkColor, normal);
+}
+%txt-diwany-primary-24 {
+    @include text($diwany, $rootFontSize*1.5, $primaryColor, normal);
+}
+%txt-kaushan-primary-60 {
+    @include text($kaushScript, $rootFontSize*4, $secondaryColor, normal);
 }
 %txt-arial-primary-bold-14 {
-    @include text('Arial, Helvetica, sans-serif', $rootFontSize*0.9, $primaryColor, 'bold');
+    @include text('Arial, Helvetica, sans-serif', $rootFontSize*0.9, $primaryColor, bold);
+}
+%txt-arial-secondary-bold-14 {
+    @include text('Arial, Helvetica, sans-serif', $rootFontSize*0.9, $secondaryColor, bold);
 }
 %txt-arial-dark-bold-14 {
-    @include text('Arial, Helvetica, sans-serif', $rootFontSize*0.9, $darkColor, 'bold');
+    @include text('Arial, Helvetica, sans-serif', $rootFontSize*0.9, $darkColor, bold);
 }
 %txt-arial-dark-bold-30 {
-    @include text('Arial, Helvetica, sans-serif', $rootFontSize*1.9, $darkColor, 'bold');
+    @include text('Arial, Helvetica, sans-serif', $rootFontSize*1.9, $darkColor, bold);
 }
 %txt-arial-dark-bold-24 {
-    @include text('Arial, Helvetica, sans-serif', $rootFontSize*1.5, $darkColor, 'bold');
+    @include text('Arial, Helvetica, sans-serif', $rootFontSize*1.5, $darkColor, bold);
+}
+%txt-arial-dark-bold-20 {
+    @include text('Arial, Helvetica, sans-serif', $rootFontSize*1.3, $darkColor, bold);
 }
 %txt-arial-primary-bold-24 {
-    @include text('Arial, Helvetica, sans-serif', $rootFontSize*1.5, $primaryColor, 'bold');
+    @include text('Arial, Helvetica, sans-serif', $rootFontSize*1.5, $primaryColor, bold);
 }
 %txt-arial-darkGrey-normal-24 {
-    @include text('Arial, Helvetica, sans-serif', $rootFontSize*1.5, $mainTextGreyColor, 'normal');
+    @include text('Arial, Helvetica, sans-serif', $rootFontSize*1.5, $mainTextGreyColor, normal);
 }
 %txt-arial-darkGrey-bold-24 {
-    @include text('Arial, Helvetica, sans-serif', $rootFontSize*1.5, $mainTextGreyColor, 'bold');
+    @include text('Arial, Helvetica, sans-serif', $rootFontSize*1.5, $mainTextGreyColor, bold);
 }
 %txt-arial-lightGrey-bold-24 {
-    @include text('Arial, Helvetica, sans-serif', $rootFontSize*1.5, $lightTextGreyColor, 'bold');
+    @include text('Arial, Helvetica, sans-serif', $rootFontSize*1.5, $lightTextGreyColor, bold);
+}
+%txt-arial-lightGrey-bold-30 {
+    @include text('Arial, Helvetica, sans-serif', $rootFontSize*1.5, $lightTextGreyColor, bold);
 }
 %txt-arial-faintGrey-normal-24 {
-    @include text('Arial, Helvetica, sans-serif', $rootFontSize*1.5, $faintTextGreyColor, 'normal');
+    @include text('Arial, Helvetica, sans-serif', $rootFontSize*1.5, $faintTextGreyColor, normal);
 }
 %txt-arial-lightGrey-normal-14 {
-    @include text('Arial, Helvetica, sans-serif', $rootFontSize*0.9, $lightTextGreyColor, 'normal');
+    @include text('Arial, Helvetica, sans-serif', $rootFontSize*0.9, $lightTextGreyColor, normal);
+}
+%txt-arial-darkGrey-normal-14 {
+    @include text('Arial, Helvetica, sans-serif', $rootFontSize*0.9, $mainTextGreyColor, normal);
 }
 %txt-arial-faintGrey-normal-18 {
-    @include text('Arial, Helvetica, sans-serif', $rootFontSize*1.1, $faintTextGreyColor, 'normal');
+    @include text('Arial, Helvetica, sans-serif', $rootFontSize*1.1, $faintTextGreyColor, normal);
 }
 %txt-arial-white-bold-18 {
-    @include text('Arial, Helvetica, sans-serif', $rootFontSize*1.1, $whiteColor, 'bold');
+    @include text('Arial, Helvetica, sans-serif', $rootFontSize*1.1, $whiteColor, bold);
+}
+%txt-arial-white-normal-14 {
+    @include text('Arial, Helvetica, sans-serif', $rootFontSize*1, $whiteColor, normal);
 }
 %txt-arial-secondary-bold-18 {
-    @include text('Arial, Helvetica, sans-serif', $rootFontSize*1.1, $secondaryColor, 'bold');
+    @include text('Arial, Helvetica, sans-serif', $rootFontSize*1.1, $secondaryColor, bold);
 }
 %txt-arial-darkGrey-normal-20 {
-    @include text('Arial, Helvetica, sans-serif', $rootFontSize*1.1, $mainTextGreyColor, 'bold');
+    @include text('Arial, Helvetica, sans-serif', $rootFontSize*1.1, $mainTextGreyColor, bold);
+}
+%txt-arial-lightGrey-normal-20 {
+    @include text('Arial, Helvetica, sans-serif', $rootFontSize*1.1, $lightTextGreyColor, bold);
 }
 %txt-arial-dark-bold-50 {
-    @include text('Arial, Helvetica, sans-serif', $rootFontSize*3.1, $darkColor, 'bold');
+    @include text('Arial, Helvetica, sans-serif', $rootFontSize*3.1, $darkColor, bold);
+}
+%txt-arial-dark-bold-30 {
+    @include text('Arial, Helvetica, sans-serif', $rootFontSize*2, $darkColor, bold);
 }
 // general lay out
 %sec-layout {
@@ -77,4 +104,9 @@
     border: 1px solid $secondaryColor;
     border-radius: 15px;
     outline: none;
+    &:active {
+        box-shadow: 5px 5px 10px 0px rgba(186,179,186,1);
+        transform: translate(-3px, -3px);
+        transition-duration: 0.2s;
+    }
 }

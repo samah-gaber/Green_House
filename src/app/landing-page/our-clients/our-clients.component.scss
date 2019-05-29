@@ -1,0 +1,13 @@
+// import sytle files
+@import "../../../styles.scss";
+
+.our-clients {
+    background-image: url('/assets/imgs/landingPage/our-clients/Group\ 75.png');
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    a:hover {
+        color: $secondaryColor;
+    }
+}

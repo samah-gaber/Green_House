@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 interface PlantationPlantData {
   'id': number;
@@ -14,6 +14,7 @@ interface PlantationPlantData {
 
 export class PlantationOrderCardsComponent implements OnInit {
 
+  
   plantationsArr: PlantationPlantData[] = [
     {
       'id': 1,
