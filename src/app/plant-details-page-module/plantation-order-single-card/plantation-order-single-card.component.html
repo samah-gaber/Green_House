@@ -1,9 +1,9 @@
-<div class="card pt-4 pb-5 mx-3 text-center shadow">
+<div class="card pt-4 pb-5 mx-3 text-center shadow" *ngIf="plantationCard">
   <span class="icon-plant-1"></span>  
   <div class="card-body">
-    <h5 class="card-title txt-arial-dark-bold-24">{{plantationCard.name}}</h5>
+    <h5 class="card-title txt-arial-dark-bold-24">{{plantationCard.plantationName}}</h5>
     <p class="card-text txt-arial-darkGrey-normal-20">
-      {{plantationCard.plantPrice}}
+      {{plantationCard.price}}
       <span>L.E.</span>
     </p>
     <button class="btn-custom btn-custom-primary" (click)='addToCart()'>أضف إلى العربة</button>  

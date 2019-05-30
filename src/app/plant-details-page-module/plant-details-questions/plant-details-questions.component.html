@@ -1,9 +1,9 @@
-<div class="plant-details-questions sec-style">
+<div class="plant-details-questions sec-style" *ngIf="plantQuestionsObj">
   <div class="container m-auto">
     <div class="sec-title">
       <h3 class="text-center">اسئلة مستخدمينا المتعلقة بالنبات</h3>
     </div>
-    <div class="question py-5" *ngFor="let question of usersQuestionsWithAnswers">
+    <div class="question py-5" *ngFor="let question of plantQuestionsObj">
       <app-single-question [question]='question'></app-single-question>
     </div>
   </div>

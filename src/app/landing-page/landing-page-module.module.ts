@@ -6,7 +6,6 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { HomePageComponent } from './home-page/home-page.component';
 import { LandingPageComponent } from './landing-page.component';
-import { HeaderComponent } from '../header/header.component';
 import { ForumPageComponent } from './forum-page/forum-page.component';
 import { LandingPageCarouselsComponent } from './landing-page-carousels/landing-page-carousels.component';
 import { PlantCategorySliderComponent } from './plant-category-slider/plant-category-slider.component';
@@ -14,14 +13,11 @@ import { PlantCategoriesComponent } from './plant-categories/plant-categories.co
 import { HttpClientModule } from '@angular/common/http';
 import { OurClientsComponent } from './our-clients/our-clients.component';
 import { AddsComponent } from './adds/adds.component';
-import { FooterComponent } from '../footer/footer.component';
 import { SinglePlantComponent } from './single-plant/single-plant.component';
+import { SharedModule } from '../shared/shared.module';
 const routes: Routes = [
   {
     path: '', component: HomePageComponent
-  },
-  {
-    path: 'forum', component: ForumPageComponent
   }
 ];
 
@@ -29,14 +25,12 @@ const routes: Routes = [
   declarations: [
     HomePageComponent,
     LandingPageComponent,
-    HeaderComponent,
     ForumPageComponent,
     LandingPageCarouselsComponent,
     PlantCategorySliderComponent,
     PlantCategoriesComponent,
     OurClientsComponent,
     AddsComponent,
-    FooterComponent,
     SinglePlantComponent
   ],
   imports: [
@@ -44,11 +38,11 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     MDBBootstrapModule.forRoot(),
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule
   ],
   exports: [
-    RouterModule,
-    LandingPageComponent
+    RouterModule
   ]
 })
 export class LandingPageModuleModule { }

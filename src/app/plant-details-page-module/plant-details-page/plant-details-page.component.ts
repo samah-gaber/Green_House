@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+// import 'rxjs/add/operator/filter';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-plant-details-page',
@@ -7,15 +9,16 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./plant-details-page.component.scss']
 })
 export class PlantDetailsPageComponent implements OnInit {
-  id: number;
+  id: string;
   constructor( private route: ActivatedRoute ) { }
 
   ngOnInit() {
-    // this.route.queryParams
+    this.route.queryParams
     // .filter( params => params.id)
-    // .subscribe( params => {
-    //   this.id = params.id;
-    // });
+    .subscribe( params => {
+      this.id = params.id;
+      // console.log(this.id);
+    });
   }
 
 }

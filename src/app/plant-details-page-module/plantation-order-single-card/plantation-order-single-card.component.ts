@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MDBModalService, MDBModalRef } from 'angular-bootstrap-md';
-import { AuthService } from '../services/auth.service';
-import { BlockAnonUserModalComponent } from '../plant-details-page-module/block-anon-user-modal/block-anon-user-modal.component';
+import { AuthService } from '../../services/auth.service';
+
 @Component({
   selector: 'app-plantation-order-single-card',
   templateUrl: './plantation-order-single-card.component.html',
