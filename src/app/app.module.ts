@@ -26,8 +26,7 @@ import { AuthService } from './services/auth.service';
     MDBBootstrapModule.forRoot(),
     // BlockAnonUserModalComponent
   ],
-  providers: [UserService, AuthGuard, AuthService],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
   // entryComponents: [
   //   BlockAnonUserModalComponent
   // ]

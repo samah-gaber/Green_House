@@ -1,10 +1,10 @@
-<div class="plantationsOrders sec-style text-center">
+<div class="plantationsOrders sec-style text-center" *ngIf="plantPlantationsObj">
   <div class="container m-auto">
     <div class="sec-title">
       <h3>متوافر لدى</h3>
     </div>
     <div class="row">
-      <div class="col-6 col-md-3 mb-3" *ngFor="let plantation of plantationsArr">
+      <div class="col-6 col-md-3 mb-3" *ngFor="let plantation of plantPlantationsObj.plantation">
           <app-plantation-order-single-card
             [plantationCard]="plantation"
           ></app-plantation-order-single-card>

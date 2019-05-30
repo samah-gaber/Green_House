@@ -1,0 +1,9 @@
+<div class="media quote" *ngIf="plantationComment">
+  <i class="fas fa-comments ml-3"></i>
+  <div class="media-body">
+    <blockquote class="blockquote">
+      <p class="text txt-arial-darkGrey-normal-24">{{ plantationComment.comments.Comment }}</p>
+      <p class="signature txt-diwany-dark-24">{{ plantationComment.comments.plantationName }}</p>
+    </blockquote>
+  </div>
+</div>
