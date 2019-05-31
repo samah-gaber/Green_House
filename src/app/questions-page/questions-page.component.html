@@ -1,0 +1,33 @@
+<app-header></app-header>
+<button class="btn btn-outline-primary mb-2 mr-2" (click)="openBackDropCustomClass(content)">Modal with backdrop custom class</button>
+<div class="container mb-5 pt-5">
+  <div class="row">
+      <div *ngIf="objData">
+          <div class="question py-5" *ngFor="let questionItem of objData">
+              <app-single-question [question]='questionItem'></app-single-question>
+            </div>
+      </div>
+  </div>
+    <!-- modal -->
+    <div class="row">
+        <ng-template #content let-modal>
+            <div class="modal-header">
+              <h4 class="modal-title">اسأل</h4>
+              <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>One fine body&hellip;</p>
+            </div>
+            <form [formGroup]="questionForm" (ngSubmit)="handleSend(questionForm)">
+                <textarea type="text" formControlName="userQuestion" class="form-control"></textarea>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-light">ارسل</button>
+                    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">اغلق</button>
+                </div>
+            </form>
+          </ng-template>
+    </div>
+</div>
+<app-footer></app-footer>
