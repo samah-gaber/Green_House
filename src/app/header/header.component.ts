@@ -14,6 +14,7 @@ import { AuthUserData } from '../interfaces/user-interface';
 export class HeaderComponent implements OnInit {
 
   showUserName: boolean = false;
+
   userData: AuthUserData;
   constructor( 
     private router: Router,
@@ -22,7 +23,7 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.checkUserAuthenticated();
+    // this.checkUserAuthenticated();
   }
 
   onSignIn() {
@@ -34,10 +35,6 @@ export class HeaderComponent implements OnInit {
       this.showUserName = true;
       this.userData = this.userService.returnAuthUserData();
     }
-  }
-
-  navToQuestions() {
-    this.router.navigate(['/user/questions'], { queryParams: { userId: this.userData.id } })
   }
 
 }

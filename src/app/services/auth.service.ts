@@ -9,7 +9,7 @@ export class AuthService {
   constructor( private userService: UserService ) { }
 
   isAuthenticated() {
-    if ( this.userService.returnAuthToken() ) {
+    if ( this.userService.returnAuthUserData() ) {
       this.loggedIn = true;
     } else {
       this.loggedIn = false;

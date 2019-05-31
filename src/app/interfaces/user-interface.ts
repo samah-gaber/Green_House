@@ -15,5 +15,5 @@ export interface UserSignedIn {
 export interface AuthUserData {
     name: string;
     id: number;
-    token: '';
+    token: string;
 }
