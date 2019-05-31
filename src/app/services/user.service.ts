@@ -6,7 +6,7 @@ import { UserSignedUp, UserSignedIn, AuthUserData } from '../interfaces/user-int
 
 export class UserService {
 
-    authToken: string;
+    authUserStored: string;
     // userName: string;
     // userId: number;
     authUser: AuthUserData;
@@ -15,14 +15,15 @@ export class UserService {
 
   urlSignUp = 'https://reqres.in/api/register';
   urlSignIn = 'https://reqres.in/api/login';
+  urlLogOut = 'https://reqres.in/api/login';
 
     submitNewUser(userSignedUp: UserSignedUp) {
       this.http.post( this.urlSignUp, userSignedUp ).subscribe (
           (res: AuthUserData) => {
-              console.log(res);
+            console.log(res);
             //   this.setAuthToken(res.token);   
             this.authUser = res;         
-              this.setAuthToken(this.authUser.token);   
+            this.setAuthUserData(this.authUser);   
             },
             error => console.log(error)
         );
@@ -33,28 +34,39 @@ export class UserService {
                 console.log(res);
                 //   this.setAuthToken(res.token);
                 this.authUser = res;         
-                    this.setAuthToken(this.authUser.token);   
+                    this.setAuthUserData(this.authUser);   
             },
             (error) => console.log(error)
         );
     }
 
-    setAuthToken(token) {
-        this.authToken = token;
-        localStorage.setItem('UserToken', this.authToken);
+    setAuthUserData(data: AuthUserData) {
+        localStorage.setItem( 'authUserData', JSON.stringify(data) );
     }
     
-    deleteAuthToken(token) {
-        this.authToken = '';
-        localStorage.removeItem('UserToken');
+    deleteAuthUserData(data: AuthUserData) {
+        this.http.post( this.urlLogOut, data.token ).subscribe (
+            res => {
+                console.log(res); 
+                this.authUser.id = null;
+                this.authUser.name = '';
+                this.authUser.token = '';
+                localStorage.removeItem('authUserData');
+            },
+            error => console.log(error)
+        );
+        
     }
 
-    returnAuthToken() {
-        this.authToken = localStorage.getItem('UserToken');
-        return this.authToken;
-    }
-
-    returnAuthUserData(): AuthUserData {
+    returnAuthUserData() {
+        if (!this.authUser) {
+           let authUserStored = localStorage.getItem('authUserData');
+            if (authUserStored) {
+                this.authUser = JSON.parse(authUserStored);
+            } else {
+                this.authUser = null;
+            }
+        }
         return this.authUser;
     }
 }

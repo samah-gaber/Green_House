@@ -77,10 +77,28 @@
                 </button>
 
                 <div class="dropdown-menu dropdown-primary">
-                  <a class="dropdown-item" (click)='navToFavPlants()'>نباتاتك المفضلة</a>
-                  <a class="dropdown-item" (click)='navToOrders()'>طلباتك</a>
-                  <a class="dropdown-item" (click)='navToQuestions()'>اسئلتك</a>
-                  <a class="dropdown-item">الاعدادات</a>
+                  <a class="dropdown-item" 
+                  (click)='navToFavPlants()'
+                  routerLink="/user/favourites"
+                  routerLinkActive="active"
+                  [queryParams]="{ userId: userData.id}"
+                  >نباتاتك المفضلة</a>
+                  <a class="dropdown-item" 
+                  (click)='navToOrders()'
+                  routerLink="/user/orders"
+                  routerLinkActive="active"
+                  [queryParams]="{ userId: userData.id}"
+                  >طلباتك</a>
+                  <a class="dropdown-item" 
+                  (click)='navToQuestions()'
+                  routerLink="/user/questions"
+                  routerLinkActive="active"
+                  [queryParams]="{ userId: userData.id}"
+                  >اسئلتك</a>
+                  <a class="dropdown-item"
+                  routerLink="/user/settings"
+                  routerLinkActive="active"
+                  >الاعدادات</a>
                   <div class="divider dropdown-divider"></div>
                   <a class="dropdown-item" (click)='onSignOut()'>تسجيل الخروج</a>
                 </div>
