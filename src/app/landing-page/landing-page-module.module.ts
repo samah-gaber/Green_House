@@ -17,7 +17,14 @@ import { SinglePlantComponent } from './single-plant/single-plant.component';
 import { SharedModule } from '../shared/shared.module';
 const routes: Routes = [
   {
-    path: '', component: HomePageComponent
+    path: '', component: LandingPageComponent, children: [
+      {
+        path: '', component: HomePageComponent
+      },
+      {
+        path: 'forum', component: ForumPageComponent
+      }
+    ]
   }
 ];
 

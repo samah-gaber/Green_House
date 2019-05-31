@@ -8,11 +8,17 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from '../services/user.service';
 import { AuthGuard } from '../services/auth-guard.service';
 import { AuthService } from '../services/auth.service';
+import { LoadingScreenComponent } from '../loading-screen/loading-screen.component';
+import { BlockAnonUserModalComponent } from '../block-anon-user-modal/block-anon-user-modal.component';
+import { DomainService } from '../services/domain.service';
+import { PlantService } from '../services/plant.service';
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    LoadingScreenComponent,
+    BlockAnonUserModalComponent
   ],
   imports: [
     CommonModule,
@@ -23,12 +29,16 @@ import { AuthService } from '../services/auth.service';
   exports: [
     HeaderComponent,
     FooterComponent,
+    LoadingScreenComponent,
+    BlockAnonUserModalComponent,
     CommonModule
   ],
   providers: [
     UserService, 
     AuthGuard, 
-    AuthService
+    AuthService,
+    DomainService,
+    PlantService
   ]
 })
 export class SharedModule { }

@@ -99,6 +99,11 @@
     background-color: transparent;
     @extend %txt-arial-secondary-bold-18;
 }
+%text-btn {
+    background-color: transparent;
+    border: none !important;
+    @extend %txt-arial-secondary-bold-18;
+}
 %btn-style {
     padding: 5px 20px;
     border: 1px solid $secondaryColor;
