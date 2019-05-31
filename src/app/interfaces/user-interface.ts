@@ -11,3 +11,9 @@ export interface UserSignedIn {
     email: string;
     password: string;
 }
+
+export interface AuthUserData {
+    name: string;
+    id: number;
+    token: string;
+}
