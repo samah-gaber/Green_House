@@ -10,12 +10,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './services/user.service';
 import { AuthGuard } from './services/auth-guard.service';
 import { AuthService } from './services/auth.service';
-// import { BlockAnonUserModalComponent } from './plant-details-page-module/block-anon-user-modal/block-anon-user-modal.component';
+import { BlockAnonUserModalComponent } from './block-anon-user-modal/block-anon-user-modal.component';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
   declarations: [
     AppComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -24,11 +26,11 @@ import { AuthService } from './services/auth.service';
     BrowserAnimationsModule,
     HttpClientModule,
     MDBBootstrapModule.forRoot(),
-    // BlockAnonUserModalComponent
+    SharedModule
   ],
-  bootstrap: [AppComponent]
-  // entryComponents: [
-  //   BlockAnonUserModalComponent
-  // ]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    BlockAnonUserModalComponent
+  ]
 })
 export class AppModule { }

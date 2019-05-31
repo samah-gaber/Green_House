@@ -12,7 +12,7 @@ export class SingleQuestionComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.replyCount = this.question.replies.length;
+    this.replyCount = this.question.answers.length;
   }
 
 }

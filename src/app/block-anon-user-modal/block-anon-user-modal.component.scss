@@ -1,0 +1,10 @@
+// import style files
+@import '../../styles.scss';
+
+.modal-content .close {
+    left: 15px !important;
+}
+
+.modal-footer {
+    justify-content: flex-start
+}

@@ -1,15 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-
-interface PlantPlantationsObj {
-  plantation : [
-    {
-      plantationID: number,
-      plantationName: string,
-      price: number
-    }
-  ]
-}
+import { PlantService } from '../../services/plant.service';
+import { PlantPlantationsObj } from '../../interfaces/plant-interface';
 
 @Component({
   selector: 'app-plantation-order-cards',
@@ -23,17 +14,17 @@ export class PlantationOrderCardsComponent implements OnInit {
   plantPlantationsObj: PlantPlantationsObj;
   plantPlantationsUrl = '';
   
-  constructor( private http: HttpClient ) { }
+  constructor(
+    private plantService: PlantService
+  ) { }
   
   ngOnInit() {
-    this.plantPlantationsUrl = `http://192.168.137.155:9999/api/plants/plantationlist/${this.plantId}`;
+    this.plantPlantationsUrl = `/plantationlist/${this.plantId}`;
     this.getPlantDetails();
   }
 
   getPlantDetails() {
-    this.http.get(this.plantPlantationsUrl).subscribe( (res: PlantPlantationsObj) => {
-     console.log('res arrived');
-     console.log(res);
+    this.plantService.plantsGetRequest(this.plantPlantationsUrl).subscribe( (res: PlantPlantationsObj) => {
       this.plantPlantationsObj = res;
     },
     error => {
