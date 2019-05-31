@@ -1,17 +1,30 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { MainModule } from './main/main.module';
+import { LandingPageModuleModule } from './landing-page/landing-page-module.module';
 
 const routes: Routes = [
   {
-    path: '', loadChildren: './main/main.module#MainModule'
+    path: '', component: MainModule, children: [
+      {
+        path: '', component: LandingPageModuleModule
+      },
+      {
+        path: 'plantdetails', loadChildren: './plant-details-page-module/plant-details-page.module#PlantDetailsPageModule'
+      }
+    ]
   },
   {
-    path: 'users', loadChildren: './authentication/authentication.module#AuthenticationModule'
+    path: 'auth', loadChildren: './authentication/authentication.module#AuthenticationModule'
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    MainModule,
+    LandingPageModuleModule,
+    RouterModule.forRoot(routes)
+  ],
   exports: [
     RouterModule
   ]

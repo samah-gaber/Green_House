@@ -35,7 +35,7 @@
   <div class="search-header">
     <div class="container">
       <div class="row align-items-center justify-content-between">
-        <div class="col-4 col-md-1">
+        <div class="col-2 col-md-1">
           <a href="#"
             ><img
               class="img-fluid "
@@ -58,14 +58,37 @@
         </div>
         <div class="signin-cart col-md-2 col-4 text-left">
           <div class="row align-items-center">
-              <div class="cart col-4">
-                  <i class="fas fa-shopping-cart"></i>
-                  <p class="cart-count txt-arial-secondary-bold-14 d-inline-block">0</p>
+            <div class="cart col-4">
+              <i class="fas fa-shopping-cart"></i>
+              <p class="cart-count txt-arial-secondary-bold-14 d-inline-block">
+                0
+              </p>
+            </div>
+            <div class="col-8 text-center">
+              <div class="btn-group" mdbDropdown *ngIf="showUserName; else signinBtn">
+                <button
+                  mdbDropdownToggle
+                  type="button"
+                  size="sm"
+                  class="dropdown-toggle waves-light txt-arial-dark-bold-14"
+                  mdbWavesEffect
+                >
+                  {{ userData.name }}
+                </button>
+
+                <div class="dropdown-menu dropdown-primary">
+                  <a class="dropdown-item" (click)='navToFavPlants()'>نباتاتك المفضلة</a>
+                  <a class="dropdown-item" (click)='navToOrders()'>طلباتك</a>
+                  <a class="dropdown-item" (click)='navToQuestions()'>اسئلتك</a>
+                  <a class="dropdown-item">الاعدادات</a>
+                  <div class="divider dropdown-divider"></div>
+                  <a class="dropdown-item" (click)='onSignOut()'>تسجيل الخروج</a>
                 </div>
-                <div class="col-8 text-center">
-                  <a class="txt-arial-dark-bold-14 signin-link" (click)='onSignIn()'
-                    >تسجيل الدخول</a>
-                </div>
+              </div>
+              <ng-template #signinBtn>
+                <a class="txt-arial-dark-bold-14 signin-link" (click)="onSignIn()">تسجيل الدخول</a>
+              </ng-template>
+            </div>
           </div>
         </div>
       </div>
@@ -79,32 +102,50 @@
       <!-- Links -->
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link waves-light txt-arial-white-bold-18" mdbWavesEffect 
-          routerLink="/"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]='{exact: true}'
+          <a
+            class="nav-link waves-light txt-arial-white-bold-18"
+            mdbWavesEffect
+            routerLink="/"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
             >الرئيسية<span class="sr-only">(current)</span></a
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link waves-light txt-arial-white-bold-18 mr-5" mdbWavesEffect
-          routerLink="/aboutus"
-          routerLinkActive="active">من نحن</a>
+          <a
+            class="nav-link waves-light txt-arial-white-bold-18 mr-5"
+            mdbWavesEffect
+            routerLink="/aboutus"
+            routerLinkActive="active"
+            >من نحن</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link waves-light txt-arial-white-bold-18 mr-5" mdbWavesEffect
-          routerLink="/forum"
-          routerLinkActive="active">المنتدى</a>
+          <a
+            class="nav-link waves-light txt-arial-white-bold-18 mr-5"
+            mdbWavesEffect
+            routerLink="/forum"
+            routerLinkActive="active"
+            >المنتدى</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link waves-light txt-arial-white-bold-18 mr-5" mdbWavesEffect
-          routerLink="/store"
-          routerLinkActive="active">المتجر</a>
+          <a
+            class="nav-link waves-light txt-arial-white-bold-18 mr-5"
+            mdbWavesEffect
+            routerLink="/store"
+            routerLinkActive="active"
+            >المتجر</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link waves-light txt-arial-white-bold-18 mr-5" mdbWavesEffect
-          routerLink="/contactus"
-          routerLinkActive="active">تواصل معنا</a>
+          <a
+            class="nav-link waves-light txt-arial-white-bold-18 mr-5"
+            mdbWavesEffect
+            routerLink="/contactus"
+            routerLinkActive="active"
+            >تواصل معنا</a
+          >
         </li>
       </ul>
       <!-- Links -->

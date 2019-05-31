@@ -74,6 +74,10 @@
     .signin-link {
         font-weight: bold;
     }
+    button.dropdown-toggle {
+        background-color: transparent;
+        border: none;
+    }
 }
 ::ng-deep .navbar.navbar-expand-lg.navbar-dark {
     background-color: $primaryColor !important;
@@ -82,8 +86,7 @@
         color: $darkColor !important;
     }
 }
-
-// media queies
+    // media queies
 @media only screen and (max-width: 768px) {
     .search-header {
         form {
@@ -116,4 +119,4 @@
             }
         }
     }
-  }
+}
