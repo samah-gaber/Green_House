@@ -12,30 +12,35 @@ import { LoadingScreenComponent } from '../loading-screen/loading-screen.compone
 import { BlockAnonUserModalComponent } from '../block-anon-user-modal/block-anon-user-modal.component';
 import { DomainService } from '../services/domain.service';
 import { PlantService } from '../services/plant.service';
+import { SingleQuestionComponent } from '../plant-details-page-module/single-question/single-question.component'
+
 
 @NgModule({
   declarations: [
     HeaderComponent,
+    SingleQuestionComponent,
     FooterComponent,
     LoadingScreenComponent,
-    BlockAnonUserModalComponent
+    BlockAnonUserModalComponent,
+
   ],
   imports: [
     CommonModule,
     MDBBootstrapModule.forRoot(),
     NgbModule,
     RouterModule
-  ], 
+  ],
   exports: [
     HeaderComponent,
     FooterComponent,
+    SingleQuestionComponent,
     LoadingScreenComponent,
     BlockAnonUserModalComponent,
     CommonModule
   ],
   providers: [
-    UserService, 
-    AuthGuard, 
+    UserService,
+    AuthGuard,
     AuthService,
     DomainService,
     PlantService

@@ -10,7 +10,6 @@ import { PlantationOrderSingleCardComponent } from './plantation-order-single-ca
 import { PlantationCommentsCarouselComponent } from './plantation-comments-carousel/plantation-comments-carousel.component';
 import { PlantationSingleCommentComponent } from './plantation-single-comment/plantation-single-comment.component';
 import { PlantDetailsQuestionsComponent } from './plant-details-questions/plant-details-questions.component';
-import { SingleQuestionComponent } from './single-question/single-question.component';
 // import { BlockAnonUserModalComponent } from './block-anon-user-modal/block-anon-user-modal.component';
 const routes: Routes = [
   {
@@ -27,7 +26,6 @@ const routes: Routes = [
     PlantationCommentsCarouselComponent,
     PlantationSingleCommentComponent,
     PlantDetailsQuestionsComponent,
-    SingleQuestionComponent
     // BlockAnonUserModalComponent
   ],
   imports: [

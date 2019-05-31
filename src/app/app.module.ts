@@ -11,13 +11,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { BlockAnonUserModalComponent } from './block-anon-user-modal/block-anon-user-modal.component';
 import { SharedModule } from './shared/shared.module';
 import { QuestionsPageComponent } from './questions-page/questions-page.component';
-import {SingleQuestionComponent} from './plant-details-page-module/single-question/single-question.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SingleQuestionComponent,
     QuestionsPageComponent
 
   ],
