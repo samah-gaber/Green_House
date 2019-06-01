@@ -8,3 +8,13 @@
  .modal-content .close{
    left:12px;
  }
+ .btn-outline-primary{
+  border: 2px solid $primaryColor !important;
+  background-color: transparent !important;
+  color: $darkColor!important;
+  &:hover,&:focus{
+    border-color: $secondaryColor !important;
+    background-color: transparent !important;
+    color: $primaryColor !important;
+  }
+ }

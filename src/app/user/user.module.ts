@@ -9,7 +9,7 @@ import { UserFavSingleCardComponent } from './user-fav-single-card/user-fav-sing
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { UserPagesComponent } from './user-pages/user-pages.component';
 import { QuestionsPageComponent } from '../questions-page/questions-page.component';
-
+import {NgbModule, NgbDropdownModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 const routes: Routes = [
@@ -33,6 +33,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     SharedModule,
+    NgbModule, NgbDropdownModule,
     ReactiveFormsModule,
     RouterModule.forChild(routes),
     MDBBootstrapModule.forRoot(),
