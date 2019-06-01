@@ -1,0 +1,9 @@
+<br>
+<div *ngIf="ordersData">
+  <div *ngFor="let order of ordersData">
+      <app-single-order-card [orderData]="order"></app-single-order-card>
+      <br>
+  </div>
+</div>
+
+

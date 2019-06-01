@@ -1,0 +1,20 @@
+<div class="card">
+    <div class="card-body">
+      Single Card
+      <div *ngFor="let item of orderData.items">
+        <div class="card">
+          <div class="card-body">
+              Plant Name : {{item.plantName}} <br>
+              Plant Category : {{item.plantCategory}} <br>
+              Plantation Name : {{item.plantationName}} <br>
+              Price : {{item.totalPrice}} <br>
+              <hr>
+              <div *ngFor="let itemContent of item.itemContents">
+                Eshtareet {{itemContent.quantity}} {{itemContent.typeOfQuantity}} {{itemContent.typeOfUnit}} <br>
+              </div>
+          </div>
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
