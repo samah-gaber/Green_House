@@ -36,9 +36,9 @@ export class QuestionsPageComponent implements OnInit {
     this.modalService.open(content, {backdropClass: 'light-blue-backdrop'});
   }
 
-  handleSend(shit){
+  handleSend(param){
     console.log("Sending form");
-    console.log(shit);
+    console.log(param);
   }
 
   createFormControls() {
