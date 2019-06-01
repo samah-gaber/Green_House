@@ -28,6 +28,7 @@ export class UserService {
             error => console.log(error)
         );
     }
+    
     logInUser(userSignedIn: UserSignedIn ) {
         this.http.post( this.urlSignUp, userSignedIn ).subscribe (
             (res: AuthUserData) => {

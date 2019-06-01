@@ -1,0 +1,12 @@
+<div class="fav-plants py-5 sec-style text-center">
+  <div class="container">
+    <div class="sec-title">
+      <h3>نباتاتك المفضلة</h3>
+    </div>
+    <div class="row">
+      <div class="col-6 col-md-3" *ngFor="let plant of userFavPlants">
+          <app-user-fav-single-card [favPlant]='plant'></app-user-fav-single-card>
+      </div>
+    </div>
+  </div>
+</div>

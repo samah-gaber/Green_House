@@ -20,7 +20,7 @@ export class BlockAnonUserModalComponent implements OnInit {
   }
 
   navigateToSignIn() {
-    this.router.navigateByUrl('/users/signin');
+    this.router.navigateByUrl('/auth/signin');
     this.modalRef.hide();
   }
 }
