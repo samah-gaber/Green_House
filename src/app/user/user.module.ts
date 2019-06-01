@@ -13,8 +13,8 @@ const routes: Routes = [
   {
     path: '', component:  UserPagesComponent, children: [
       {
-        // path: 'favourites', component: UserFavPageComponent
-        path: 'favourites', component: UserFavPageComponent, canActivate: [ AuthGuard ]
+        path: 'favourites', component: UserFavPageComponent
+        // path: 'favourites', component: UserFavPageComponent, canActivate: [ AuthGuard ]
       }
     ]
   }

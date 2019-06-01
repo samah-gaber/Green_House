@@ -12,6 +12,8 @@ import { LoadingScreenComponent } from '../loading-screen/loading-screen.compone
 import { BlockAnonUserModalComponent } from '../block-anon-user-modal/block-anon-user-modal.component';
 import { DomainService } from '../services/domain.service';
 import { PlantService } from '../services/plant.service';
+import { UserFavPlantsService } from '../services/user-fav-plants.service';
+// import { UserFavPlantsArrService } from '../services/user-fav-plants-arr.service';
 import { SingleQuestionComponent } from '../plant-details-page-module/single-question/single-question.component'
 
 
@@ -43,7 +45,9 @@ import { SingleQuestionComponent } from '../plant-details-page-module/single-que
     AuthGuard,
     AuthService,
     DomainService,
-    PlantService
+    PlantService,
+    UserFavPlantsService
+    // UserFavPlantsArrService
   ]
 })
 export class SharedModule { }

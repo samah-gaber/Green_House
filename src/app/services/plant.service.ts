@@ -10,7 +10,7 @@ export class PlantService {
     private domain: DomainService
   ) { }
 
-  domainURL = this.domain.getDomain;
+  domainURL = this.domain.getDomain();
   dynamicURL: string;
   plantsURL: string;
 

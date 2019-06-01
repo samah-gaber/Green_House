@@ -1,0 +1,20 @@
+<mdb-card class="text-right user-single-fav-plant">
+  <!--Card image-->
+  <mdb-card-img src='https://picsum.photos/200' alt="Card image cap"></mdb-card-img>
+  <i class="fas fa-heart" (click)='removeFromFav()'></i>
+  <!--Card content-->
+  <mdb-card-body>
+
+    <!--Title-->
+    <mdb-card-title>
+      <h4>{{ favPlant.plantName }}</h4>
+    </mdb-card-title>
+
+    <!--Text-->
+    <mdb-card-text> 
+      {{ favPlant.plantCategory }}
+    </mdb-card-text>
+
+    <!-- <a href="#" mdbBtn color="primary" mdbWavesEffect>Button</a> -->
+  </mdb-card-body>
+</mdb-card>
