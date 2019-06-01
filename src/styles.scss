@@ -43,6 +43,9 @@ $Green-House-theme: mat-light-theme($Green-House-primary, $Green-House-accent, $
 .btn-custom-ghost {
   @extend %ghost-btn;
 }
+.btn-custom-text {
+  @extend %text-btn;
+}
 // section title style
 .sec-style {
   @extend %sec-layout;

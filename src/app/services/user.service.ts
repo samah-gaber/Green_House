@@ -1,48 +1,73 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { UserSignedUp, UserSignedIn } from '../interfaces/user-interface';
+import { UserSignedUp, UserSignedIn, AuthUserData } from '../interfaces/user-interface';
 
 @Injectable()
 
 export class UserService {
 
-    authToken: string;
+    authUserStored: string;
+    // userName: string;
+    // userId: number;
+    authUser: AuthUserData;
+
   constructor( private http: HttpClient ) { }
 
   urlSignUp = 'https://reqres.in/api/register';
-  urlSignIn = 'https://reqres.in/api/login'
+  urlSignIn = 'https://reqres.in/api/login';
+  urlLogOut = 'https://reqres.in/api/login';
 
-  submitNewUser(userSignedUp: UserSignedUp) {
-      this.http.post<UserSignedUp>( this.urlSignUp, userSignedUp ).subscribe (
-          res => {
-              console.log(res);
-            //   this.setAuthToken(res.token);            
+    submitNewUser(userSignedUp: UserSignedUp) {
+      this.http.post( this.urlSignUp, userSignedUp ).subscribe (
+          (res: AuthUserData) => {
+            console.log(res);
+            //   this.setAuthToken(res.token);   
+            this.authUser = res;         
+            this.setAuthUserData(this.authUser);   
             },
-          error => console.log(error)
-      );
-  }
-  logInUser(userSignedIn: UserSignedIn ) {
-      this.http.post( this.urlSignUp, userSignedIn ).subscribe (
-          (res) => {
-              console.log(res);
-            //   this.setAuthToken(res.token);
-        },
-        (error) => console.log(error)
-    );
-}
-
-    setAuthToken(token) {
-        this.authToken = token;
-        localStorage.setItem('UserToken', this.authToken);
-    }
-
-    returnAutnToken() {
-        this.authToken = localStorage.getItem('UserToken');
-        return this.authToken;
+            error => console.log(error)
+        );
     }
     
-    deleteAuthToken(token) {
-        this.authToken = '';
-        localStorage.removeItem('UserToken');
+    logInUser(userSignedIn: UserSignedIn ) {
+        this.http.post( this.urlSignUp, userSignedIn ).subscribe (
+            (res: AuthUserData) => {
+                console.log(res);
+                //   this.setAuthToken(res.token);
+                this.authUser = res;         
+                    this.setAuthUserData(this.authUser);   
+            },
+            (error) => console.log(error)
+        );
+    }
+
+    setAuthUserData(data: AuthUserData) {
+        localStorage.setItem( 'authUserData', JSON.stringify(data) );
+    }
+    
+    deleteAuthUserData(data: AuthUserData) {
+        this.http.post( this.urlLogOut, data.token ).subscribe (
+            res => {
+                console.log(res); 
+                this.authUser.id = null;
+                this.authUser.name = '';
+                this.authUser.token = '';
+                localStorage.removeItem('authUserData');
+            },
+            error => console.log(error)
+        );
+        
+    }
+
+    returnAuthUserData() {
+        if (!this.authUser) {
+           let authUserStored = localStorage.getItem('authUserData');
+            if (authUserStored) {
+                this.authUser = JSON.parse(authUserStored);
+            } else {
+                this.authUser = null;
+            }
+        }
+        return this.authUser;
     }
 }

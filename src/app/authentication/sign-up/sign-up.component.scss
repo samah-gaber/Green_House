@@ -31,7 +31,7 @@
         }
         &#datePicker {
             margin-right: 12%;
-            width: 65%;
+            width: 64%;
         }
     }
     .ng-invalid.ng-touched {
@@ -44,6 +44,10 @@
     
     .error-msg {
         color: $redColor;
+    }
+    a {
+        color: $primaryColor;
+        font-weight: bold;
     }
 }
 

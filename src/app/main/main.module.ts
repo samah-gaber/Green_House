@@ -11,6 +11,9 @@ const routes: Routes = [
   },
   {
     path: 'plantdetails', loadChildren: '../plant-details-page-module/plant-details-page.module#PlantDetailsPageModule' 
+  },
+  {
+    path: 'user', loadChildren: '../user/user.module#UserModule'
   }
 ];
 

@@ -3,27 +3,27 @@
     <div class="row">
       <div class="col-10 col-md-12">
         <p class="user-name txt-arial-darkGrey-bold-24 mb-2">
-          {{ question.userName }}
+          {{ question.Clientname }}
         </p>
-        <span class="since-date txt-arial-faintGrey-normal-18 mb-3">{{
+        <!-- <span class="since-date txt-arial-faintGrey-normal-18 mb-3">{{
           question.questionDate
-        }}</span>
+        }}</span> -->
         <p class="question-text txt-arial-lightGrey-bold-24 mb-4">
-          {{ question.questionText }}
+          {{ question.questionContain }}
         </p>
-        <div class="questionTags">
+        <!-- <div class="questionTags">
           <span
             class="tags txt-arial-faintGrey-normal-24"
             *ngFor="let tag of question.questionTags"
             >#{{ tag }}
           </span>
-        </div>
-        <img
+        </div> -->
+        <!-- <img
           src="{{ question.questionImgSrc }}"
           alt=""
           *ngIf="question.questionImgSrc"
           class="mt-4"
-        />
+        /> -->
       </div>
     </div>
   </div>
@@ -31,17 +31,17 @@
     عدد الردود: {{ replyCount }}
   </p>
   <div class="plantation-answers">
-    <div class="single-answer mb-4" *ngFor="let reply of question.replies">
+    <div class="single-answer mb-4" *ngFor="let answer of question.answers">
       <div class="row">
         <div class="col-9 col-md-11">
           <p class="user-name txt-arial-darkGrey-bold-24  mb-2">
-            {{ reply.userName }}
+            {{ answer.plantationname }}
           </p>
-          <span class="since-date txt-arial-faintGrey-normal-18 mb-3">{{
+          <!-- <span class="since-date txt-arial-faintGrey-normal-18 mb-3">{{
             reply.replyDate
-          }}</span>
+          }}</span> -->
           <p class="question-text txt-arial-lightGrey-bold-24 mb-4">
-            {{ reply.replyText }}
+            {{ answer.answer }}
           </p>
         </div>
       </div>

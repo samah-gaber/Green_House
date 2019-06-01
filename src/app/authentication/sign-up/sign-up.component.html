@@ -131,10 +131,12 @@
             />
             أنثي
             <br />
-            <button type="submit" class="btn-custom btn-custom-primary mt-5" [disabled]="signupForm.invalid">
+            <button type="submit" class="btn-custom btn-custom-primary my-5" [disabled]="signupForm.invalid">
               انشاء حساب
             </button>
           </form>
+          <small> لديك حساب ؟ قم </small>
+          <a routerLink="/users/signin" queryParamsHandling="preserve">بتسجيل الدخول الآن</a>
         </div>
       </div>
     </div>

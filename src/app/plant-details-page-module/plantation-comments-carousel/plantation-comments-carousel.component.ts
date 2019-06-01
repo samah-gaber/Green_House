@@ -1,16 +1,7 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { NgbCarousel, NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
-import { HttpClient } from '@angular/common/http';
-
-
-interface PlantCommentsObj {
-  comments : [
-    {
-     Comment: string;
-      PlantationName: string;
-    }
-  ]
-}
+import { PlantService } from '../../services/plant.service';
+import { PlantCommentsObj } from '../../interfaces/plant-interface';
 
 @Component({
   selector: 'app-plantation-comments-carousel',
@@ -22,24 +13,6 @@ export class PlantationCommentsCarouselComponent implements OnInit {
   @Input() plantId;
   plantCommentsObj: PlantCommentsObj;
   plantcommentsUrl = '';
-  // plantationCommentsArr = [
-  //   {
-  //     name: '1مشتل البلكونة',
-  //     comment: '"لوريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايت,سيت دو أيوسمود مب أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا . يوت انيم أد مينيم فينايم,كيواس نوستريد أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا فينايم,كيواس نوستريد أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا فينايم,كيواس نوستريد أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا."'
-  //   },
-  //   {
-  //     name: '2مشتل البلكونة',
-  //     comment: '"لوريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايت,سيت دو أيوسمود مب أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا . يوت انيم أد مينيم فينايم,كيواس نوستريد أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا فينايم,كيواس نوستريد أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا فينايم,كيواس نوستريد أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا."'
-  //   },
-  //   {
-  //     name: '3مشتل البلكونة',
-  //     comment: '"لوريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايت,سيت دو أيوسمود مب أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا . يوت انيم أد مينيم فينايم,كيواس نوستريد أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا فينايم,كيواس نوستريد أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا فينايم,كيواس نوستريد أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا."'
-  //   },
-  //   {
-  //     name: '4مشتل البلكونة',
-  //     comment: '"لوريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايت,سيت دو أيوسمود مب أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا . يوت انيم أد مينيم فينايم,كيواس نوستريد أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا فينايم,كيواس نوستريد أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا فينايم,كيواس نوستريد أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا."'
-  //   }
-  // ]
 
   showNavigationArrows;
   showNavigationIndicators;
@@ -48,14 +21,14 @@ export class PlantationCommentsCarouselComponent implements OnInit {
   
   constructor(
     config: NgbCarouselConfig,
-    private http: HttpClient 
+    private plantService: PlantService
   ) { 
     config.showNavigationArrows = false;
     config.showNavigationIndicators = false;
   }
 
   ngOnInit() {
-    this.plantcommentsUrl = `http://192.168.137.155:9999/api/plants/comment/${this.plantId}`;
+    this.plantcommentsUrl = `/comment/${this.plantId}`;
     this.getPlantDetails();
   }
 
@@ -67,9 +40,7 @@ export class PlantationCommentsCarouselComponent implements OnInit {
   }
 
   getPlantDetails() {
-    this.http.get(this.plantcommentsUrl).subscribe( (res: PlantCommentsObj) => {
-     console.log('res arrived');
-     console.log(res);
+    this.plantService.plantsGetRequest(this.plantcommentsUrl).subscribe( (res: PlantCommentsObj) => {
       this.plantCommentsObj = res;
     },
     error => {
