@@ -10,13 +10,13 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BlockAnonUserModalComponent } from './block-anon-user-modal/block-anon-user-modal.component';
 import { SharedModule } from './shared/shared.module';
-import { QuestionsPageComponent } from './questions-page/questions-page.component';
+// import { QuestionsPageComponent } from './questions-page/questions-page.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    QuestionsPageComponent
+    // QuestionsPageComponent
 
   ],
   imports: [
