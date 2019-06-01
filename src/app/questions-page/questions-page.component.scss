@@ -1,0 +1,10 @@
+ // import sytle files
+ @import "../../styles.scss";
+//  @import "../plant-details-page-module/single-question/single-question.component.scss";
+ // model style
+ .light-blue-backdrop {
+   background-color:$primaryColor !important;
+ }
+ .modal-content .close{
+   left:12px;
+ }

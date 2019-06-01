@@ -14,30 +14,35 @@ import { DomainService } from '../services/domain.service';
 import { PlantService } from '../services/plant.service';
 import { UserFavPlantsService } from '../services/user-fav-plants.service';
 // import { UserFavPlantsArrService } from '../services/user-fav-plants-arr.service';
+import { SingleQuestionComponent } from '../plant-details-page-module/single-question/single-question.component'
+
 
 @NgModule({
   declarations: [
     HeaderComponent,
+    SingleQuestionComponent,
     FooterComponent,
     LoadingScreenComponent,
-    BlockAnonUserModalComponent
+    BlockAnonUserModalComponent,
+
   ],
   imports: [
     CommonModule,
     MDBBootstrapModule.forRoot(),
     NgbModule,
     RouterModule
-  ], 
+  ],
   exports: [
     HeaderComponent,
     FooterComponent,
+    SingleQuestionComponent,
     LoadingScreenComponent,
     BlockAnonUserModalComponent,
     CommonModule
   ],
   providers: [
-    UserService, 
-    AuthGuard, 
+    UserService,
+    AuthGuard,
     AuthService,
     DomainService,
     PlantService,
