@@ -35,7 +35,7 @@ export class SinglePlantComponent implements OnInit {
 
   toggleFav(event) {
     if(this.authUser.isAuthenticated()) {
-      const userId = this.userService.returnAuthUserData().id;
+      const userId = this.userService.returnAuthUserData().userId;
       this.userFavPlantData = {
         user_id : userId,
         plant_id: this.singlePlant.id

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UserSignedUp, UserSignedIn, AuthUserData } from '../interfaces/user-interface';
+import { DomainService } from './domain.service';
 
 @Injectable()
 
@@ -11,34 +12,39 @@ export class UserService {
     // userId: number;
     authUser: AuthUserData;
 
-  constructor( private http: HttpClient ) { }
+  constructor( 
+      private http: HttpClient,
+        private domain: DomainService
+    ) { }
 
-  urlSignUp = 'https://reqres.in/api/register';
-  urlSignIn = 'https://reqres.in/api/login';
-  urlLogOut = 'https://reqres.in/api/login';
+
+  urlDomain = this.domain.getDomain();
+  urlSignUp = `${this.urlDomain}/Client/insertclient`;
+  urlSignIn = `${this.urlDomain}/auth/login`;
+  urlLogOut = 'http://reqres.in/api/login';
 
     submitNewUser(userSignedUp: UserSignedUp) {
-      this.http.post( this.urlSignUp, userSignedUp ).subscribe (
-          (res: AuthUserData) => {
-            console.log(res);
-            //   this.setAuthToken(res.token);   
-            this.authUser = res;         
-            this.setAuthUserData(this.authUser);   
-            },
-            error => console.log(error)
-        );
+      return this.http.post( this.urlSignUp, userSignedUp )
+    //   .subscribe (
+    //       (res: AuthUserData) => {
+    //         console.log(res);
+    //         //   this.setAuthToken(res.token);   
+    //         this.authUser = res;         
+    //         this.setAuthUserData(this.authUser);   
+    //         },
+    //         error => console.log(error)
+    //     );
     }
     
     logInUser(userSignedIn: UserSignedIn ) {
-        this.http.post( this.urlSignUp, userSignedIn ).subscribe (
-            (res: AuthUserData) => {
-                console.log(res);
-                //   this.setAuthToken(res.token);
-                this.authUser = res;         
-                    this.setAuthUserData(this.authUser);   
-            },
-            (error) => console.log(error)
-        );
+       return this.http.post( this.urlSignIn, userSignedIn );
+    //    .subscribe (
+    //         (res: AuthUserData) => {
+    //             this.authUser = res;         
+    //             this.setAuthUserData(this.authUser); 
+    //         },
+    //         (error) => console.log(error)
+    //     );
     }
 
     setAuthUserData(data: AuthUserData) {
@@ -49,8 +55,8 @@ export class UserService {
         this.http.post( this.urlLogOut, data.token ).subscribe (
             res => {
                 console.log(res); 
-                this.authUser.id = null;
-                this.authUser.name = '';
+                this.authUser.userId = null;
+                this.authUser.userName = '';
                 this.authUser.token = '';
                 localStorage.removeItem('authUserData');
             },

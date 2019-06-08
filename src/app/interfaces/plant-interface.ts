@@ -12,6 +12,23 @@ export interface plantCatInfo {
   name: string;
 }
 
+// home page plant categries response
+export interface PlantCatRes {
+  category: [
+    {
+      id: number;
+      name: string;
+    }
+  ],
+  plant: [
+    {
+      id: number;
+      name: string;
+      image: string;
+    }
+  ]
+}
+
 // plant page details section
 export interface PlantDetailsOBJ {
   plant: {
@@ -29,9 +46,7 @@ export interface PlantDetailsOBJ {
     plant_information: string;
     plant_fertilizerz: [
       {
-        fertilizer_id: number;
-        plant: string;
-        fertilizer_name: string;
+        name: string;
       }
     ];
   };
@@ -58,10 +73,10 @@ export interface PlantQuestionsObj {
 export interface PlantCommentsObj {
   comments: [
     {
-      Comment: string;
-      PlantationName: string;
+      comment: string;
+      plantationName: string;
     }
-  ];
+  ]
 }
 
 // plant page order from plantations section
@@ -72,5 +87,17 @@ export interface PlantPlantationsObj {
       plantationName: string;
       price: number;
     }
-  ];
+  ]
+}
+
+// user fav page plants
+export interface userFavPlantsPage {
+  plant: [
+    {
+      id: number;
+      image: string;
+      name: string;
+      cateogry_name: string;
+    }
+  ]
 }
