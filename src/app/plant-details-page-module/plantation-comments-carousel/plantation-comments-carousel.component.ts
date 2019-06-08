@@ -41,7 +41,10 @@ export class PlantationCommentsCarouselComponent implements OnInit {
 
   getPlantDetails() {
     this.plantService.plantsGetRequest(this.plantcommentsUrl).subscribe( (res: PlantCommentsObj) => {
+      console.log("commments " + JSON.stringify(res));
       this.plantCommentsObj = res;
+      console.log("commments obj " + this.plantCommentsObj);
+
     },
     error => {
       console.log(error);

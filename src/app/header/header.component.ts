@@ -23,16 +23,16 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    localStorage.setItem('authUserData', JSON.stringify({
-      id: 1,
-      name: 'ali',
-      token: 'ffhbgfg43434'
-    }))
+    // localStorage.setItem('authUserData', JSON.stringify({
+    //   id: 1,
+    //   name: 'ali',
+    //   token: 'ffhbgfg43434'
+    // }))
     this.checkUserAuthenticated();
   }
 
   onSignIn() {
-    this.router.navigateByUrl('/users/signin');
+    this.router.navigateByUrl('/auth/signin');
   }
 
   checkUserAuthenticated() {

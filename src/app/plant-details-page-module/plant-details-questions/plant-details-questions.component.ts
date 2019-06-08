@@ -13,7 +13,7 @@ export class PlantDetailsQuestionsComponent implements OnInit {
   plantQuestionsObj: PlantQuestionsObj;
   plantQuestionsUrl = '';
 
-  // usersQuestionsWithAnswers = [
+  // plantQuestionsObj = [
   //   {
   //     'questionId': '1',
   //     'userName': 'أحمد عبدالله', //user id

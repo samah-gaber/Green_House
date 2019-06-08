@@ -10,7 +10,8 @@ import {
 import { CustomValidators } from 'ng2-validation';
 import { validateConfig } from "@angular/router/src/config";
 import { UserService } from '../../services/user.service';
-import { UserSignedUp } from '../../interfaces/user-interface';
+import { UserSignedUp, AuthUserData } from '../../interfaces/user-interface';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -23,6 +24,7 @@ export class SignUpComponent implements OnInit {
   signupForm: FormGroup;
   countries: string[] = ["القاهرة", "الاسكندرية"];
   userSignedUp: UserSignedUp;
+  authUser: AuthUserData;
 
   userName: FormControl;
   userEmail: FormControl;
@@ -35,7 +37,8 @@ export class SignUpComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -108,15 +111,30 @@ export class SignUpComponent implements OnInit {
 
   onSignup(signupForm) {
     this.userSignedUp = {
-      userName: this.userEmail.value,
+      name: this.userEmail.value,
       email: this.userEmail.value,
       password: this.password.value,
       city: this.country.value,
-      birthDate: this.birthDate.value,
+      birthdate: this.birthDate.value ,
       gender: this.gender.value
     };
+    console.log("this.userSignedUp");
+    console.log(this.userSignedUp);
+    console.log(this.userSignedUp.birthdate);
+    console.log(typeof(this.userSignedUp.birthdate));
 
-    this.userService.submitNewUser(this.userSignedUp);
+    this.userService.submitNewUser(this.userSignedUp).subscribe(
+      (res: AuthUserData) => {
+        console.log("response");
+        console.log(res);
+        this.authUser = res;         
+        this.userService.setAuthUserData(this.authUser); 
+        this.router.navigateByUrl('/');
+      },
+      (error) => {
+        console.log(error);
+      }
+    )
 
   }
 }

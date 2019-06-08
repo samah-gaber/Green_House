@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UserFavPlantPage } from '../../interfaces/user-interface';
+import { UserFavPlantsService } from '../../services/user-fav-plants.service';
+import { userFavPlantsPage } from '../../interfaces/plant-interface';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-user-fav-page',
@@ -9,52 +11,84 @@ import { UserFavPlantPage } from '../../interfaces/user-interface';
 
 export class UserFavPageComponent implements OnInit {
 
-  // userFavPlants = [
+  userId;
+  userFavUrl: string;
+
+  // userFavPlantsArr: userFavPlantsPage[] = [
   //   {
+  //     plantId: 1,
   //     plantImg: '/assets/imgs/mint1.png',
   //     plantName: 'روزمارى',
   //     plantCategory: 'خضروات'
   //   },
   //   {
+  //     plantId: 1,
   //     plantImg: '/assets/imgs/mint1.png',
   //     plantName: 'روزمارى',
   //     plantCategory: 'خضروات'
   //   },
   //   {
+  //     plantId: 1,
   //     plantImg: '/assets/imgs/mint1.png',
   //     plantName: 'روزمارى',
   //     plantCategory: 'خضروات'
   //   },
   //   {
+  //     plantId: 1,
   //     plantImg: '/assets/imgs/mint1.png',
   //     plantName: 'روزمارى',
   //     plantCategory: 'خضروات'
   //   },
   //   {
+  //     plantId: 1,
   //     plantImg: '/assets/imgs/mint1.png',
   //     plantName: 'روزمارى',
   //     plantCategory: 'خضروات'
   //   },
   //   {
+  //     plantId: 1,
   //     plantImg: '/assets/imgs/mint1.png',
   //     plantName: 'روزمارى',
   //     plantCategory: 'خضروات'
   //   },
   //   {
+  //     plantId: 1,
   //     plantImg: '/assets/imgs/mint1.png',
   //     plantName: 'روزمارى',
   //     plantCategory: 'خضروات'
   //   },
   //   {
+  //     plantId: 1,
   //     plantImg: '/assets/imgs/mint1.png',
   //     plantName: 'روزمارى',
   //     plantCategory: 'خضروات'
-  //   },
+  //   }
   // ]
 
-  constructor() { }
+  constructor( 
+    private userFavPlantService: UserFavPlantsService,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
+    // accessing user id 
+    this.route.queryParams.subscribe(params => {
+      this.userId = params.userId;
+      console.log(this.userId);
+    });
+
+    this.userFavUrl = `/${this.userId}`;
+
+
+    this.userFavPlantService.getFavPlants(this.userFavUrl).subscribe(
+      (res: userFavPlantsPage[]) => {
+        // this.userFavPlantsArr = res;
+        console.log(res);
+      },
+      error => {
+        console.log(error);
+      }
+    )
   }
 
 }

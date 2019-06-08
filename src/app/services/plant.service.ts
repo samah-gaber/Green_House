@@ -13,10 +13,24 @@ export class PlantService {
   domainURL = this.domain.getDomain();
   dynamicURL: string;
   plantsURL: string;
+  plantsCatURL: string;
 
   plantsGetRequest(url) {
     this.dynamicURL = url;
-    this.plantsURL = `${this.domainURL}/plants${url}`;
+    this.plantsURL = `${this.domainURL}/plants${this.dynamicURL}`;
+    console.log('url: ' + this.plantsURL);
     return this.http.get(this.plantsURL);
+  }
+  
+  plantsCatGetRequest() {
+    this.plantsCatURL = `${this.domainURL}/plants/categories`;
+    console.log('url: ' + this.plantsCatURL);
+    return this.http.get(this.plantsCatURL);
+  }
+  plantsSingleCatGetRequest(url) {
+    this.dynamicURL = url;
+    this.plantsCatURL = `${this.domainURL}/plants/category${this.dynamicURL}`;
+    console.log('url: ' + this.plantsCatURL);
+    return this.http.get(this.plantsCatURL);
   }
 }

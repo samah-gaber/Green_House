@@ -1,7 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators, FormControl } from "@angular/forms";
 import { UserService } from '../../services/user.service';
-import { UserSignedIn } from '../../interfaces/user-interface';
+import { UserSignedIn, AuthUserData } from '../../interfaces/user-interface';
+import { ErrorStateMatcher } from '@angular/material/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-sign-in",
@@ -12,13 +14,15 @@ import { UserSignedIn } from '../../interfaces/user-interface';
 export class SignInComponent implements OnInit {
   signinForm: FormGroup;
   userSignedIn: UserSignedIn;
+  authUser: AuthUserData;
 
   userEmail: FormControl;
   password: FormControl;
 
   constructor(
     private fb: FormBuilder,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -43,11 +47,21 @@ export class SignInComponent implements OnInit {
 
   onSignin(form) {
     this.userSignedIn = {
-      email: this.userEmail.value,
-      password: this.password.value
+      UserName: this.userEmail.value,
+      Password: this.password.value
     };
 
-    this.userService.logInUser(this.userSignedIn);
+    this.userService.logInUser(this.userSignedIn).subscribe(
+      (res: AuthUserData) => {
+        this.authUser = res;
+        this.userService.setAuthUserData(this.authUser);
+        this.router.navigateByUrl('/');
+      }
+    )
   }
 
 }
+
+
+// ErrorStateMatcher@samah.samah
+// samah1
