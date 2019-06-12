@@ -1,31 +1,24 @@
 export interface UserSignedUp {
-    userName: string;
+    name: string;
     email: string;
     password: string;
     city: string;
-    birthDate?: string;
+    birthdate?: Date;
     gender?: string;
 }
 
 export interface UserSignedIn {
-    email: string;
-    password: string;
+    UserName: string;
+    Password: string;
 }
 
 export interface AuthUserData {
-    name: string;
-    id: number;
     token: string;
+    userName: string;
+    userId: number;
 }
 
 export interface UserFavPlant {
     user_id: number;
     plant_id: number;
-}
-
-export interface UserFavPlantPage {
-    plant_id: number;
-    plant_name: string;
-    category_id: number;
-    category_name: string;
 }
