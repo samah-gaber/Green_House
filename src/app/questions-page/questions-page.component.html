@@ -1,4 +1,4 @@
-<button class="btn btn-outline-primary mb-2 mr-2 fixed-bottom" (click)="openBackDropCustomClass(content)">اسأل</button>
+<button class="btn-custom btn-custom-primary mb-2 mr-2 fixed-bottom" (click)="openBackDropCustomClass(content)">اسأل</button>
 <div class="container mb-5 pt-5">
   <div class="row">
       <div *ngIf="objData">
@@ -11,8 +11,8 @@
     <div class="row">
         <ng-template #content let-modal>
             <div class="modal-header">
-              <h4 class="modal-title">اسأل</h4>
-              <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+              <h4 class="modal-title"> يمكينك الان كتابة سؤالك</h4>
+              <button type="button" class="close  " aria-label="Close" (click)="modal.dismiss('Cross click')">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
@@ -21,9 +21,19 @@
             </div>
             <form [formGroup]="questionForm" (ngSubmit)="handleSend(questionForm)">
                 <textarea type="text"  formControlName="userQuestion" class="form-control"></textarea>
+                  <div class="container">
+                      <div class="row">
+                          <select formControlName="selectCategory" (change)="categorySelected()" class="col-6 ml-2">
+                              <option  *ngFor="let category of questionCategoryOptions" [value]="category.name">{{category.name}}</option>
+                            </select>
+                            <select formControlName="selectPlant" [disabled] = "selectedCategory==null" (change)="plantSelected()" class="col-6 mr-2" >
+                              <option  *ngFor="let plant of questionPlantOptions" [value]="plant.id">{{plant.name}}</option>
+                              </select>
+                      </div>
+                  </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-light">ارسل</button>
-                    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">اغلق</button>
+                    <button type="submit" class="btn-custom btn-custom-primary ">ارسل</button>
+                    <!-- <button type="button" class="btn btn-light" (click)="modal.close('Close click')">اغلق</button> -->
                 </div>
             </form>
           </ng-template>

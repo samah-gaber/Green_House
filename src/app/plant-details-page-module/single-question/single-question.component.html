@@ -2,13 +2,14 @@
   <div class="user-question">
     <div class="row">
       <div class="col-10 col-md-12">
-
-        <!-- <span class="since-date txt-arial-faintGrey-normal-18 mb-3">{{
-          question.questionDate
-        }}</span> -->
+        <span class="since-date txt-arial-faintGrey-normal-18 mb-3">{{
+          question.questionTime
+        }}</span>
         <p class="question-text txt-arial-lightGrey-bold-24 mb-4">
-          <!-- {{ question.questionContain }} -->
-          {{question.questText}}
+            سؤال من {{ question.clientname }}
+          </p>
+        <p class="question-text txt-arial-lightGrey-bold-24 mb-4">
+          {{ question.questionContain }}
         </p>
         <!-- <div class="questionTags">
           <span
@@ -34,15 +35,13 @@
       <div class="row">
         <div class="col-9 col-md-11">
           <p class="user-name txt-arial-darkGrey-bold-24  mb-2">
-            <!-- {{ answer.plantationname }} -->
-            {{answer.answeredByPlantationName}}
+            {{ answer.plantatoinname }}
           </p>
-          <!-- <span class="since-date txt-arial-faintGrey-normal-18 mb-3">{{
-            reply.replyDate
-          }}</span> -->
+          <span class="since-date txt-arial-faintGrey-normal-18 mb-3">{{
+            answer.date
+          }}</span>
           <p class="question-text txt-arial-lightGrey-bold-24 mb-4">
-            <!-- {{ answer.answer }} -->
-            {{ answer.answerText }}
+            {{ answer.answer }}
           </p>
         </div>
       </div>

@@ -7,9 +7,13 @@ import { OrderServiceService } from '../services/order-service.service';
   styleUrls: ['./orders-view-page.component.scss']
 })
 export class OrdersViewPageComponent implements OnInit {
-  ordersData : any;
-  constructor(private orderService : OrderServiceService) {
-    this.ordersData = orderService.mockOrderData;
+  ordersData: any;
+  constructor(private orderService: OrderServiceService) {
+
+    orderService.initiateOrderRequest().subscribe((inputOrderData) =>{
+      this.ordersData = inputOrderData.orders;
+      console.log('Got the data', this.ordersData);
+    });
   }
 
   ngOnInit() {

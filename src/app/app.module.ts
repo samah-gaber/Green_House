@@ -4,7 +4,6 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -16,8 +15,6 @@ import { SharedModule } from './shared/shared.module';
 @NgModule({
   declarations: [
     AppComponent,
-    // QuestionsPageComponent
-
   ],
   imports: [
     BrowserModule,

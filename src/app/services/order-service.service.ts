@@ -1,62 +1,24 @@
 import { Injectable } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable, of} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrderServiceService {
-  mockOrderData: any;
-  constructor() {
-    this.mockOrderData = [
-      {
-        orderId: 1,
-        totalPrice: 12,
-        orderDate: Date.now(),
-        orderAddres: "Smouha",
-        items: [
-          {
-            plantId: 1,
-            plantImg: "",
-            plantCategory: "Plant",
-            plantName: "RoseMary",
-            plantationName: "balcona",
-            totalPrice: 40, //sum of item contents
-            itemContents: [
-              {
-                quantity: 2,
-                typeOfQuantity: "kg",
-                typeOfUnit: "semad",
-                unitPrice: 10,
-                totalPrice: 20,
+  orderData: any;
+  orderURL: string;
+  constructor(private http: HttpClient) {
+    this.orderURL = './assets/userOrderData.json'; // url bta3 el data
+    // this.orderURL = 'http://192.168.43.132:9999/api/client/orders/112';
+  }
+  // domain
+  // userId
 
-              },
-              {
-                quantity: 2,
-                typeOfQuantity: "3adad",
-                typeOfUnit: "shatla",
-                unitPrice: 10,
-                totalPrice: 20,
-              }
-            ]
-          },
-          {
-            plantId: 2,
-            plantImg: "",
-            plantCategory : "Plant",
-            plantName: "Mushroom",
-            plantationName: "balcona",
-            totalPrice: 40, //sum of item contents
-              itemContents: [
-              {
-                quantity: 2,
-                typeOfQuantity: "3adad",
-                typeOfUnit: "shatla",
-                unitPrice: 10,
-                totalPrice: 20,
-              }
-            ]
-          },
-        ]
-      }
-    ]
+  // urlString = domain + "/orders/" + userId;
+  // 192.168.45.68/orders/1
+
+  initiateOrderRequest(): Observable<any> {
+    return this.http.get(this.orderURL);
   }
 }

@@ -1,20 +1,52 @@
-<div class="card">
-    <div class="card-body">
-      Single Card
-      <div *ngFor="let item of orderData.items">
-        <div class="card">
-          <div class="card-body">
-              Plant Name : {{item.plantName}} <br>
-              Plant Category : {{item.plantCategory}} <br>
-              Plantation Name : {{item.plantationName}} <br>
-              Price : {{item.totalPrice}} <br>
-              <hr>
-              <div *ngFor="let itemContent of item.itemContents">
-                Eshtareet {{itemContent.quantity}} {{itemContent.typeOfQuantity}} {{itemContent.typeOfUnit}} <br>
-              </div>
+<div class="container">
+  <div class="row">
+    <div class="card col-12">
+      <div class="card-body">
+        <div class="row ">
+          <div class=" d-flex justify-content-between col-12">
+            <h4 class="txt-arial-dark-bold-20">البائع: {{orderData.plantation_name}}</h4>
+            <h4 class="txt-arial-dark-bold-20"> التاريخ : {{orderData.orderdate}}</h4>
           </div>
         </div>
-        <br>
+
+
+        <div *ngFor="let item of orderData.items">
+          <div class="card mb-3 " >
+            <div class="row no-gutters d-flex align-items-end">
+              <div class="col-2">
+                <img src={{item.plantimg}} class="img-fluid" alt="...">
+
+              </div>
+              <div class="col-md-6">
+                <div class="card-body">
+                  <h3 class="card-title mb-4 "><span class="txt-arial-dark-bold-20">النوع :</span> <span class="txt-diwany-primary-24">{{item.plantname}}</span></h3>
+                  <h3 class="mb-2 h3-responsive  order-style">تفاصيل الطلب :</h3>
+                  <div *ngFor="let itemContent of item.itemContents" >
+                    <div class="d-flex justify-content-between mb-2 ">
+                      <span class="card-text txt-arial-dark-bold-20 "> تم شراء : <span class="txt-arial-dark-bold-24 ">{{itemContent.type}}</span> </span>
+                      <span class="txt-arial-dark-bold-20">عدد: <span class="btn-custom btn-custom-primary color-white"> {{itemContent.quantity}}</span></span>
+                    </div>
+                    <!-- <p class="card-text">تم شراء : {{itemContent.type}} عدد :<span class="btn-custom btn-custom-primary"> {{itemContent.quantity}}</span></p> -->
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div >
+        <div class="row d-flex justify-content-between align-items-center">
+            <h3 class="txt-arial-lightGrey-normal-20 txt-arial-dark-bold-30 col-md-4 col-6">المجموع: {{orderData.totalprice}} جنيه</h3>
+            <div class="col-8">
+              <div class="row">
+                  <span class=" txt-arial-dark-bold-20 col-md-2 col-12">حالة الطلب :</span>
+                  <span class=" col-md-10 col-12"><ngb-progressbar [value]="orderData.flag"></ngb-progressbar></span>
+              </div>
+
+            </div>
+        </div>
       </div>
     </div>
+
   </div>
+
+</div>
