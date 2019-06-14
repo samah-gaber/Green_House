@@ -1,0 +1,40 @@
+<section class="plant-questions" *ngIf="question">
+    <div class="user-question">
+      <div class="row">
+        <div class="col-10 col-md-12">
+          <span class="since-date txt-arial-faintGrey-normal-18 mb-3">{{
+            question.questionTime
+          }}</span>
+          <p class="question-text txt-arial-lightGrey-bold-24 mb-4">
+            {{ question.questionContain }}
+          </p>
+          <img
+            src="{{ question.plantimage }}"
+            alt=""
+            *ngIf="question.plantimage"
+            class="mt-4"
+          />
+        </div>
+      </div>
+    </div>
+    <p class="reply-count txt-arial-dark-bold-24  my-4 d-inline-block">
+      عدد الردود: {{replyCount}}
+    </p>
+    <div class="plantation-answers">
+      <div class="single-answer mb-4" *ngFor="let answer of question.answers">
+        <div class="row">
+          <div class="col-9 col-md-11">
+            <p class="user-name txt-arial-darkGrey-bold-24  mb-2">
+              {{ answer.plantatoinname }}
+            </p>
+            <span class="since-date txt-arial-faintGrey-normal-18 mb-3">{{
+              answer.date
+            }}</span>
+            <p class="question-text txt-arial-lightGrey-bold-24 mb-4">
+              {{ answer.answer }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

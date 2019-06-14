@@ -1,3 +1,16 @@
-<p>
-  forum-page works!
-</p>
+<div *ngIf="categories">
+    <div  *ngFor="let category of categories" class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="model">
+        <label ngbButtonLabel class="btn-primary">
+          <input ngbButton type="radio" [value]="category.name" (click)="toggle($event)"> {{category.name}}
+        </label>
+      </div>
+</div>
+<div class="container mb-5 pt-5">
+    <div class="row">
+        <div *ngIf="currentLoadedQuestions">
+            <div class="question py-5" *ngFor="let questionItem of currentLoadedQuestions">
+                <app-single-forum-question [question]='questionItem'></app-single-forum-question>
+              </div>
+        </div>
+    </div>
+

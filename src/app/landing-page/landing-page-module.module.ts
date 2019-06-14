@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-
+import { SingleForumQuestionComponent } from './single-forum-question/single-forum-question.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { LandingPageComponent } from './landing-page.component';
 import { ForumPageComponent } from './forum-page/forum-page.component';
@@ -38,7 +38,8 @@ const routes: Routes = [
     PlantCategoriesComponent,
     OurClientsComponent,
     AddsComponent,
-    SinglePlantComponent
+    SinglePlantComponent,
+    SingleForumQuestionComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,19 @@
+{
+  "plant": [
+      {
+          "id": 2,
+          "name": "moz",
+          "image": ""
+      },
+      {
+        "id": 3,
+        "name": "n3na3",
+        "image": ""
+    },
+    {
+      "id": 4,
+      "name": "frwla",
+      "image": ""
+    }
+  ]
+}

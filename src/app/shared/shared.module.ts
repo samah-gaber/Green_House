@@ -13,6 +13,7 @@ import { BlockAnonUserModalComponent } from '../block-anon-user-modal/block-anon
 import { DomainService } from '../services/domain.service';
 import { PlantService } from '../services/plant.service';
 import { UserFavPlantsService } from '../services/user-fav-plants.service';
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 // import { UserFavPlantsArrService } from '../services/user-fav-plants-arr.service';
 import { SingleQuestionComponent } from '../plant-details-page-module/single-question/single-question.component'
 
@@ -28,6 +29,8 @@ import { SingleQuestionComponent } from '../plant-details-page-module/single-que
   ],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     MDBBootstrapModule.forRoot(),
     NgbModule,
     RouterModule
@@ -38,6 +41,8 @@ import { SingleQuestionComponent } from '../plant-details-page-module/single-que
     SingleQuestionComponent,
     LoadingScreenComponent,
     BlockAnonUserModalComponent,
+    FormsModule,
+    ReactiveFormsModule,
     CommonModule
   ],
   providers: [

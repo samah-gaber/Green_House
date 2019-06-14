@@ -1,3 +1,5 @@
+import { OrdersViewPageComponent } from './../orders-view-page/orders-view-page.component';
+import { SingleOrderCardComponent } from '../single-order-card/single-order-card.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
@@ -22,6 +24,9 @@ const routes: Routes = [
       },
       {
         path: 'questions', component: QuestionsPageComponent
+      },
+      {
+        path: 'orders', component: OrdersViewPageComponent
       }
     ]
   }
@@ -29,7 +34,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [UserFavPageComponent, QuestionsPageComponent,
-    UserFavSingleCardComponent, UserPagesComponent],
+    UserFavSingleCardComponent, UserPagesComponent, OrdersViewPageComponent, SingleOrderCardComponent],
   imports: [
     CommonModule,
     SharedModule,
