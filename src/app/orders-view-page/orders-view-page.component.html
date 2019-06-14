@@ -1,0 +1,12 @@
+<br>
+<div *ngIf="ordersData ;else noOrderTemplate">
+  <div *ngFor="let order of ordersData">
+      <app-single-order-card [orderData]="order"></app-single-order-card>
+      <br>
+  </div>
+</div>
+<ng-template #noOrderTemplate >
+  <p class="text-center txt-arial-dark-bold-30  mb-5">لا يوجد طلبات سابقة خاصة بك</p>
+</ng-template>
+
+

@@ -1,0 +1,49 @@
+{
+  "categories": [
+      {
+          "id": 1,
+          "name": "cat1"
+      },
+      {
+          "id": 2,
+          "name": "cat2"
+      },
+      {
+          "id": 3,
+          "name": "cat3"
+      }
+  ],
+  "questions": [
+      {
+          "plantid": 1,
+          "plantname": "bati5",
+          "plantimage": "../assets//imgs/forums-page/lavander.png",
+          "questionId": 1,
+          "clientname": "amira",
+          "questionContain": "ay klam fady ",
+          "questionTime": "2002-02-02T00:00:00",
+          "answers": [
+              {
+                  "plantatoinname": "blkona",
+                  "answer": "kkkkkkkkkkkkkkkkkk",
+                  "date": "2003-06-06T00:00:00"
+              },
+              {
+                  "plantatoinname": "amira",
+                  "answer": "hhhhhhhhhhhhhhhh",
+                  "date": "2002-06-06T00:00:00"
+              }
+          ]
+      },
+      {
+          "plantid": 1,
+          "plantname": "bati5",
+          "plantimage": "../assets//imgs/forums-page/lavander.png",
+          "questionId": 4,
+          "clientname": "amira",
+          "questionContain": "ggggggggggggggg",
+          "questionTime": "2002-02-02T00:00:00",
+          "answers": []
+      }
+  ]
+}

@@ -1,0 +1,25 @@
+// import scss files
+@import "../../../styles";
+// fonts
+.txt-arial-darkGrey-bold-24 {
+    @extend %txt-arial-darkGrey-bold-24;
+}
+.txt-arial-faintGrey-normal-18 {
+    @extend %txt-arial-faintGrey-normal-18;
+}
+.txt-arial-lightGrey-bold-24 {
+    @extend %txt-arial-lightGrey-bold-24;
+}
+.txt-arial-faintGrey-normal-24 {
+    @extend %txt-arial-faintGrey-normal-24;
+}
+
+.reply-count {
+    border: 2px solid $darkColor;
+    padding: 5px 10px;
+}
+.plantation-answers {
+    margin-right: 7%;
+    border-right: 3px solid $primaryColor;
+    padding-right: 1.8rem;
+}

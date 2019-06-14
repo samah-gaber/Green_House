@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
-
+import { SingleForumQuestionComponent } from './single-forum-question/single-forum-question.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { LandingPageComponent } from './landing-page.component';
 import { ForumPageComponent } from './forum-page/forum-page.component';
@@ -44,7 +44,8 @@ const routes: Routes = [
     OurClientsComponent,
     AddsComponent,
     SinglePlantComponent,
-    PlantationHomeComponent
+    PlantationHomeComponent,
+    SingleForumQuestionComponent
   ],
   imports: [
     CommonModule,

@@ -7,12 +7,13 @@ import { DomainService } from './domain.service';
 
 export class UserService {
 
-    authUserStored: string;
-    // userName: string;
-    // userId: number;
-    authUser: AuthUserData;
+  authUserStored: string;
+  // userName: string;
+  // userId: number;
+  authUser: AuthUserData;
 
-  constructor( 
+
+  constructor(
       private http: HttpClient,
         private domain: DomainService
     ) { }
@@ -28,20 +29,20 @@ export class UserService {
     //   .subscribe (
     //       (res: AuthUserData) => {
     //         console.log(res);
-    //         //   this.setAuthToken(res.token);   
-    //         this.authUser = res;         
-    //         this.setAuthUserData(this.authUser);   
+    //         //   this.setAuthToken(res.token);
+    //         this.authUser = res;
+    //         this.setAuthUserData(this.authUser);
     //         },
     //         error => console.log(error)
     //     );
     }
-    
+
     logInUser(userSignedIn: UserSignedIn ) {
        return this.http.post( this.urlSignIn, userSignedIn );
     //    .subscribe (
     //         (res: AuthUserData) => {
-    //             this.authUser = res;         
-    //             this.setAuthUserData(this.authUser); 
+    //             this.authUser = res;
+    //             this.setAuthUserData(this.authUser);
     //         },
     //         (error) => console.log(error)
     //     );
@@ -50,11 +51,11 @@ export class UserService {
     setAuthUserData(data: AuthUserData) {
         localStorage.setItem( 'authUserData', JSON.stringify(data) );
     }
-    
+
     deleteAuthUserData(data: AuthUserData) {
         this.http.post( this.urlLogOut, data.token ).subscribe (
             res => {
-                console.log(res); 
+                console.log(res);
                 this.authUser.userId = null;
                 this.authUser.userName = '';
                 this.authUser.token = '';
@@ -62,18 +63,18 @@ export class UserService {
             },
             error => console.log(error)
         );
-        
+
     }
 
-    returnAuthUserData() {
-        if (!this.authUser) {
-           let authUserStored = localStorage.getItem('authUserData');
-            if (authUserStored) {
-                this.authUser = JSON.parse(authUserStored);
-            } else {
-                this.authUser = null;
-            }
-        }
-        return this.authUser;
+  returnAuthUserData() {
+    if (!this.authUser) {
+      let authUserStored = localStorage.getItem('authUserData');
+      if (authUserStored) {
+        this.authUser = JSON.parse(authUserStored);
+      } else {
+        this.authUser = null;
+      }
     }
+    return this.authUser;
+  }
 }

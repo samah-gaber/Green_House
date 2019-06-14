@@ -20,6 +20,7 @@ export class PlantService {
     this.plantsURL = `${this.domainURL}/plants${this.dynamicURL}`;
     console.log('url: ' + this.plantsURL);
     return this.http.get(this.plantsURL);
+    //return this.http.get("./assets/genericQuestionObject.json");
   }
 
   // plantsCatGetRequest() {
