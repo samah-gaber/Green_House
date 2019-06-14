@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 
 import { HomePageComponent } from './home-page/home-page.component';
 import { LandingPageComponent } from './landing-page.component';
@@ -15,6 +16,7 @@ import { OurClientsComponent } from './our-clients/our-clients.component';
 import { AddsComponent } from './adds/adds.component';
 import { SinglePlantComponent } from './single-plant/single-plant.component';
 import { SharedModule } from '../shared/shared.module';
+import { PlantationHomeComponent } from './plantation-home/plantation-home.component';
 const routes: Routes = [
   {
     path: '', component: LandingPageComponent, children: [
@@ -23,6 +25,9 @@ const routes: Routes = [
       },
       {
         path: 'forum', component: ForumPageComponent
+      },
+      {
+        path: 'plantationHome', component: PlantationHomeComponent
       }
     ]
   }
@@ -38,7 +43,8 @@ const routes: Routes = [
     PlantCategoriesComponent,
     OurClientsComponent,
     AddsComponent,
-    SinglePlantComponent
+    SinglePlantComponent,
+    PlantationHomeComponent
   ],
   imports: [
     CommonModule,
@@ -46,7 +52,7 @@ const routes: Routes = [
     MDBBootstrapModule.forRoot(),
     NgbModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,FormsModule,ReactiveFormsModule
   ],
   exports: [
     RouterModule

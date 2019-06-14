@@ -1,9 +1,11 @@
+import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 // For MDB Angular Free
 import { WavesModule } from 'angular-bootstrap-md'
 import { PlantCategory, plantCatInfo, PlantCatRes } from '../../interfaces/plant-interface';
 import { HttpClient } from '@angular/common/http';
 import { PlantService } from '../../services/plant.service';
+import { AuthUserData } from 'src/app/interfaces/user-interface';
 
 @Component({
   selector: 'app-plant-categories',
@@ -16,63 +18,16 @@ export class PlantCategoriesComponent implements OnInit {
   plantCatRes: PlantCatRes;
   plantCategories: PlantCategory[];
   singleCatPlants: plantCatInfo[];
-
-
-// dummy obj
-
-// plantOBJ = {
-//   // categories array
-//   plantCats : [
-//     {
-//       id: 1, name: 'اعشاب', Ename: 'rosemary'
-//     },
-//     {
-//       id: 1, name: 'اعشاب', Ename: 'rosemary'
-//     },
-//     {
-//       id: 1, name: 'اعشاب', Ename: 'rosemary'
-//     },
-//     {
-//       id: 1, name: 'اعشاب', Ename: 'rosemary'
-//     },
-//     {
-//       id: 1, name: 'اعشاب', Ename: 'rosemary'
-//     },
-//     {
-//       id: 1, name: 'اعشاب', Ename: 'rosemary'
-//     }
-//   ],
-//   // plants array
-//   singleCatPlants: [
-//     {
-//       id: 1, img: '../../../assets/imgs/landingPage/categories-silder/rose-mery1.png', name: 'روزمارى'
-//     },
-//     {
-//       id: 1, img: '../../../assets/imgs/landingPage/categories-silder/rose-mery1.png', name: 'روزمارى'
-//     },
-//     {
-//       id: 1, img: '../../../assets/imgs/landingPage/categories-silder/rose-mery1.png', name: 'روزمارى'
-//     },
-//     {
-//       id: 1, img: '../../../assets/imgs/landingPage/categories-silder/rose-mery1.png', name: 'روزمارى'
-//     },
-//     {
-//       id: 1, img: '../../../assets/imgs/landingPage/categories-silder/rose-mery1.png', name: 'روزمارى'
-//     },
-//     {
-//       id: 1, img: '../../../assets/imgs/landingPage/categories-silder/rose-mery1.png', name: 'روزمارى'
-//     },
-//     {
-//       id: 1, img: '../../../assets/imgs/landingPage/categories-silder/rose-mery1.png', name: 'روزمارى'
-//     }
-//   ]
-// }
-
-
-  constructor( 
+  userData : AuthUserData;
+  userRole : number;
+  constructor(
     private http: HttpClient,
-    private plantService: PlantService
-  ) { }
+    private plantService: PlantService,
+    private userService: UserService
+  ) {
+    this.userData = this.userService.returnAuthUserData();
+    this.userRole = this.userData.role;
+  }
 
   ngOnInit() {
 
@@ -101,7 +56,7 @@ export class PlantCategoriesComponent implements OnInit {
     // )
   }
   // destructRes(categories) {
-  //   // destruction must match obj keys 
+  //   // destruction must match obj keys
   //   const {plantCats, singleCatPlants} = categories;
   //   this.plantCategories = plantCats;
   //   this.singleCatPlants = singleCatPlants;
@@ -128,4 +83,4 @@ export class PlantCategoriesComponent implements OnInit {
 
 
 }
-  
+

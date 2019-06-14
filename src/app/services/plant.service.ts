@@ -5,7 +5,7 @@ import { DomainService } from './domain.service';
 @Injectable()
 export class PlantService {
 
-  constructor( 
+  constructor(
     private http: HttpClient,
     private domain: DomainService
   ) { }
@@ -21,12 +21,17 @@ export class PlantService {
     console.log('url: ' + this.plantsURL);
     return this.http.get(this.plantsURL);
   }
-  
+
+  // plantsCatGetRequest() {
+  //   this.plantsCatURL = `${this.domainURL}/plants/categories`;
+  //   console.log('url: ' + this.plantsCatURL);
+  //   return this.http.get(this.plantsCatURL);
+  // }
+
   plantsCatGetRequest() {
-    this.plantsCatURL = `${this.domainURL}/plants/categories`;
-    console.log('url: ' + this.plantsCatURL);
-    return this.http.get(this.plantsCatURL);
+    return this.http.get("./assets/plantCatRes.json");
   }
+
   plantsSingleCatGetRequest(url) {
     this.dynamicURL = url;
     this.plantsCatURL = `${this.domainURL}/plants/category${this.dynamicURL}`;

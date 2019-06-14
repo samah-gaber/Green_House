@@ -37,10 +37,7 @@ export class QuestionsPageComponent implements OnInit {
   }
 
   handleSend(param){
-    console.log("Sending form");
-    console.log(param);
     this.modalService.dismissAll();
-
   }
 
   createFormControls() {
