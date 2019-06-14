@@ -1,0 +1,45 @@
+ {
+  "category" : [
+    {
+      "id": 1, "name": "اعشاب", "Ename": "rosemary"
+    },
+    {
+      "id": 1, "name": "اعشاب", "Ename": "rosemary"
+    },
+    {
+      "id": 1, "name": "اعشاب", "Ename": "rosemary"
+    },
+    {
+      "id": 1, "name": "اعشاب", "Ename": "rosemary"
+    },
+    {
+      "id": 1, "name": "اعشاب", "Ename": "rosemary"
+    },
+    {
+      "id": 1, "name": "اعشاب", "Ename": "rosemary"
+    }
+  ],
+  "plant": [
+    {
+      "id": 1, "image": "./assets/imgs/landingPage/categories-silder/rose-mery1.png", "name": "روزمارى"
+    },
+    {
+      "id": 1, "image": "./assets/imgs/landingPage/categories-silder/rose-mery1.png", "name": "روزمارى"
+    },
+    {
+      "id": 1, "image": "./assets/imgs/landingPage/categories-silder/rose-mery1.png", "name": "روزمارى"
+    },
+    {
+      "id": 1, "image": "./assets/imgs/landingPage/categories-silder/rose-mery1.png", "name": "روزمارى"
+    },
+    {
+      "id": 1, "image": "./assets/imgs/landingPage/categories-silder/rose-mery1.png", "name": "روزمارى"
+    },
+    {
+      "id": 1, "image": "./assets/imgs/landingPage/categories-silder/rose-mery1.png", "name": "روزمارى"
+    },
+    {
+      "id": 1, "image": "./assets/imgs/landingPage/categories-silder/rose-mery1.png", "name": "روزمارى"
+    }
+  ]
+}

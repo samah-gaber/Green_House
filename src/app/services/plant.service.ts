@@ -22,12 +22,17 @@ export class PlantService {
     return this.http.get(this.plantsURL);
     //return this.http.get("./assets/genericQuestionObject.json");
   }
-  
+
+  // plantsCatGetRequest() {
+  //   this.plantsCatURL = `${this.domainURL}/plants/categories`;
+  //   console.log('url: ' + this.plantsCatURL);
+  //   return this.http.get(this.plantsCatURL);
+  // }
+
   plantsCatGetRequest() {
-    this.plantsCatURL = `${this.domainURL}/plants/categories`;
-    console.log('url: ' + this.plantsCatURL);
-    return this.http.get(this.plantsCatURL);
+    return this.http.get("./assets/plantCatRes.json");
   }
+
   plantsSingleCatGetRequest(url) {
     this.dynamicURL = url;
     this.plantsCatURL = `${this.domainURL}/plants/category${this.dynamicURL}`;

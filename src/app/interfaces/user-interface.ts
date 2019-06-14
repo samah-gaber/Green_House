@@ -16,6 +16,7 @@ export interface AuthUserData {
     token: string;
     userName: string;
     userId: number;
+    role: number;
 }
 
 export interface UserFavPlant {

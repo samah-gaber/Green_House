@@ -16,18 +16,19 @@ export class HeaderComponent implements OnInit {
   showUserName: boolean = false;
 
   userData: AuthUserData;
-  constructor( 
+  constructor(
     private router: Router,
     private userService: UserService,
     private authService: AuthService
   ) { }
 
   ngOnInit() {
-    // localStorage.setItem('authUserData', JSON.stringify({
-    //   id: 1,
-    //   name: 'ali',
-    //   token: 'ffhbgfg43434'
-    // }))
+    localStorage.setItem('authUserData', JSON.stringify({
+      id: 1,
+      userName: 'ali',
+      token: 'ffhbgfg43434',
+      role:2
+    }))
     this.checkUserAuthenticated();
   }
 
@@ -39,6 +40,7 @@ export class HeaderComponent implements OnInit {
     if( this.authService.isAuthenticated() ) {
       this.showUserName = true;
       this.userData = this.userService.returnAuthUserData();
+      console.log("User is authenticated", this.userData);
     }
   }
 
