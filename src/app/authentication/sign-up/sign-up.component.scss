@@ -1,8 +1,13 @@
 // import scss files
 @import "../../../styles";
 
-.form {
-    margin-right: 15%;
+.signup-form {
+    .form {
+        margin-right: 15%;
+    }
+    .logo {
+        cursor: pointer;
+    }
     input, select {
         border: none;
         border-bottom: 1px solid $darkColor;
@@ -18,7 +23,7 @@
             margin-right: 12%;
         }
         &[formControlName="confirmPassword"] {
-            margin-right: 6%;
+            margin-right: 5%;
         }
         &[formControlName="country"] {
             margin-right: 19%;
@@ -44,16 +49,23 @@
     
     .error-msg {
         color: $redColor;
+        margin-right: 30%;
     }
     a {
         color: $primaryColor;
         font-weight: bold;
+    }
+    .logo-mob {
+        display: none;
     }
 }
 
 // media queries
 @media only screen and (max-width: 768px) {
     .signup-form {
+        .txt-samt-dark-120 {
+            font-size: 5rem;
+        }
         .form {
             text-align: right;
             margin-right: 0%;
@@ -76,5 +88,12 @@
         .logo-lg {
             display: none;
         }
+        #datePicker {
+            width: 83% !important;
+            display: inline-block !important;
+        }
+        // .btn-custom-primary {
+        //     margin-right: 35%;
+        // }
     }
 }

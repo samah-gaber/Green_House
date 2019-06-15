@@ -10,6 +10,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { BlockAnonUserModalComponent } from './block-anon-user-modal/block-anon-user-modal.component';
 import { SharedModule } from './shared/shared.module';
 // import { QuestionsPageComponent } from './questions-page/questions-page.component';
+import { OrderPlantModalComponent } from './plant-details-page-module/order-plant-modal/order-plant-modal.component';
+import { UserDataOrderModalComponent } from './cart/user-data-order-modal/user-data-order-modal.component';
+import { OrderConfirmModalComponent } from './cart/order-confirm-modal/order-confirm-modal.component';
 
 
 @NgModule({
@@ -29,7 +32,10 @@ import { SharedModule } from './shared/shared.module';
   ],
   bootstrap: [AppComponent],
   entryComponents: [
-    BlockAnonUserModalComponent
+    BlockAnonUserModalComponent,
+    OrderPlantModalComponent,
+    UserDataOrderModalComponent,
+    OrderConfirmModalComponent
   ]
 })
 export class AppModule { }

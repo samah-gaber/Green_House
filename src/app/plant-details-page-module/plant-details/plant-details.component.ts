@@ -24,11 +24,9 @@ export class PlantDetailsComponent implements OnInit {
   }
 
   getPlantDetails() {
-    this.plantService.plantsGetRequest(this.plantDetailsUrl).subscribe( (res: PlantDetailsOBJ) => {
-      console.log(res);
-      console.log(res.plant.plant_fertilizerz[0].name);
+    this.plantService.plantsGetRequest(this.plantDetailsUrl).subscribe( 
+      (res: PlantDetailsOBJ) => {
       this.plantDetailsObj = res;
-      console.log(this.plantDetailsObj.plant.plant_fertilizerz);
     },
     error => {
       console.log(error);

@@ -1,0 +1,25 @@
+// import scss files
+@import "../../../styles";
+
+.modal-content {
+    button[disabled] {
+        background-color: #fcb7a4;
+        border-color: #fcb7a4;
+    }
+    input {
+        border: none;
+        border-bottom: 1px solid $darkColor;
+        // display: inline-block;
+        // width: 70%;
+        // &[formControlName="userEmail"] {
+        //     margin-right: 5%;
+        // }
+        // &[formControlName="password"] {
+        //     margin-right: 12%;
+        // }
+    }
+    .error-msg {
+        color: $redColor;
+        // margin-right: 15%;
+    }
+}

@@ -6,8 +6,8 @@ import { AuthService } from '../../services/auth.service';
 import { UserFavPlantsService } from '../../services/user-fav-plants.service';
 import { UserService } from '../../services/user.service';
 import { BlockAnonUserModalComponent } from '../../block-anon-user-modal/block-anon-user-modal.component';
-import { UserFavPlant } from '../../interfaces/user-interface';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { UserFavPlant } from '../../interfaces/plant-interface';
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -42,7 +42,7 @@ export class SinglePlantComponent implements OnInit {
   }
 
   showPlantDetails() {
-    this.router.navigate(['/', 'plantdetails'], { queryParams: { id: this.singlePlant.id } });
+    this.router.navigate(['/', 'plantdetails'], { queryParams: { id: this.singlePlant.id, 'name': this.singlePlant.name } });
   }
 
   openBackDropCustomClass(content) {
@@ -51,34 +51,35 @@ export class SinglePlantComponent implements OnInit {
 
   toggleFav(event) {
     if(this.authUser.isAuthenticated()) {
-      const userId = this.userService.returnAuthUserData().userId;
-      this.userFavPlantData = {
-        user_id : userId,
-        plant_id: this.singlePlant.id
-      }
+      // const userId = this.userService.returnAuthUserData().userId;
+      // this.userFavPlantData = {
+      //   user_id : userId,
+      //   plant_id: this.singlePlant.id
+      // }
 
       // check fav class
       let iconClassList = event.target.getAttribute('class');
       if (iconClassList.search('fav') == -1) {
-        this.userFavPlantService.addToFav(this.userFavPlantData).subscribe(
+        this.userFavPlantService.addToFav(this.singlePlant.id).subscribe(
           res => {
+            console.log('res fav');
             console.log(res);
+            event.target.classList.add('fav');
           },
           error => {
             console.log(error);
           }
         )
-        event.target.classList.add('fav');
-      } else {
-        this.userFavPlantService.removeFromFav(this.userFavPlantData).subscribe(
+      } else {      
+        this.userFavPlantService.removeFromFav(this.singlePlant.id).subscribe(
           res => {
             console.log(res);
+            event.target.classList.remove('fav');
           },
           error => {
             console.log(error);
           }
         )
-        event.target.classList.remove('fav');
       }
     }
     else {

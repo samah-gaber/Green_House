@@ -13,10 +13,14 @@ import { BlockAnonUserModalComponent } from '../block-anon-user-modal/block-anon
 import { DomainService } from '../services/domain.service';
 import { PlantService } from '../services/plant.service';
 import { UserFavPlantsService } from '../services/user-fav-plants.service';
-import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 // import { UserFavPlantsArrService } from '../services/user-fav-plants-arr.service';
 import { SingleQuestionComponent } from '../plant-details-page-module/single-question/single-question.component'
 
+import { OrderPlantModalComponent } from '../plant-details-page-module/order-plant-modal/order-plant-modal.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { CartService } from '../services/cart.service';
+import { UserDataOrderModalComponent } from '../cart/user-data-order-modal/user-data-order-modal.component';
+import { OrderConfirmModalComponent } from '../cart/order-confirm-modal/order-confirm-modal.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +30,9 @@ import { SingleQuestionComponent } from '../plant-details-page-module/single-que
     LoadingScreenComponent,
     BlockAnonUserModalComponent,
 
+    OrderPlantModalComponent,
+    UserDataOrderModalComponent,
+    OrderConfirmModalComponent
   ],
   imports: [
     CommonModule,
@@ -33,8 +40,10 @@ import { SingleQuestionComponent } from '../plant-details-page-module/single-que
     ReactiveFormsModule,
     MDBBootstrapModule.forRoot(),
     NgbModule,
-    RouterModule
-  ],
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule
+  ], 
   exports: [
     HeaderComponent,
     FooterComponent,
@@ -43,6 +52,9 @@ import { SingleQuestionComponent } from '../plant-details-page-module/single-que
     BlockAnonUserModalComponent,
     FormsModule,
     ReactiveFormsModule,
+    OrderPlantModalComponent,
+    UserDataOrderModalComponent,
+    OrderConfirmModalComponent,
     CommonModule
   ],
   providers: [
@@ -51,8 +63,8 @@ import { SingleQuestionComponent } from '../plant-details-page-module/single-que
     AuthService,
     DomainService,
     PlantService,
-    UserFavPlantsService
-    // UserFavPlantsArrService
+    UserFavPlantsService,
+    CartService
   ]
 })
 export class SharedModule { }

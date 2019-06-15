@@ -56,12 +56,16 @@ export class SignInComponent implements OnInit {
         this.authUser = res;
         this.userService.setAuthUserData(this.authUser);
         this.router.navigateByUrl('/');
+      },
+      error => {
+        console.log(error);
       }
     )
   }
 
+  goToHome() {
+    this.router.navigateByUrl('/');
+  }
+
 }
 
-
-// ErrorStateMatcher@samah.samah
-// samah1

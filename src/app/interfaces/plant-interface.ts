@@ -92,7 +92,7 @@ export interface PlantPlantationsObj {
 
 // user fav page plants
 export interface userFavPlantsPage {
-  plant: [
+  plants: [
     {
       id: number;
       image: string;
@@ -100,4 +100,10 @@ export interface userFavPlantsPage {
       cateogry_name: string;
     }
   ]
+}
+
+// user add plant to favorites
+export interface UserFavPlant {
+  user_id: number;
+  plant_id: number;
 }

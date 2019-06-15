@@ -44,12 +44,13 @@
           /></a>
         </div>
         <div class="col-md-6 col-4">
-          <form class="form-inline my-2 my-lg-0">
+          <form class="form-inline my-2 my-lg-0" [formGroup]='searchBarForm'>
             <input
               class="form-control mr-sm-2"
               type="search"
               placeholder="ابحث عن نباتك المفضل"
               aria-label="Search"
+              formControlName='seachBar'
             />
             <button class="btn-custom-primary my-sm-0" type="submit">
               <i class="fas fa-search"></i>
@@ -59,9 +60,9 @@
         <div class="signin-cart col-md-2 col-4 text-left">
           <div class="row align-items-center">
             <div class="cart col-4">
-              <i class="fas fa-shopping-cart"></i>
-              <p class="cart-count txt-arial-secondary-bold-14 d-inline-block">
-                0
+              <a (click)=goToCart()><i class="fas fa-shopping-cart"></i></a>
+              <p class="cart-count txt-arial-secondary-bold-14 d-inline-block" *ngIf="totalCartCount>0">
+                {{totalCartCount}}
               </p>
             </div>
             <div class="col-8 text-center">

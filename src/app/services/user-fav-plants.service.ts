@@ -1,35 +1,56 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { UserFavPlant } from '../interfaces/user-interface';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { DomainService } from './domain.service';
+import { UserFavPlant } from '../interfaces/plant-interface';
+import { UserService } from './user.service';
 
 @Injectable()
 export class UserFavPlantsService {
 
   domainURL = this.domain.getDomain();
   dynamicURL: string;
-  plantsURL: string;
-  urlAddToFav = 'https://reqres.in/api/register';
-  urlremoveFromFav = 'https://reqres.in/api/register';
-  urlGetFav = 'https://reqres.in/api/register/id';
+  urlGetFav: string;
+  urlAddToFav = `${this.domainURL}/client/addfavorite`;
+  urlremoveFromFav = `${this.domainURL}/`;
+  userToken = this.userService.returnAuthUserData().token;
+  headers;
 
   constructor( 
     private http: HttpClient,
-    private domain: DomainService
-  ) { }
-
-  addToFav(userFavPlantData: UserFavPlant) {
-    return this.http.post( this.urlAddToFav, userFavPlantData );
+    private domain: DomainService,
+    private userService: UserService
+  ) {
+    this.headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.userToken}`,
+      'Content-Type': 'application/json'
+    });
   }
 
-  removeFromFav(userFavPlantData: UserFavPlant) {
-    return this.http.post( this.urlremoveFromFav, userFavPlantData );
+  addToFav(plantId) {
+    return this.http.get( `${this.urlAddToFav}/${plantId}`, {
+      'headers': this.headers
+    });
   }
 
-  getFavPlants(url) {
-    this.dynamicURL = url;
-    this.plantsURL = `${this.domainURL}/Client/Getfavorites${this.dynamicURL}`;
-    return this.http.get( this.urlGetFav );
+  removeFromFav(plantId) {
+    return this.http.get( `${this.urlremoveFromFav}/${plantId}`, {
+      'headers': this.headers
+    });
   }
+
+  getFavPlants() {
+    this.urlGetFav = `${this.domainURL}/client/getfavorites`;
+    return this.http.get( this.urlGetFav, {
+      // 'params': new HttpParams().set('plantid', ),
+      'headers': this.headers
+    });
+  }
+  // getFavPlants(url) {
+  //   this.dynamicURL = url;
+  //   this.urlGetFav = `${this.domainURL}/Client/Getfavorites${this.dynamicURL}`;
+  //   return this.http.get( this.urlGetFav, {
+      
+  //   });
+  // }
 
 }

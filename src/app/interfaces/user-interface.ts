@@ -3,7 +3,7 @@ export interface UserSignedUp {
     email: string;
     password: string;
     city: string;
-    birthdate?: Date;
+    birthdate?: string;
     gender?: string;
 }
 
@@ -17,9 +17,4 @@ export interface AuthUserData {
     userName: string;
     userId: number;
     role: number;
-}
-
-export interface UserFavPlant {
-    user_id: number;
-    plant_id: number;
 }

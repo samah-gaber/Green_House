@@ -1,0 +1,12 @@
+// import scss files
+@import '../../../styles.scss';
+
+.modal-content {
+    .modal-header {
+        border-bottom: none;
+        i {
+            font-size: 30px;
+            color: $primaryColor;
+        }
+    }
+}

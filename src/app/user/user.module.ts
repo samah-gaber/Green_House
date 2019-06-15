@@ -7,11 +7,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { UserFavPageComponent } from './user-fav-page/user-fav-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from '../services/auth-guard.service';
-import { UserFavSingleCardComponent } from './user-fav-single-card/user-fav-single-card.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { UserPagesComponent } from './user-pages/user-pages.component';
 import { QuestionsPageComponent } from '../questions-page/questions-page.component';
 import {NgbModule, NgbDropdownModule} from '@ng-bootstrap/ng-bootstrap';
+import { CartComponent } from '../cart/cart.component';
 
 
 const routes: Routes = [
@@ -27,14 +27,25 @@ const routes: Routes = [
       },
       {
         path: 'orders', component: OrdersViewPageComponent
+      },
+      {
+        path: 'cart', component: CartComponent
       }
     ]
   }
 ];
 
 @NgModule({
-  declarations: [UserFavPageComponent, QuestionsPageComponent,
-    UserFavSingleCardComponent, UserPagesComponent, OrdersViewPageComponent, SingleOrderCardComponent],
+  declarations: [
+    UserFavPageComponent, 
+    QuestionsPageComponent,
+    UserPagesComponent, 
+    OrdersViewPageComponent, 
+    SingleOrderCardComponent,
+    UserFavPageComponent,  
+    UserPagesComponent,
+    CartComponent
+  ],
   imports: [
     CommonModule,
     SharedModule,

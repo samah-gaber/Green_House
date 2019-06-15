@@ -1,12 +1,28 @@
-<!-- <div class="fav-plants py-5 sec-style text-center">
+<div class="fav-plants py-5 sec-style text-center" *ngIf="userFavPlantsArr">
   <div class="container">
     <div class="sec-title">
       <h3>نباتاتك المفضلة</h3>
     </div>
     <div class="row">
-      <div class="col-6 col-md-3" *ngFor="let plant of userFavPlantsArr">
-          <app-user-fav-single-card [favPlant]='plant'></app-user-fav-single-card>
+      <div class="col-6 col-md-3" *ngFor="let plant of userFavPlantsArr.plants">
+          <mdb-card class="text-right user-single-fav-plant">
+            <mdb-card-img src='https://picsum.photos/200' alt="Card image cap"></mdb-card-img>
+            <mdb-card-body>
+              <mdb-card-title>
+                <h4>{{ plant.name }}</h4>
+              </mdb-card-title>
+              <mdb-card-text> 
+                {{ plant.category_name }}
+              </mdb-card-text>
+            </mdb-card-body>
+            <div class="overlay">
+              <div class="icons justify-content-between">
+                  <i class="fas fa-eye" (click)='showPlantDetails(plant.id,plant.name)'></i>
+                  <i class="fas fa-heart-broken" (click)='removeFromFav($event,plant.id)'></i>
+              </div>
+            </div>
+          </mdb-card>
       </div>
     </div>
   </div>
-</div> -->
+</div>

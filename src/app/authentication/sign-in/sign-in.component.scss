@@ -2,6 +2,9 @@
 @import "../../../styles";
 
 .signin-form {
+    .logo {
+        cursor: pointer;
+    }
     .form {
         margin-right: 15%;
         a {
@@ -42,6 +45,9 @@
 // media queries
 @media only screen and (max-width: 768px) {
     .signin-form {
+        .txt-samt-dark-120 {
+            font-size: 5rem;
+        }
         .form {
             text-align: right;
             margin-right: 0%;
@@ -57,5 +63,8 @@
         .logo-lg {
             display: none;
         }
+        // .btn-custom-primary {
+        //     margin-right: 35%;
+        // }
     }
 }

@@ -55,17 +55,38 @@ $Green-House-theme: mat-light-theme($Green-House-primary, $Green-House-accent, $
 .txt-arial-darkGrey-normal-24 {
   @extend %txt-arial-darkGrey-normal-24;
 }
+.txt-arial-darkGrey-normal-18 {
+  @extend %txt-arial-darkGrey-normal-18;
+}
 .txt-arial-dark-bold-14 {
   @extend %txt-arial-dark-bold-14;
 }
 .txt-arial-primary-bold-14 {
   @extend %txt-arial-primary-bold-14;
 }
+.txt-arial-secondary-bold-24 {
+  @extend %txt-arial-secondary-bold-24;
+}
 .txt-arial-secondary-bold-14 {
   @extend %txt-arial-secondary-bold-14;
 }
+.txt-arial-secondary-bold-16 {
+  @extend %txt-arial-secondary-bold-16;
+}
+.txt-arial-secondary-normal-20 {
+  @extend %txt-arial-secondary-normal-20;
+}
+.txt-arial-secondary-bold-20 {
+  @extend %txt-arial-secondary-bold-20;
+}
 .txt-arial-dark-bold-24 {
   @extend %txt-arial-dark-bold-24;
+}
+.txt-arial-dark-bold-18 {
+  @extend %txt-arial-dark-bold-18;
+}
+.txt-arial-dark-normal-20 {
+  @extend %txt-arial-dark-normal-20;
 }
 .txt-arial-dark-bold-20 {
   @extend %txt-arial-dark-bold-20;
@@ -78,6 +99,9 @@ $Green-House-theme: mat-light-theme($Green-House-primary, $Green-House-accent, $
 }
 .txt-arial-darkGrey-normal-20 {
   @extend %txt-arial-darkGrey-normal-20;
+}
+.txt-arial-darkGrey-bold-20 {
+  @extend %txt-arial-darkGrey-bold-20;
 }
 .txt-arial-lightGrey-normal-20 {
   @extend %txt-arial-lightGrey-normal-20;

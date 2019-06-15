@@ -35,7 +35,7 @@ export class PlantService {
 
   plantsSingleCatGetRequest(url) {
     this.dynamicURL = url;
-    this.plantsCatURL = `${this.domainURL}/plants/category${this.dynamicURL}`;
+    this.plantsCatURL = `${this.domainURL}/plants/category/${this.dynamicURL}`;
     console.log('url: ' + this.plantsCatURL);
     return this.http.get(this.plantsCatURL);
   }

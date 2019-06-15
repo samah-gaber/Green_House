@@ -1,0 +1,46 @@
+<div class="modal-content modal-lg">
+  <div class="modal-header">
+    <button type="button" class="close pull-right" aria-label="Close" (click)="orderModalRef.hide()">
+      <span aria-hidden="true">×</span>
+    </button>
+    <h4 class="modal-title w-100 text-center txt-arial-dark-bold-30" id="myModalLabel">تأكيد الطلب</h4>
+  </div>
+  <div class="modal-body">
+    <div class="container">
+      <form [formGroup]='orderForm' id="order-form" (ngSubmit)='addToCart(orderForm)'>
+        <div class="row titles">
+          <div class="col-3">
+            <h6 class="txt-arial-dark-bold-20">النوع</h6>
+          </div>
+          <div class="col-3">
+            <h6 class="txt-arial-dark-bold-20">سعر الوحدة</h6>
+          </div>
+          <div class="col-6">
+            <h6 class="txt-arial-dark-bold-20">الكمية</h6>
+          </div>
+        </div>
+        <div class="row mb-3" *ngFor="let item of orderFormObj.plantItems">
+          <div class="col-3 type-checkbox">
+            <input type="checkbox" formControlName={{item.checkCName}} name={{item.type}} (click)='enableQtyInput($event)'>
+            <label for={{item.type}} class="txt-arial-darkGrey-normal-20">{{item.arType}}</label>
+          </div>
+          <div class="col-3 price">
+            <span class="txt-arial-darkGrey-normal-20" id={{item.priceName}}>{{item.price}}</span>
+            <span class="txt-arial-darkGrey-normal-20">جنيه</span>
+          </div>
+          <div class="col-6 qty-input">
+            <input type="number" formControlName={{item.inputCName}} class="form-control" mdbInput min="0" id={{item.type}}  disabled>
+            <span class="txt-arial-darkGrey-normal-20">الشراء بالوحدة</span>
+          </div>
+        </div>
+      </form>
+      <p class="empty-order-error" *ngIf="showEmptyOrderError">يجب أن تختار ما تريد شرائه</p>
+      <!-- <p class="empty-order-error" *ngIf="orderForm.invalid && orderForm.touched">يجب أن تختار ما تريد شرائه</p> -->
+    </div>
+  </div>
+  <div class="modal-footer justify-content-center">
+    <button type="submit" mdbBtn class="relative waves-light btn-custom btn-custom-primary" mdbWavesEffect form="order-form">أضف إلى العربة</button>
+    <button type="button" mdbBtn class="waves-light btn-custom btn-custom-ghost" aria-label="Close" (click)="modalRef.hide()" mdbWavesEffect>الخروج</button>
+    <!-- <button type="submit" mdbBtn class="relative waves-light btn-custom btn-custom-primary" mdbWavesEffect form="order-form" [disabled]='orderForm.invalid'>أضف إلى العربة</button> -->
+  </div>
+</div>

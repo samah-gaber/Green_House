@@ -69,9 +69,9 @@ export class PlantCategoriesComponent implements OnInit {
   // }
 
   showCatPlants(ev) {
-    const catId = ev.target.innerHTML;;
-    console.log('category name ' + catId);
-    this.plantService.plantsSingleCatGetRequest(catId).subscribe(
+    const catName = ev.target.innerHTML;;
+    console.log('category name ' + catName);
+    this.plantService.plantsSingleCatGetRequest(catName).subscribe(
       res => {
         console.log(res);
       },
