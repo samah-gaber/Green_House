@@ -1,6 +1,6 @@
 <br>
 <div *ngIf="ordersData ;else noOrderTemplate">
-  <div *ngFor="let order of ordersData">
+  <div *ngFor="let order of ordersData.orders">
       <app-single-order-card [orderData]="order"></app-single-order-card>
       <br>
   </div>

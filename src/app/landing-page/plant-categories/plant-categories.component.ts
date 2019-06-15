@@ -16,10 +16,11 @@ export class PlantCategoriesComponent implements OnInit {
 
   plantCatsUrl: '';
   plantCatRes: PlantCatRes;
-  plantCategories: PlantCategory[];
-  singleCatPlants: plantCatInfo[];
+  // plantCategories: PlantCategory[];
+  singleCatPlants: plantCatInfo;
   userData : AuthUserData;
   userRole : number;
+
   constructor(
     private http: HttpClient,
     private plantService: PlantService,
@@ -53,8 +54,9 @@ export class PlantCategoriesComponent implements OnInit {
     const catName = ev.target.innerHTML;;
     console.log('category name ' + catName);
     this.plantService.plantsSingleCatGetRequest(catName).subscribe(
-      res => {
+      (res: PlantCatRes) => {
         console.log(res);
+        this.plantCatRes.plant = res.plant;
       },
       error => {
         console.log(error);

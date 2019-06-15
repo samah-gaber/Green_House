@@ -23,22 +23,28 @@ export class QuestionsPageComponent implements OnInit {
   selectedPlant: string;
 
 
-  constructor(private modalService: NgbModal, private fb: FormBuilder,
-    private route: ActivatedRoute, private userQuestionService : UserQuestionServiceService,
-    private timeService:TimeServiceService) {
+  constructor(
+    private modalService: NgbModal, 
+    private fb: FormBuilder,
+    private route: ActivatedRoute, 
+    private userQuestionService : UserQuestionServiceService,
+    private timeService:TimeServiceService
+  ) {
     this.userId = null;
     this.selectedCategory = null;
-    userQuestionService.getUserQuestions().subscribe((questionData: any) => {
-      this.objData = questionData.questions;
-    });
+    
 
-    userQuestionService.getUserQuestionCategories().subscribe((questionCategories :any) => {
-      this.questionCategoryOptions = questionCategories.category;
-    });
+    
 
    }
 
   ngOnInit() {
+    this.userQuestionService.getUserQuestions().subscribe((questionData: any) => {
+      this.objData = questionData.questions;
+    });
+    this.userQuestionService.getUserQuestionCategories().subscribe((questionCategories :any) => {
+      this.questionCategoryOptions = questionCategories.category;
+    });
     this.createFormControls();
     this.createForm();
     const self = this;

@@ -10,24 +10,24 @@ import { PlantPlantationsObj } from '../../interfaces/plant-interface';
 
 export class PlantationOrderCardsComponent implements OnInit {
 
-  plantPlantationsObj = {
-    plantation: [
-      {
-        plantationId: 1,
-        plantationName: "البلكونة",
-        price: 7
-      },
-      {
-        plantationId: 2,
-        plantationName: "البلكونة",
-        price: 7
-      }
-    ]
-  }
+  // plantPlantationsObj = {
+  //   plantation: [
+  //     {
+  //       plantationId: 1,
+  //       plantationName: "البلكونة",
+  //       price: 7
+  //     },
+  //     {
+  //       plantationId: 2,
+  //       plantationName: "البلكونة",
+  //       price: 7
+  //     }
+  //   ]
+  // }
 
   @Input() plantId;
   @Input() plantName;
-  // plantPlantationsObj: PlantPlantationsObj;
+  plantPlantationsObj: PlantPlantationsObj;
   plantPlantationsUrl = '';
   
   constructor(
@@ -36,20 +36,20 @@ export class PlantationOrderCardsComponent implements OnInit {
   
   ngOnInit() {
     this.plantPlantationsUrl = `/plantationlist/${this.plantId}`;
-    // this.getPlantDetails();
+    this.getPlantDetails();
   }
 
-  // getPlantDetails() {
-  //   this.plantService.plantsGetRequest(this.plantPlantationsUrl).subscribe( (res: PlantPlantationsObj) => {
-  //     this.plantPlantationsObj = res;
-  //     console.log(res);
-  //     console.log(this.plantPlantationsObj);
+  getPlantDetails() {
+    this.plantService.plantsGetRequest(this.plantPlantationsUrl).subscribe( (res: PlantPlantationsObj) => {
+      this.plantPlantationsObj = res;
+      console.log(res);
+      console.log(this.plantPlantationsObj);
 
 
-  //   },
-  //   error => {
-  //     console.log(error);
-  //   })
-  // }
+    },
+    error => {
+      console.log(error);
+    })
+  }
 
 }

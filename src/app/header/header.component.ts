@@ -57,6 +57,7 @@ export class HeaderComponent implements OnInit {
       this.showUserName = true;
       this.userData = this.userService.returnAuthUserData();
       console.log("User is authenticated", this.userData);
+      console.log("User is authenticated role", this.userData.role);
     }
   }
   

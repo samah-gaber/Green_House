@@ -8,13 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ForumPageComponent implements OnInit {
   model: any;
-  categories : Array<any>;
-  currentLoadedQuestions : Array<any>;
+  categories : any;
+  // categories : Array<any>;
+  currentLoadedQuestions : any;
   constructor(private forumService : ForumServiceService) {
     forumService.initiateInitForumRequest().subscribe((initForumData) => {
-      this.categories = initForumData.categories;
-      this.model=this.categories[0].name;
-      this.currentLoadedQuestions = initForumData.questions;
+      console.log(initForumData);
+      this.categories = initForumData;
+      this.model=this.categories.categories[0].name;
+      this.currentLoadedQuestions = initForumData;
     })
   }
 
@@ -22,9 +24,9 @@ export class ForumPageComponent implements OnInit {
 
   }
 
-  toggle(event){
-    this.forumService.getCategoryQuestions(event.target.value).subscribe((newCatQuestions)=>{
-      this.currentLoadedQuestions = newCatQuestions.questions;
+  toggle(catId){
+    this.forumService.getCategoryQuestions(catId).subscribe((newCatQuestions)=>{
+      this.currentLoadedQuestions = newCatQuestions;
     });
 
   }

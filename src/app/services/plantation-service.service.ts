@@ -17,7 +17,7 @@ export class PlantationServiceService {
                 {comment: data,
                 plantation_id: this.userData.userId };
     const url = 'http://192.168.43.132:9999/api/client/insertQuestion/112';
-    return this.httpService.sendRequest(url, bodyObject);
+    return this.httpService.postRequest(url, bodyObject);
   }
 
   deleteData(id){
@@ -25,6 +25,6 @@ export class PlantationServiceService {
       plantId : id
     };
     const url = 'http://192.168.43.132:9999/api/client/insertQuestion/112';
-    return this.httpService.sendRequest(url, bodyObject);
+    return this.httpService.postRequest(url, bodyObject);
   }
 }
