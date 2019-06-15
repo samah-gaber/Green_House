@@ -76,15 +76,20 @@ export class SignUpComponent implements OnInit {
   }
 
   onSignup(signupForm) {
-    let userBirthDate = formatDate(this.birthDate.value, 'dd-MM-yyyy', 'en-US');
+    // let userBirthDate = formatDate(this.birthDate.value, 'dd-MM-yyyy', 'en-US');
+    // const month = this.birthDate.value.getMonth() + 1;
+    // const day = this.birthDate.value.getDate();
+    // const year = this.birthDate.value.getFullYear();
+    // const fullDateString = day + "/" + month + "/" + year;
 
     this.userSignedUp = {
       name: this.userName.value,
       email: this.userEmail.value,
       password: this.password.value,
       city: this.country.value,
-      // birthdate: "11/11/2019",
-      birthdate: userBirthDate,
+      birthdate: "11/11/2019",
+      // birthdate: userBirthDate,
+      // birthdate: fullDateString,
       gender: this.gender.value
     };
 
@@ -97,7 +102,7 @@ export class SignUpComponent implements OnInit {
         this.router.navigateByUrl("/");
       },
       error => {
-        console.log(error);
+        console.log('sign up error', error);
       }
     );
   }

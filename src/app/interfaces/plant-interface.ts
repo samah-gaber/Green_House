@@ -7,9 +7,13 @@ export interface PlantCategory {
 
 // home page each cateogry plants
 export interface plantCatInfo {
-  id: number;
-  img: string;
-  name: string;
+  plant: [
+    {
+      id: number;
+      img: string;
+      name: string;
+    }
+  ]
 }
 
 // home page plant categries response

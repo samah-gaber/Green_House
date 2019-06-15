@@ -5,7 +5,8 @@ import { LandingPageModuleModule } from './landing-page/landing-page-module.modu
 
 const routes: Routes = [
   {
-    path: '', component: MainModule, children: [
+    path: '', component: MainModule, 
+    children: [
       {
         path: '', component: LandingPageModuleModule
       },

@@ -16,17 +16,20 @@ export class PlantCategoriesComponent implements OnInit {
 
   plantCatsUrl: '';
   plantCatRes: PlantCatRes;
-  plantCategories: PlantCategory[];
-  singleCatPlants: plantCatInfo[];
+  // plantCategories: PlantCategory[];
+  singleCatPlants: plantCatInfo;
   userData : AuthUserData;
   userRole : number;
+
   constructor(
     private http: HttpClient,
     private plantService: PlantService,
     private userService: UserService
   ) {
-    this.userData = this.userService.returnAuthUserData();
-    this.userRole = this.userData.role;
+    if(this.userService.returnAuthUserData()) {
+      this.userData = this.userService.returnAuthUserData();
+      this.userRole = this.userData.role;
+    }
   }
 
   ngOnInit() {
@@ -45,35 +48,15 @@ export class PlantCategoriesComponent implements OnInit {
         this.plantCatRes = res;
       }
     )
-    // this.http.get(this.plantCatUrl).subscribe(
-    //   res => {
-    //     this.plantCatUrlRes = res;
-    //     this.destructRes(this.plantCatUrlRes);
-    //   },
-    //   error => {
-    //     console.log(error);
-    //   }
-    // )
   }
-  // destructRes(categories) {
-  //   // destruction must match obj keys
-  //   const {plantCats, singleCatPlants} = categories;
-  //   this.plantCategories = plantCats;
-  //   this.singleCatPlants = singleCatPlants;
-  // }
-
-  // setCatActiveState() {
-  //   if(document.getElementsByClassName('category')[0]) {
-  //     console.log(document.getElementsByClassName('category')[0]);
-  //   }
-  // }
 
   showCatPlants(ev) {
     const catName = ev.target.innerHTML;;
     console.log('category name ' + catName);
     this.plantService.plantsSingleCatGetRequest(catName).subscribe(
-      res => {
+      (res: PlantCatRes) => {
         console.log(res);
+        this.plantCatRes.plant = res.plant;
       },
       error => {
         console.log(error);

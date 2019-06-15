@@ -31,7 +31,7 @@ const routes: Routes = [
     PlantationSingleCommentComponent,
     PlantDetailsQuestionsComponent,
     // BlockAnonUserModalComponent
-    SingleQuestionComponent,
+    // SingleQuestionComponent,
     // OrderPlantModalComponent
   ],
   imports: [

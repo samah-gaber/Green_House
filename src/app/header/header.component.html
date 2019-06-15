@@ -82,7 +82,7 @@
                   (click)='navToFavPlants()'
                   routerLink="/user/favourites"
                   routerLinkActive="active"
-                  *ngIf="userData.role == 1"
+                  *ngIf="userData.role == '1'"
                   [queryParams]="{ userId: userData.id}"
                   >نباتاتك المفضلة</a>
                   <a class="dropdown-item"

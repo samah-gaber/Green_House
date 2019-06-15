@@ -11,7 +11,7 @@ export class PlantDetailsQuestionsComponent implements OnInit {
 
   @Input() plantId;
   plantQuestionsObj: PlantQuestionsObj;
-  plantQuestionsUrl = '';
+  plantQuestionsUrl: string;
 
   // plantQuestionsObj = [
   //   {
