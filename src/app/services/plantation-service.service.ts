@@ -7,15 +7,17 @@ import { AuthUserData } from '../interfaces/user-interface';
   providedIn: 'root'
 })
 export class PlantationServiceService {
-  userData : AuthUserData;
+  userData: AuthUserData;
   constructor(private httpService: HttpServiceService, private userService : UserService) {
     this.userData = this.userService.returnAuthUserData();
    }
 
-  sendFormData(data){
+  sendFormData( data, plantId) {
     const bodyObject =
-                {comment: data,
-                plantation_id: this.userData.userId };
+                {
+                comment: data,
+                plant_id: plantId,
+                };
     const url = 'http://192.168.43.132:9999/api/client/insertQuestion/112';
     return this.httpService.sendRequest(url, bodyObject);
   }

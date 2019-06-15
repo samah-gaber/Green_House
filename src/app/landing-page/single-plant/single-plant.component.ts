@@ -103,7 +103,7 @@ export class SinglePlantComponent implements OnInit {
 
   submitPlantComment(param){
     const submittedComment = param.controls.plantComment.value;
-    this.plantationService.sendFormData(submittedComment).subscribe((res) =>{
+    this.plantationService.sendFormData(submittedComment,this.singlePlant.id).subscribe((res) =>{
       console.log("Comment submitted");
     });
     this.ngbModalService.dismissAll();
