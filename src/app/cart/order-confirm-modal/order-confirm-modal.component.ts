@@ -9,15 +9,15 @@ import { ModalModule, WavesModule, InputsModule, ButtonsModule, MDBModalRef } fr
 })
 export class OrderConfirmModalComponent implements OnInit {
 
-  content: any;
-  userOrderNo: string;
+  // content: any;
+  // userOrderNo: string;
 
   constructor(
     public modalRef: MDBModalRef
   ) { }
 
   ngOnInit() {
-    this.userOrderNo = this.content.orderNo;
+    // this.userOrderNo = this.content.orderNo;
   }
 
 }

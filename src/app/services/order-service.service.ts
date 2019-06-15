@@ -10,7 +10,7 @@ export class OrderServiceService {
   orderURL: string;
   constructor(private http: HttpClient) {
     this.orderURL = './assets/userOrderData.json'; // url bta3 el data
-    // this.orderURL = 'http://192.168.43.132:9999/api/client/orders/112';
+    // this.orderURL = 'http://192.168.137.130:9999/api/client/orders/112';
   }
   // domain
   // userId

@@ -42,6 +42,10 @@ export class PlantationOrderCardsComponent implements OnInit {
   // getPlantDetails() {
   //   this.plantService.plantsGetRequest(this.plantPlantationsUrl).subscribe( (res: PlantPlantationsObj) => {
   //     this.plantPlantationsObj = res;
+  //     console.log(res);
+  //     console.log(this.plantPlantationsObj);
+
+
   //   },
   //   error => {
   //     console.log(error);

@@ -1,34 +1,56 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
+import { DomainService } from './domain.service';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserQuestionServiceService {
   questionData: any;
+  domainURL = this.domainService.getDomain();
+  headers;
+  userToken;
   // userQuestionsURL = 'http://192.168.43.132:9999/api/client/Getquestions/112';
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private domainService: DomainService,
+    private userService: UserService
+  ) {
+    this.headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.userToken}`,
+      'Content-Type': 'application/json'
+    });
 
+    if(this.userService.returnAuthUserData()) {
+      this.userToken = this.userService.returnAuthUserData().token;
+    }
   }
 
-  getUserQuestions(userId) {
+  getUserQuestions() {
     // let url = this.userQuestionsURL + userId;
     // return this.http.get(url);
     // return this.http.get('./assets/genericQuestionObject.json');
-    return this.http.get('http://192.168.43.132:9999/api/client/Getquestions/112');
+    return this.http.get(`${this.domainURL}/client/Getquestions`, {
+      'headers': this.headers
+    });
 
   }
 
   getUserQuestionCategories() {
     // return this.http.get('./assets/userQuestionCategories.json');
-    return this.http.get(' http://192.168.43.132:9999/api/plants/allcategories');
+    return this.http.get(`${this.domainURL}/plants/allcategories`, {
+      'headers': this.headers
+    });
   }
 
   getUserQuestionPlantByCategoryId(catId) {
     console.log('getting plants ');
     // return this.http.get('./assets/userQuestionPlants.json');
-    return this.http.get('http://192.168.43.132:9999/api/plants/category/cat1');//neme msh  id
+    return this.http.get(`${this.domainURL}/plants/category/cat1`, {
+      'headers': this.headers
+    });
 
   }
 
@@ -36,7 +58,7 @@ export class UserQuestionServiceService {
     const myheader = new HttpHeaders();
     myheader.set('Content-Type', 'application/x-www-form-urlencoded');
     // const url = '';
-    const url = 'http://192.168.43.132:9999/api/client/insertQuestion/112';
+    const url = `${this.domainURL}/client/insertQuestion/`;
 
     let body = new HttpParams();
     body = body.set('formData', data);

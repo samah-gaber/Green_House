@@ -12,7 +12,7 @@ export class UserFavPlantsService {
   urlGetFav: string;
   urlAddToFav = `${this.domainURL}/client/addfavorite`;
   urlremoveFromFav = `${this.domainURL}/`;
-  userToken = this.userService.returnAuthUserData().token;
+  userToken;
   headers;
 
   constructor( 
@@ -20,12 +20,18 @@ export class UserFavPlantsService {
     private domain: DomainService,
     private userService: UserService
   ) {
+    // creating new header instance
     this.headers = new HttpHeaders({
       'Authorization': `Bearer ${this.userToken}`,
       'Content-Type': 'application/json'
     });
+
+    if(this.userService.returnAuthUserData()) {
+      this.userToken = this.userService.returnAuthUserData().token;
+    }
   }
 
+  // add plant to favorites using http header
   addToFav(plantId) {
     return this.http.get( `${this.urlAddToFav}/${plantId}`, {
       'headers': this.headers

@@ -29,12 +29,12 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    localStorage.setItem('authUserData', JSON.stringify({
-      id: 1,
-      userName: 'ali',
-      token: 'ffhbgfg43434',
-      role:2
-    }))
+    // localStorage.setItem('authUserData', JSON.stringify({
+    //   id: 1,
+    //   userName: 'ali',
+    //   token: 'ffhbgfg43434',
+    //   role:1
+    // }))
     this.checkUserAuthenticated();
 
     this.searchBarForm = this.fb.group ({

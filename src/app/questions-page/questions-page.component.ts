@@ -28,7 +28,7 @@ export class QuestionsPageComponent implements OnInit {
     private timeService:TimeServiceService) {
     this.userId = null;
     this.selectedCategory = null;
-    userQuestionService.getUserQuestions(this.userId).subscribe((questionData: any) => {
+    userQuestionService.getUserQuestions().subscribe((questionData: any) => {
       this.objData = questionData.questions;
     });
 

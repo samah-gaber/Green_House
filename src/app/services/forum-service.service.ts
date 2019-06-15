@@ -9,8 +9,8 @@ export class ForumServiceService {
   forumInitUrl: string;
   //domainUrl = "http://192.168.137.115:9999/api/client/orders/"
   constructor(private http: HttpClient) {
-    this.forumInitUrl = "./assets/forumPageLoad.json";
-    // this.forumInitUrl = 'http://192.168.43.132:9999/api/plants/forum';
+    // this.forumInitUrl = "./assets/forumPageLoad.json";
+    this.forumInitUrl = 'http://192.168.137.130:9999/api/plants/forum';
 
   }
 

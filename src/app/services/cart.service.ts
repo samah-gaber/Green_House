@@ -73,7 +73,7 @@ export class CartService {
       storedCartCount = +localStorage.getItem('cartCount');
       if(indicator == 'increase') {
         storedCartCount += 1;
-      } else if(indicator == 'decrease') {
+      } else if(indicator == 'decrease' && storedCartCount > 0) {
         storedCartCount -= 1;
       } else if(indicator == 'zero') {
         storedCartCount = 0;

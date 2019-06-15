@@ -12,7 +12,8 @@
       <div class="container">
         <div class="row">
           <div class="col-md-3 col-6" *ngFor="let plant of plantCatRes.plant">
-            <app-single-plant [userRole]="userRole" [singlePlant] = plant></app-single-plant>
+            <app-single-plant [singlePlant] ='plant'></app-single-plant>
+            <!-- <app-single-plant [userRole]="userRole" [singlePlant] = plant></app-single-plant> -->
           </div>
         </div>
       </div>
