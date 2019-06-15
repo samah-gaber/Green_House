@@ -13,7 +13,7 @@ export class UserQuestionServiceService {
 
   }
 
-  getUserQuestions(userId) {
+  getQuestions(userId) {
     // let url = this.userQuestionsURL + userId;
     // return this.http.get(url);
     // return this.http.get('./assets/genericQuestionObject.json');

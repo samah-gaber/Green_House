@@ -72,7 +72,7 @@ export class SinglePlantComponent implements OnInit {
             console.log(error);
           }
         )
-      } else {      
+      } else {
         this.userFavPlantService.removeFromFav(this.singlePlant.id).subscribe(
           res => {
             console.log(res);

@@ -1,9 +1,12 @@
+import { PlantationQuestionServiceService } from './../services/plantation-question-service.service';
+import { UserService } from './../services/user.service';
 import { TimeServiceService } from './../services/time-service.service';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { UserQuestionServiceService } from '../services/user-question-service.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute } from '@angular/router';
+import { AuthUserData } from '../interfaces/user-interface';
 @Component({
   selector: 'app-questions-page',
   templateUrl: './questions-page.component.html',
@@ -12,6 +15,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class QuestionsPageComponent implements OnInit {
   userId: number;
+  userRole;
   objData: any;
   questionCategoryOptions: Array<any>;
   questionPlantOptions: Array<any>;
@@ -21,21 +25,27 @@ export class QuestionsPageComponent implements OnInit {
   selectPlant: FormControl;
   selectedCategory: string;
   selectedPlant: string;
+  questionService;
 
 
   constructor(private modalService: NgbModal, private fb: FormBuilder,
     private route: ActivatedRoute, private userQuestionService : UserQuestionServiceService,
-    private timeService:TimeServiceService) {
+    private timeService:TimeServiceService, private userService: UserService,
+    private plantataionQuestionService : PlantationQuestionServiceService) {
+    this.userRole = userService.returnAuthUserData().role;
+    if(this.userRole == 1){
+      this.questionService = this.userService;
+      userQuestionService.getUserQuestionCategories().subscribe((questionCategories :any) => {
+        this.questionCategoryOptions = questionCategories.category;
+      });
+    } else {
+      this.questionService = this.plantataionQuestionService;
+    }
     this.userId = null;
     this.selectedCategory = null;
-    userQuestionService.getUserQuestions(this.userId).subscribe((questionData: any) => {
+    this.questionService.getQuestions(this.userId).subscribe((questionData: any) => {
       this.objData = questionData.questions;
     });
-
-    userQuestionService.getUserQuestionCategories().subscribe((questionCategories :any) => {
-      this.questionCategoryOptions = questionCategories.category;
-    });
-
    }
 
   ngOnInit() {

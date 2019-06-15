@@ -1,9 +1,9 @@
-<button class="btn-custom btn-custom-primary mb-2 mr-2 fixed-bottom" (click)="openBackDropCustomClass(content)">اسأل</button>
+<button  *ngIf="userRole==1" class="btn-custom btn-custom-primary mb-2 mr-2 fixed-bottom" (click)="openBackDropCustomClass(content)">اسأل</button>
 <div class="container mb-5 pt-5">
   <div class="row">
       <div *ngIf="objData">
           <div class="question py-5" *ngFor="let questionItem of objData">
-              <app-single-question [question]='questionItem'></app-single-question>
+              <app-single-question [question]='questionItem' [userRole]='userRole'></app-single-question>
             </div>
       </div>
   </div>

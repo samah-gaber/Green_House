@@ -27,9 +27,17 @@
       </div>
     </div>
   </div>
-  <p class="reply-count txt-arial-dark-bold-24  my-4 d-inline-block">
+  <p  *ngIf="userRole == 1" class="reply-count txt-arial-dark-bold-24  my-4 d-inline-block">
     عدد الردود: {{replyCount}}
   </p>
+
+  <!-- this div is pecific for plantation allowing them to answer questions or dismiss -->
+  <div *ngIf="userRole == 2">
+    <textarea id = "plantationQuestion{{question.questionId}}" placeholder="اضف رد"></textarea>
+    <button  class="btn-custom btn-custom-primary mb-2 mr-2" (click)="submitComment()">اسأل</button>
+  </div>
+
+
   <div class="plantation-answers">
     <div class="single-answer mb-4" *ngFor="let answer of question.answers">
       <div class="row">
