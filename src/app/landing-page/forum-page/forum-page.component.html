@@ -9,7 +9,7 @@
     <div class="row">
         <div *ngIf="currentLoadedQuestions">
             <div class="question py-5" *ngFor="let questionItem of currentLoadedQuestions.questions">
-                <app-single-forum-question [question]='questionItem'></app-single-forum-question>
+                <app-single-forum-question [userRole] = "userRole" [question]='questionItem'></app-single-forum-question>
               </div>
         </div>
     </div>

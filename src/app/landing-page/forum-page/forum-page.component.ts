@@ -1,3 +1,4 @@
+import { UserService } from './../../services/user.service';
 import { ForumServiceService } from './../../services/forum-service.service';
 import { Component, OnInit } from '@angular/core';
 // import { FormBuilder, FormGroup } from '@angular/forms';
@@ -9,15 +10,17 @@ import { Component, OnInit } from '@angular/core';
 export class ForumPageComponent implements OnInit {
   model: any;
   categories : any;
+  userRole: number;
   // categories : Array<any>;
   currentLoadedQuestions : any;
-  constructor(private forumService : ForumServiceService) {
+  constructor(private forumService: ForumServiceService, private userService : UserService) {
     forumService.initiateInitForumRequest().subscribe((initForumData) => {
       console.log(initForumData);
       this.categories = initForumData;
-      this.model=this.categories.categories[0].name;
+      this.model = this.categories.categories[0].name;
       this.currentLoadedQuestions = initForumData;
     })
+    this.userRole = userService.returnAuthUserData().role;
   }
 
   ngOnInit() {
