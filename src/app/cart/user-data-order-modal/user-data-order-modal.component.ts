@@ -88,14 +88,14 @@ export class UserDataOrderModalComponent implements OnInit {
     let emptyCart = this.cartService.emptyCart();
     this.action.next(emptyCart);
     this.modalRef = this.modalService.show(OrderConfirmModalComponent, {
-      data: {
-        content: {
-          orderNo: '4535437657'
-        }
+      // data: {
+      //   content: {
+      //     orderNo: '4535437657'
+      //   }
         // content: {
           // orderNo: this.userOrderNo
         // }
-      }
+      // }
     });
   }
 

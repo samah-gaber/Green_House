@@ -1,91 +1,103 @@
 <div class="cart-section py-5">
   <div class="container">
-    <h3 class="txt-arial-dark-bold-30">عربة التسوق</h3>
-    <p class="txt-arial-darkGrey-normal-20">لديك عدد {{ordersArr.length}} من النباتات</p>
-    <div class="card mb-5 pb-4 pt-5 px-4" *ngFor="let order of ordersArr">
-      <div class="row main-order-sec">
-        <div class="col-12 col-md-4 plant-data mb-5">
-          <div class="row">
-            <div class="col-3 col-md-4">
-              <img src={{order.plantimg}} class="img-fluid">
-            </div>
-            <div class="col-9 col-md-8">
-              <p>
-                <span class="txt-arial-darkGrey-bold-20">المشتل: </span>
-                <span class="txt-arial-darkGrey-normal-20">{{order.plantation_name}}</span>
-              </p>
-              <p>
-                <span class="txt-arial-darkGrey-bold-20">النبات:</span>
-                <span class="txt-arial-darkGrey-normal-20">{{order.plantname}}</span>
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-md-8 order-data">
-            <h5 class="txt-arial-dark-bold-24">تفاصيل الطلب</h5>
-            <div class="row titles">
-                <div class="col-3">
-                  <h6 class="txt-arial-dark-normal-20">المطلوب</h6>
-                </div>
-                <div class="col-3">
-                  <h6 class="txt-arial-dark-normal-20">الكمية</h6>
-                </div>
-                <div class="col-3">
-                  <h6 class="txt-arial-dark-normal-20">سعر الوحدة</h6>
-                </div>
-                <div class="col-3">
-                  <h6 class="txt-arial-dark-normal-20">الاجمالى</h6>
-                </div>
-            </div>
-            <div class="row" *ngFor="let plantItem of order.itemContents">
-              <div class="col-3">
-                <p class="txt-arial-darkGrey-normal-20">{{plantItem.type}}</p>
+    <div class="full-cart" *ngIf="ordersArr.length>0;else emptyCartDiv">
+      <h3 class="txt-arial-dark-bold-30">عربة التسوق</h3>
+      <p class="txt-arial-darkGrey-normal-20">لديك عدد {{ordersArr.length}} من النباتات</p>
+      <div class="card mb-5 pb-4 pt-5 px-4" *ngFor="let order of ordersArr">
+        <div class="row main-order-sec">
+          <div class="col-12 col-md-4 plant-data mb-5">
+            <div class="row">
+              <div class="col-3 col-md-4">
+                <img src={{order.plantimg}} class="img-fluid">
               </div>
-              <div class="col-3">
+              <div class="col-9 col-md-8">
                 <p>
-                  <span class="txt-arial-darkGrey-normal-20">{{plantItem.price}} </span>
-                  <span class="txt-arial-darkGrey-normal-20">جنيه</span>
+                  <span class="txt-arial-darkGrey-bold-20">المشتل: </span>
+                  <span class="txt-arial-darkGrey-normal-20">{{order.plantation_name}}</span>
                 </p>
-              </div>
-              <div class="col-3">
-                <input type="number" min="0" value={{plantItem.quantity}} (change)=updatePrices($event,order,plantItem)>
-              </div>
-              <div class="col-3">
                 <p>
-                  <span class="txt-arial-secondary-normal-20">{{plantItem.totalPrice}} </span>
-                  <span class="txt-arial-secondary-normal-20">جنيه</span>
+                  <span class="txt-arial-darkGrey-bold-20">النبات:</span>
+                  <span class="txt-arial-darkGrey-normal-20">{{order.plantname}}</span>
                 </p>
               </div>
             </div>
+          </div>
+          <div class="col-12 col-md-8 order-data">
+              <h5 class="txt-arial-dark-bold-24">تفاصيل الطلب</h5>
+              <div class="row titles">
+                  <div class="col-3">
+                    <h6 class="txt-arial-dark-normal-20">المطلوب</h6>
+                  </div>
+                  <div class="col-3">
+                    <h6 class="txt-arial-dark-normal-20">سعر الوحدة</h6>
+                  </div>
+                  <div class="col-3">
+                    <h6 class="txt-arial-dark-normal-20">الكمية</h6>
+                  </div>
+                  <div class="col-3">
+                    <h6 class="txt-arial-dark-normal-20">الاجمالى</h6>
+                  </div>
+              </div>
+              <div class="row" *ngFor="let plantItem of order.itemContents">
+                <div class="col-3">
+                  <p class="txt-arial-darkGrey-normal-20">{{plantItem.type}}</p>
+                </div>
+                <div class="col-3">
+                  <p>
+                    <span class="txt-arial-darkGrey-normal-20">{{plantItem.price}} </span>
+                    <span class="txt-arial-darkGrey-normal-20">جنيه</span>
+                  </p>
+                </div>
+                <div class="col-3">
+                  <input type="number" min="0" value={{plantItem.quantity}} (change)=updatePrices($event,order,plantItem)>
+                </div>
+                <div class="col-3">
+                  <p>
+                    <span class="txt-arial-secondary-normal-20">{{plantItem.totalPrice}} </span>
+                    <span class="txt-arial-secondary-normal-20">جنيه</span>
+                  </p>
+                </div>
+              </div>
+          </div>
+        </div>
+        <div class="row extra-order-sec pt-4">
+            <div class="col-10">
+              <p>
+                <span class="txt-arial-dark-bold-24">اجمالى الطلب: </span>
+                <span class="txt-arial-secondary-bold-24">{{order.totalprice}} </span>
+                <span class="txt-arial-secondary-bold-24">جنيه</span>
+              </p>
+            </div>
+            <div class="col-2 delete-order" (click)=deleteOrder(order)>
+              <i class="fas fa-trash-alt"></i>
+              <span class="txt-arial-secondary-bold-20">حذف</span>
+            </div>
         </div>
       </div>
-      <div class="row extra-order-sec pt-4">
-          <div class="col-10">
-            <p>
-              <span class="txt-arial-dark-bold-24">اجمالى الطلب: </span>
-              <span class="txt-arial-secondary-bold-24">{{order.totalprice}} </span>
-              <span class="txt-arial-secondary-bold-24">جنيه</span>
-            </p>
-          </div>
-          <div class="col-2 delete-order" (click)=deleteOrder(order)>
-            <i class="fas fa-trash-alt"></i>
-            <span class="txt-arial-secondary-bold-20">حذف</span>
-          </div>
+      <div class="total-cart row">
+        <div class="col-8">
+          <p>
+            <span class="txt-arial-dark-bold-30">المبلغ الكلى: </span>
+            <span class="txt-arial-secondary-bold-24">{{cartTotalPrice}} </span>
+            <span class="txt-arial-secondary-bold-24">جنيه</span>
+          </p>
+        </div>
+        <div class="col-4">
+          <button class="btn-custom btn-custom-primary ml-4" (click)=checkout()>متابعة الشراء</button>
+          <button class="btn-custom btn-custom-ghost" (click)=backHome()>العودة الى الرئيسية</button>
+        </div>
       </div>
     </div>
-    <div class="total-cart row">
-      <div class="col-8">
-        <p>
-          <span class="txt-arial-dark-bold-30">المبلغ الكلى: </span>
-          <span class="txt-arial-secondary-bold-24">{{cartTotalPrice}} </span>
-          <span class="txt-arial-secondary-bold-24">جنيه</span>
-        </p>
+    <ng-template #emptyCartDiv>
+      <div class="empty-cart">
+        <div class="row justify-content-center">
+          <div class="col-md-4 col-10 text-center">
+            <img src="../../assets/imgs/goods.svg" class="img-fluid mb-5">
+            <h3 class="txt-arial-dark-bold-30">عربة التسوق فارغة</h3>
+            <button class="btn-custom btn-custom-primary" (click)=goToHome()>أضف بعض النباتات</button>
+          </div>
+        </div>
       </div>
-      <div class="col-4">
-        <button class="btn-custom btn-custom-primary ml-4" (click)=checkout()>متابعة الشراء</button>
-        <button class="btn-custom btn-custom-ghost" (click)=backHome()>العودة الى الرئيسية</button>
-      </div>
-    </div>
-
+    </ng-template>
   </div>
 </div>

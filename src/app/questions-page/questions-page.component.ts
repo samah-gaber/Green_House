@@ -49,6 +49,12 @@ export class QuestionsPageComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.userQuestionService.getQuestions().subscribe((questionData: any) => {
+      this.objData = questionData.questions;
+    });
+    this.userQuestionService.getUserQuestionCategories().subscribe((questionCategories :any) => {
+      this.questionCategoryOptions = questionCategories.category;
+    });
     this.createFormControls();
     this.createForm();
     const self = this;

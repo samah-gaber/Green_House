@@ -1,42 +1,47 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { DomainService } from './domain.service';
+import { HttpServiceService } from './http-service.service';
+// import { DomainService } from './domain.service';
 
 @Injectable()
 export class PlantService {
 
   constructor(
     private http: HttpClient,
-    private domain: DomainService
+    private httpService: HttpServiceService
+    // private domain: DomainService
   ) { }
 
-  domainURL = this.domain.getDomain();
-  dynamicURL: string;
+  // domainURL = this.domain.getDomain();
+  // dynamicURL: string;
   plantsURL: string;
   plantsCatURL: string;
 
   plantsGetRequest(url) {
-    this.dynamicURL = url;
-    this.plantsURL = `${this.domainURL}/plants${this.dynamicURL}`;
+    // this.dynamicURL = url;
+    this.plantsURL = `/plants${url}`;
+    // this.plantsURL = `${this.domainURL}/plants${this.dynamicURL}`;
     console.log('url: ' + this.plantsURL);
-    return this.http.get(this.plantsURL);
+    // return this.http.get(this.plantsURL);
     //return this.http.get("./assets/genericQuestionObject.json");
+    return this.httpService.getRequest(this.plantsURL);
+  }
+
+  plantsCatGetRequest() {
+    this.plantsCatURL = `/plants/categories`;
+    console.log('url: ' + this.plantsCatURL);
+    // return this.http.get(this.plantsCatURL);
+    return this.httpService.getRequest(this.plantsCatURL);
   }
 
   // plantsCatGetRequest() {
-  //   this.plantsCatURL = `${this.domainURL}/plants/categories`;
-  //   console.log('url: ' + this.plantsCatURL);
-  //   return this.http.get(this.plantsCatURL);
+  //   return this.http.get("./assets/plantCatRes.json");
   // }
 
-  plantsCatGetRequest() {
-    return this.http.get("./assets/plantCatRes.json");
-  }
-
   plantsSingleCatGetRequest(url) {
-    this.dynamicURL = url;
-    this.plantsCatURL = `${this.domainURL}/plants/category/${this.dynamicURL}`;
+    this.plantsCatURL = `/plants/category/${url}`;
     console.log('url: ' + this.plantsCatURL);
-    return this.http.get(this.plantsCatURL);
+    // return this.http.get(this.plantsCatURL);
+    return this.httpService.getRequest(this.plantsCatURL);
   }
 }

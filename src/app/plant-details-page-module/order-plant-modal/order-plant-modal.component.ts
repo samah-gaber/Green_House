@@ -99,9 +99,9 @@ export class OrderPlantModalComponent implements OnInit {
     this.showEmptyOrderError = false;
     const nameAttr = event.target.getAttribute("name");
     if (event.target.checked) {
-      document.getElementById(nameAttr).disabled = false;
+      // document.getElementById(nameAttr).disabled = false;
     } else {
-      document.getElementById(nameAttr).disabled = true;
+      // document.getElementById(nameAttr).disabled = true;
     }
   }
 

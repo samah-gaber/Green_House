@@ -11,7 +11,8 @@ export class OrdersViewPageComponent implements OnInit {
   constructor(private orderService: OrderServiceService) {
 
     orderService.initiateOrderRequest().subscribe((inputOrderData) =>{
-      this.ordersData = inputOrderData.orders;
+      // this.ordersData = inputOrderData.orders;
+      this.ordersData = inputOrderData;
       console.log('Got the data', this.ordersData);
     });
   }

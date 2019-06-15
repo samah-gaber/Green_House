@@ -30,7 +30,10 @@
           </div>
           <div class="col-6 qty-input">
             <input type="number" formControlName={{item.inputCName}} class="form-control" mdbInput min="0" id={{item.type}}  disabled>
-            <span class="txt-arial-darkGrey-normal-20">الشراء بالوحدة</span>
+            <span class="txt-arial-darkGrey-normal-20" *ngIf="item.type=='graft'">الشراء بالوحدة</span>
+            <span class="txt-arial-darkGrey-normal-20" *ngIf="item.type=='seeds'">الشراء بالكيلوجرام</span>
+            <span class="txt-arial-darkGrey-normal-20" *ngIf="item.type=='soil'">الشراء بالكيلوجرام</span>
+            <span class="txt-arial-darkGrey-normal-20" *ngIf="item.type=='fert'">الشراء بالكيلوجرام</span>
           </div>
         </div>
       </form>

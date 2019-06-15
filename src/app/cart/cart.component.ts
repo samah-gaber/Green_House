@@ -28,7 +28,7 @@ export class CartComponent implements OnInit {
 
   ngOnInit() {
     this.getStoredOrders();
-    this.emptyCart = false;
+    this.emptyCart = true;
   }
 
   getStoredOrders() {
@@ -36,7 +36,7 @@ export class CartComponent implements OnInit {
       if(localStorage.key(i).startsWith('CI_')) {
         let restoredItem = JSON.parse( localStorage.getItem( localStorage.key(i) ) );
         this.ordersArr.push( restoredItem );
-        console.log(this.ordersArr);
+        this.emptyCart = false;
       }
     }
     this.calcCartTotalPrice();
@@ -77,6 +77,7 @@ export class CartComponent implements OnInit {
   }
 
   deleteOrder(order) {
+    let decreaseCartCount = true;
     this.ordersArr.forEach( (elt, index) => {
       if(elt == order) {
         this.ordersArr.splice(index, 1);
@@ -85,6 +86,7 @@ export class CartComponent implements OnInit {
     let storedItemKey = `CI_${order.plantation_id}_${order.plantid}`;
     localStorage.removeItem(storedItemKey);
     this.cartService.decreaseCartCount();
+    this.calcCartTotalPrice();
   }
 
   backHome() {
@@ -118,6 +120,10 @@ export class CartComponent implements OnInit {
             }
           });
     }
+  }
+
+  goToHome() {
+    this.router.navigateByUrl('/');
   }
 
 }
