@@ -30,9 +30,16 @@ const routes: Routes = [
       },
       {
         path: 'cart', component: CartComponent
-      }
+      },
+      // {
+      //   path: 'orders', component:  
+      // },
+      // {
+      //   path: 'question', component: 
+      // }
     ]
   }
+
 ];
 
 @NgModule({
