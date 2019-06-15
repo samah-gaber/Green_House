@@ -11,7 +11,9 @@ import { PlantationCommentsCarouselComponent } from './plantation-comments-carou
 import { PlantationSingleCommentComponent } from './plantation-single-comment/plantation-single-comment.component';
 import { PlantDetailsQuestionsComponent } from './plant-details-questions/plant-details-questions.component';
 import { SingleQuestionComponent } from './single-question/single-question.component';
-// import { BlockAnonUserModalComponent } from './block-anon-user-modal/block-anon-user-modal.component';
+// import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+// import { OrderPlantModalComponent } from './order-plant-modal/order-plant-modal.component';
+
 const routes: Routes = [
   {
     path: '', component: PlantDetailsPageComponent
@@ -27,14 +29,16 @@ const routes: Routes = [
     PlantationCommentsCarouselComponent,
     PlantationSingleCommentComponent,
     PlantDetailsQuestionsComponent,
-    SingleQuestionComponent
-    // BlockAnonUserModalComponent
+    SingleQuestionComponent,
+    // OrderPlantModalComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     NgbModule,
-    SharedModule
+    SharedModule,
+    // FormsModule,
+    // ReactiveFormsModule
   ]
 })
 export class PlantDetailsPageModule { }

@@ -1,0 +1,79 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <button
+      type="button"
+      class="close pull-right"
+      aria-label="Close"
+      (click)="modalRef.hide()"
+    >
+      <span aria-hidden="true">×</span>
+    </button>
+    <h4 class="modal-title w-100 txt-arial-dark-bold-24 text-center" id="myModalLabel">برجاء تأكيد بياناتاك</h4>
+  </div>
+  <div class="modal-body py-4 px-5">
+      <form
+            [formGroup]="userDataOrder"
+            (ngSubmit)="onSubmit(userDataOrder)"
+            id="userDataOrder"
+          >
+          <!-- phone input -->
+          <div class="form-group mb-5">
+            <label class="txt-arial-dark-bold-18 mb-0">
+              رقم التليفون
+            </label>
+            <input
+              type="text"
+              formControlName="userPhone"
+              class="form-control"
+            />
+            <div *ngIf="userPhone.invalid && (userPhone.dirty || userPhone.touched)">
+              <div *ngIf="userPhone.errors.required" class="error-msg">
+                يجب ملء خانة التليفون
+              </div>
+              <div *ngIf="userPhone.errors.digits" class="error-msg">
+                رقم التليفون يجب ان يحتوى علي أرقام فقط
+              </div>
+            </div>
+          </div>
+            <!-- country input -->
+            <div class="form-group mb-5">
+              <label class="txt-arial-dark-bold-18  mb-0">
+                المدينة
+              </label>
+              <select id="country" formControlName="userCity" class="mr-4">
+                <option *ngFor="let c of countries" [ngValue]="c">{{ c }}</option>
+              </select>
+              <div *ngIf="userCity.invalid && (userCity.dirty || userCity.touched)">
+                <div *ngIf="userCity.errors.required" class="error-msg">
+                  يجب اختيار المدينة
+                </div>
+              </div>
+            </div>
+            <!-- address input -->
+          <div class="form-group mb-5">
+              <label class="txt-arial-dark-bold-18  mb-0">
+                عنوان التوصيل
+              </label>
+              <input
+                type="text"
+                formControlName="userAddress"
+                class="form-control"
+              />
+              <div *ngIf="userAddress.invalid && (userAddress.dirty || userAddress.touched)">
+                <div *ngIf="userAddress.errors.required" class="error-msg">
+                  يجب ملء خانة العنوان
+                </div>
+              </div>
+            </div>
+          </form>
+  </div>
+  <div class="modal-footer justify-content-center">
+      <div class="row">
+        <div class="col-12">
+          <button type="submit" form="userDataOrder" class="btn-custom btn-custom-primary" [disabled]="userDataOrder.invalid">
+            ارسال الطلب
+          </button>
+        </div>
+      </div>
+  </div>
+</div>

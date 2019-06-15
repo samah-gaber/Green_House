@@ -1,10 +1,16 @@
 <div class="signin-form">
   <div class="container m-auto py-5">
     <div class="row align-items-center">
-      <div class="col-md-4 col-12 logo text-center">
-        <img src="../../../assets/imgs/logo-lg.png" alt="LOGO" class="img-fluid mb-5 logo-lg">
-        <img src="../../../assets/imgs/logomob.png" alt="LOGO" class="img-fluid mb-5 logo-mob m-auto">
-        <h2 class="txt-samt-dark-120">جرين هاوس</h2>
+      <div class="col-md-4 col-12 logo text-center" (click)='goToHome()'>
+        <div class="row">
+          <div class="col-md-12 col-3 m-auto">
+            <img src="../../../assets/imgs/logo-lg.png" alt="LOGO" class="img-fluid mb-5 logo-lg">
+            <img src="../../../assets/imgs/logomob.png" alt="LOGO" class="img-fluid mb-5 logo-mob m-auto">
+          </div>
+          <div class="col-md-12">
+            <h2 class="txt-samt-dark-120">جرين هاوس</h2>
+          </div>
+        </div>
       </div>
       <div class="col-12 col-md-6 form">
         <h3 class="txt-arial-dark-bold-50 mb-5">تسجيل الدخول</h3>
@@ -34,7 +40,11 @@
                     <div *ngIf="password.errors.required" class="error-msg">يجب ملء خانة كلمة المرور</div>
                 </div>
               </div>
-            <button type="submit" class="btn-custom btn-custom-primary my-5" [disabled]="signinForm.invalid">تسجيل الدخول</button>
+              <div class="row">
+                  <div class="col-12 text-center">
+                    <button type="submit" class="btn-custom btn-custom-primary my-5" [disabled]="signinForm.invalid">تسجيل الدخول</button>
+                  </div>
+              </div>
           </form>
           <small>ليس لديك حساب؟ قم </small>
           <a routerLink="/auth/signup" queryParamsHandling="preserve">بالتسجيل الآن</a>

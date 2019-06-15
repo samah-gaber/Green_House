@@ -13,56 +13,31 @@ export class UserService {
     authUser: AuthUserData;
 
   constructor( 
-      private http: HttpClient,
+        private http: HttpClient,
         private domain: DomainService
     ) { }
 
 
   urlDomain = this.domain.getDomain();
-  urlSignUp = `${this.urlDomain}/Client/insertclient`;
+  urlSignUp = `${this.urlDomain}/auth/insertclient`;
   urlSignIn = `${this.urlDomain}/auth/login`;
-  urlLogOut = 'http://reqres.in/api/login';
+  urlLogOut = `${this.urlDomain}/login`;
 
     submitNewUser(userSignedUp: UserSignedUp) {
-      return this.http.post( this.urlSignUp, userSignedUp )
-    //   .subscribe (
-    //       (res: AuthUserData) => {
-    //         console.log(res);
-    //         //   this.setAuthToken(res.token);   
-    //         this.authUser = res;         
-    //         this.setAuthUserData(this.authUser);   
-    //         },
-    //         error => console.log(error)
-    //     );
+      return this.http.post( this.urlSignUp, userSignedUp );
     }
     
     logInUser(userSignedIn: UserSignedIn ) {
        return this.http.post( this.urlSignIn, userSignedIn );
-    //    .subscribe (
-    //         (res: AuthUserData) => {
-    //             this.authUser = res;         
-    //             this.setAuthUserData(this.authUser); 
-    //         },
-    //         (error) => console.log(error)
-    //     );
     }
 
     setAuthUserData(data: AuthUserData) {
         localStorage.setItem( 'authUserData', JSON.stringify(data) );
     }
     
-    deleteAuthUserData(data: AuthUserData) {
-        this.http.post( this.urlLogOut, data.token ).subscribe (
-            res => {
-                console.log(res); 
-                this.authUser.userId = null;
-                this.authUser.userName = '';
-                this.authUser.token = '';
-                localStorage.removeItem('authUserData');
-            },
-            error => console.log(error)
-        );
-        
+    logOutUser() {
+     let userToken = this.returnAuthUserData().token;
+       return this.http.post( this.urlLogOut, userToken );    
     }
 
     returnAuthUserData() {
@@ -75,5 +50,12 @@ export class UserService {
             }
         }
         return this.authUser;
+    }
+
+    deleteAuthUserData() {
+        this.authUser.userId = null;
+        this.authUser.userName = '';
+        this.authUser.token = '';
+        localStorage.removeItem('authUserData');
     }
 }

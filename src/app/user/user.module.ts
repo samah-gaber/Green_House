@@ -4,9 +4,9 @@ import { SharedModule } from '../shared/shared.module';
 import { RouterModule, Routes } from '@angular/router';
 import { UserFavPageComponent } from './user-fav-page/user-fav-page.component';
 import { AuthGuard } from '../services/auth-guard.service';
-import { UserFavSingleCardComponent } from './user-fav-single-card/user-fav-single-card.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { UserPagesComponent } from './user-pages/user-pages.component';
+import { CartComponent } from '../cart/cart.component';
 
 
 const routes: Routes = [
@@ -14,7 +14,9 @@ const routes: Routes = [
     path: '', component:  UserPagesComponent, children: [
       {
         path: 'favourites', component: UserFavPageComponent
-        // path: 'favourites', component: UserFavPageComponent, canActivate: [ AuthGuard ]
+      },
+      {
+        path: 'cart', component: CartComponent
       }
     ]
   }
@@ -28,7 +30,11 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [UserFavPageComponent, UserFavSingleCardComponent, UserPagesComponent],
+  declarations: [
+    UserFavPageComponent,  
+    UserPagesComponent,
+    CartComponent
+  ],
   imports: [
     CommonModule,
     SharedModule,

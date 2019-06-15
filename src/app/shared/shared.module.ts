@@ -13,26 +13,38 @@ import { BlockAnonUserModalComponent } from '../block-anon-user-modal/block-anon
 import { DomainService } from '../services/domain.service';
 import { PlantService } from '../services/plant.service';
 import { UserFavPlantsService } from '../services/user-fav-plants.service';
-// import { UserFavPlantsArrService } from '../services/user-fav-plants-arr.service';
+import { OrderPlantModalComponent } from '../plant-details-page-module/order-plant-modal/order-plant-modal.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { CartService } from '../services/cart.service';
+import { UserDataOrderModalComponent } from '../cart/user-data-order-modal/user-data-order-modal.component';
+import { OrderConfirmModalComponent } from '../cart/order-confirm-modal/order-confirm-modal.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
     LoadingScreenComponent,
-    BlockAnonUserModalComponent
+    BlockAnonUserModalComponent,
+    OrderPlantModalComponent,
+    UserDataOrderModalComponent,
+    OrderConfirmModalComponent
   ],
   imports: [
     CommonModule,
     MDBBootstrapModule.forRoot(),
     NgbModule,
-    RouterModule
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule
   ], 
   exports: [
     HeaderComponent,
     FooterComponent,
     LoadingScreenComponent,
     BlockAnonUserModalComponent,
+    OrderPlantModalComponent,
+    UserDataOrderModalComponent,
+    OrderConfirmModalComponent,
     CommonModule
   ],
   providers: [
@@ -41,8 +53,8 @@ import { UserFavPlantsService } from '../services/user-fav-plants.service';
     AuthService,
     DomainService,
     PlantService,
-    UserFavPlantsService
-    // UserFavPlantsArrService
+    UserFavPlantsService,
+    CartService
   ]
 })
 export class SharedModule { }

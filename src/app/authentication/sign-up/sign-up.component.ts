@@ -7,12 +7,12 @@ import {
   NgForm,
   FormControl
 } from "@angular/forms";
-import { CustomValidators } from 'ng2-validation';
+import { CustomValidators } from "ng2-validation";
 import { validateConfig } from "@angular/router/src/config";
-import { UserService } from '../../services/user.service';
-import { UserSignedUp, AuthUserData } from '../../interfaces/user-interface';
-import { Router } from '@angular/router';
-
+import { UserService } from "../../services/user.service";
+import { UserSignedUp, AuthUserData } from "../../interfaces/user-interface";
+import { Router } from "@angular/router";
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: "app-sign-up",
@@ -20,7 +20,6 @@ import { Router } from '@angular/router';
   styleUrls: ["./sign-up.component.scss"]
 })
 export class SignUpComponent implements OnInit {
-
   signupForm: FormGroup;
   countries: string[] = ["القاهرة", "الاسكندرية"];
   userSignedUp: UserSignedUp;
@@ -34,7 +33,6 @@ export class SignUpComponent implements OnInit {
   gender: FormControl;
   birthDate: FormControl;
 
-
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
@@ -44,60 +42,28 @@ export class SignUpComponent implements OnInit {
   ngOnInit() {
     this.createFormControls();
     this.createForm();
-    // this.signupForm = this.fb.group({
-    //   userName: new FormControl('', Validators.required),
-    //   userEmail: new FormControl('', [Validators.required, Validators.email]),
-    //   password: new FormControl('',[Validators.required, Validators.minLength(6)]),
-    //   confirmPassword: new FormControl('', [Validators.required, CustomValidators.equalTo(password)]),
-    //   country: new FormControl('', Validators.required),
-    //   gender: new FormControl('', Validators.required)
-    // });
-
   }
 
-  
-
-  // resetForm(form?: NgForm) {
-  //   if (form != null) form.reset();
-  //   this.user = {
-  //     userName: "",
-  //     password: "",
-  //     email: "",
-  //     city: "",
-  //     birthDate: ""
-  //   };
-  // }
-
-  // checkConfirmPasswordMatch() {
-  //   if(this.password !=null  && this.confirmPassword !=null){
-  //     if (this.password.value !== this.confirmPassword.value) {
-  //       // console.log('matching');
-  //       return { notMatching: true };
-  //     } else {
-  //       // console.log('not matching');
-  //       return  null;
-  //     }
-  //   }
-    
-  // }
-
   createFormControls() {
-   
-    this.userName= new FormControl('', Validators.required);
-    this.userEmail= new FormControl('', [Validators.required, Validators.email]);
-    this.password= new FormControl('',[
+    this.userName = new FormControl("", Validators.required);
+    this.userEmail = new FormControl("", [
+      Validators.required,
+      Validators.email
+    ]);
+    this.password = new FormControl("", [
       Validators.required,
       Validators.minLength(6)
     ]);
-    this.confirmPassword= new FormControl('', [Validators.required, CustomValidators.equalTo(this.password)]);
-    this.country= new FormControl('', Validators.required);
-    this.gender= new FormControl('');
-    this.birthDate= new FormControl('');
-
+    this.confirmPassword = new FormControl("", [
+      Validators.required,
+      CustomValidators.equalTo(this.password)
+    ]);
+    this.country = new FormControl("", Validators.required);
+    this.gender = new FormControl("");
+    this.birthDate = new FormControl("");
   }
 
   createForm() {
-    
     this.signupForm = this.fb.group({
       userName: this.userName,
       userEmail: this.userEmail,
@@ -110,31 +76,33 @@ export class SignUpComponent implements OnInit {
   }
 
   onSignup(signupForm) {
+    let userBirthDate = formatDate(this.birthDate.value, 'dd-MM-yyyy', 'en-US');
+
     this.userSignedUp = {
-      name: this.userEmail.value,
+      name: this.userName.value,
       email: this.userEmail.value,
       password: this.password.value,
       city: this.country.value,
-      birthdate: this.birthDate.value ,
+      // birthdate: "11/11/2019",
+      birthdate: userBirthDate,
       gender: this.gender.value
     };
-    console.log("this.userSignedUp");
-    console.log(this.userSignedUp);
-    console.log(this.userSignedUp.birthdate);
-    console.log(typeof(this.userSignedUp.birthdate));
 
     this.userService.submitNewUser(this.userSignedUp).subscribe(
       (res: AuthUserData) => {
         console.log("response");
         console.log(res);
-        this.authUser = res;         
-        this.userService.setAuthUserData(this.authUser); 
-        this.router.navigateByUrl('/');
+        this.authUser = res;
+        this.userService.setAuthUserData(this.authUser);
+        this.router.navigateByUrl("/");
       },
-      (error) => {
+      error => {
         console.log(error);
       }
-    )
+    );
+  }
 
+  goToHome() {
+    this.router.navigateByUrl("/");
   }
 }
