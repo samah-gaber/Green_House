@@ -9,6 +9,7 @@ import { BlockAnonUserModalComponent } from '../../block-anon-user-modal/block-a
 import { UserFavPlant } from '../../interfaces/user-interface';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { PlantationServiceService } from 'src/app/services/plantation-service.service';
 
 @Component({
   selector: 'app-single-plant',
@@ -31,7 +32,8 @@ export class SinglePlantComponent implements OnInit {
     private authUser: AuthService,
     private userFavPlantService: UserFavPlantsService,
     private userService: UserService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private plantationService: PlantationServiceService
   ) {
 
   }
@@ -99,12 +101,18 @@ export class SinglePlantComponent implements OnInit {
     });
   }
 
-  handleSend(param){
+  submitPlantComment(param){
+    const submittedComment = param.controls.plantComment.value;
+    this.plantationService.sendFormData(submittedComment).subscribe((res) =>{
+      console.log("Comment submitted");
+    });
     this.ngbModalService.dismissAll();
   }
 
   deletePlant(){
-    console.log("deleting plant with id", this.singlePlant);
+    this.plantationService.deleteData(this.singlePlant.id).subscribe((res)=>{
+      console.log("Delete request executed " , res);
+    });
     this.ngbModalService.dismissAll();
   }
 }

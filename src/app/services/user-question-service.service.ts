@@ -1,3 +1,4 @@
+import { HttpServiceService } from './http-service.service';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 
@@ -8,7 +9,7 @@ export class UserQuestionServiceService {
   questionData: any;
   // userQuestionsURL = 'http://192.168.43.132:9999/api/client/Getquestions/112';
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private httpService: HttpServiceService) {
 
   }
 
@@ -33,17 +34,7 @@ export class UserQuestionServiceService {
   }
 
   sendFormData(data){
-    const myheader = new HttpHeaders();
-    myheader.set('Content-Type', 'application/x-www-form-urlencoded');
-    // const url = '';
     const url = 'http://192.168.43.132:9999/api/client/insertQuestion/112';
-
-    let body = new HttpParams();
-    body = body.set('formData', data);
-    console.log(data);
-    // const token = localStorage.getItem('id_token');
-    // return this.http.post(url + token, body, {headers: myheader});
-    return this.http.post(url , body, {headers: myheader});
-
+    return this.httpService.sendRequest(url, data);
   }
 }
