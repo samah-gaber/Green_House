@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { PlantationServiceService } from 'src/app/services/plantation-service.service';
 
 @Component({
   selector: 'app-plantation-home',
@@ -12,7 +13,8 @@ export class PlantationHomeComponent implements OnInit {
 
   questionForm: FormGroup;
   plantationNewQuestion : FormControl;
-  constructor(private modalService: NgbModal, private fb: FormBuilder) { }
+  constructor(private modalService: NgbModal, private fb: FormBuilder,
+    private plantationService: PlantationServiceService) { }
 
   ngOnInit() {
     this.createFormControls();
