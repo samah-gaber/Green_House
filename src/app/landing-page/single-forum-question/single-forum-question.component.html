@@ -36,5 +36,9 @@
           </div>
         </div>
       </div>
+      <div *ngIf="userRole == 2">
+        <textarea id = "plantationQuestion{{question.questionId}}" placeholder="اضف رد"></textarea>
+        <button  class="btn-custom btn-custom-primary mb-2 mr-2" (click)="submitComment()">اسأل</button>
+      </div>
     </div>
   </section>

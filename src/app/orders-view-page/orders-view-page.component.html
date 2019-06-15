@@ -1,7 +1,7 @@
 <br>
 <div *ngIf="ordersData ;else noOrderTemplate">
   <div *ngFor="let order of ordersData.orders">
-      <app-single-order-card [orderData]="order"></app-single-order-card>
+      <app-single-order-card [userRole]="userRole" [orderData]="order"></app-single-order-card>
       <br>
   </div>
 </div>

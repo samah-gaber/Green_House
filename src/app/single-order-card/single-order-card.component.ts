@@ -9,6 +9,7 @@ import { NgbProgressbarConfig } from '@ng-bootstrap/ng-bootstrap';
 })
 export class SingleOrderCardComponent implements OnInit {
   @Input() orderData;
+  @Input() userRole;
   constructor(config: NgbProgressbarConfig) {
     config.max = 100;
     config.striped = true;

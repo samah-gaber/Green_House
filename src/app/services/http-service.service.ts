@@ -42,7 +42,7 @@ export class HttpServiceService {
     console.log("http service , post request to ", inputUrl);
     if( myheader ) {
       console.log("send token with header");
-      
+
       return this.http.post(`${this.domainUrl}${inputUrl}`, inputBody, {headers: myheader});
     } else {
       console.log("NOT send token with header");
@@ -61,7 +61,6 @@ export class HttpServiceService {
 
   // sending get rquest
   getRequest(inputUrl){
-    debugger;
     console.log("http service , get request to ", inputUrl);
     const myheader = this.setHttpHeader();
     console.log("http service , header ", myheader);
@@ -73,5 +72,5 @@ export class HttpServiceService {
       return this.http.get(`${this.domainUrl}${inputUrl}`);
     }
   }
-  
+
 }

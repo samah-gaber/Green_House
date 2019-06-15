@@ -20,6 +20,6 @@ export class PlantationQuestionServiceService {
       answerText : answer
     }
     const url = "";
-    return this.httpService.sendRequest(url,body);
+    return this.httpService.postRequest(url,body);
   }
 }
