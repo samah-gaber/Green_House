@@ -23,8 +23,14 @@ export class OrderServiceService {
   // 192.168.45.68/orders/1
 
   // initiateOrderRequest(): Observable<any> {
-  initiateOrderRequest() {
+  initiateUserOrderRequest() {
     // return this.http.get(this.orderURL);
     return this.httpService.getRequest(this.orderURL);
+  }
+
+  initiatePlantationOrderRequest() {
+    // return this.http.get(this.orderURL);
+    return this.httpService.getRequest("./assets/plantationOrders.json");
+    //return this.httpService.getRequest(this.orderURL);
   }
 }

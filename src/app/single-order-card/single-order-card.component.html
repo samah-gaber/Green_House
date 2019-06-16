@@ -4,7 +4,8 @@
       <div class="card-body">
         <div class="row ">
           <div class=" d-flex justify-content-between col-12">
-            <h4 class="txt-arial-dark-bold-20">البائع: {{orderData.plantation_name}}</h4>
+            <h4 *ngIf="userRole==1" class="txt-arial-dark-bold-20">البائع: {{orderData.plantation_name}}</h4>
+            <h4 *ngIf="userRole==2" class="txt-arial-dark-bold-20">المشتري: {{orderData.user_name}}</h4>
             <h4 class="txt-arial-dark-bold-20"> التاريخ : {{orderData.orderdate}}</h4>
           </div>
         </div>
@@ -37,9 +38,9 @@
         <div class="row d-flex justify-content-between align-items-center">
             <h3 class="txt-arial-lightGrey-normal-20 txt-arial-dark-bold-30 col-md-4 col-6">المجموع: {{orderData.totalprice}} جنيه</h3>
             <div class="col-8">
-              <div class="row">
+              <div *ngIf="userRole==1"  class="row">
                   <span class=" txt-arial-dark-bold-20 col-md-2 col-12">حالة الطلب :</span>
-                  <span class=" col-md-10 col-12"><ngb-progressbar [value]="orderData.flag"></ngb-progressbar></span>
+                  <span  class=" col-md-10 col-12"><ngb-progressbar [value]="orderData.flag"></ngb-progressbar></span>
               </div>
 
             </div>
