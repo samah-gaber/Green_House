@@ -83,6 +83,9 @@
 %txt-arial-white-bold-18 {
     @include text('Arial, Helvetica, sans-serif', $rootFontSize*1.3, $whiteColor, bold);
 }
+%txt-arial-secondary-bold-18 {
+    @include text('Arial, Helvetica, sans-serif', $rootFontSize*1.3, $secondaryColor, bold);
+}
 %txt-arial-white-normal-14 {
     @include text('Arial, Helvetica, sans-serif', $rootFontSize*1, $whiteColor, normal);
 }

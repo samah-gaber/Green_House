@@ -2,7 +2,7 @@ import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 // For MDB Angular Free
 import { WavesModule } from 'angular-bootstrap-md'
-import { PlantCategory, plantCatInfo, PlantCatRes } from '../../interfaces/plant-interface';
+import { plantCatInfo, PlantCatRes } from '../../interfaces/plant-interface';
 import { HttpClient } from '@angular/common/http';
 import { PlantService } from '../../services/plant.service';
 import { AuthUserData } from 'src/app/interfaces/user-interface';
@@ -16,7 +16,6 @@ export class PlantCategoriesComponent implements OnInit {
 
   plantCatsUrl: '';
   plantCatRes: PlantCatRes;
-  // plantCategories: PlantCategory[];
   singleCatPlants: plantCatInfo;
   userData : AuthUserData;
   userRole : number;

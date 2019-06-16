@@ -35,7 +35,7 @@ export class UserFavPlantsService {
 
   // add plant to favorites using http header
   addToFav(plantId) {
-    debugger;
+    ;
     let url = `${this.urlAddToFav}/${plantId}`;
     // return this.http.get( `${this.urlAddToFav}/${plantId}`, {
     //   'headers': this.headers

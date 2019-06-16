@@ -1,9 +1,9 @@
 // home page plant categories
-export interface PlantCategory {
-  id: number;
-  name: string;
-  url: string;
-}
+// export interface PlantCategory {
+//   id: number;
+//   name: string;
+//   url: string;
+// }
 
 // home page each cateogry plants
 export interface plantCatInfo {
@@ -29,6 +29,24 @@ export interface PlantCatRes {
       id: number;
       name: string;
       image: string;
+    }
+  ]
+}
+// plantation home page plant categries response
+export interface AddPlantCatRes {
+  category: [
+    {
+      id: number;
+      name: string;
+    }
+  ]
+}
+// plantation home page category plants response
+export interface AddCatPlantsRes {
+  plant: [
+    {
+      id: number;
+      name: string;
     }
   ]
 }

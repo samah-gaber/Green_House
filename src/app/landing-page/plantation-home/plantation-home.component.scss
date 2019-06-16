@@ -1,3 +1,26 @@
-@import "../../../styles.scss"
+@import "../../../styles.scss";
+
+.add-new-plant-modal-body {
+    .add-old-plant-div, .add-new-plant-div {
+        display: inline-block;
+        padding: 0 15px;
+    }
+    .add-old-plant-div {
+        border-left: 1px solid $separatorTextGreyColor;
+    }
+    button {
+        background-color: transparent;
+        border: none;
+        outline: none;
+        border-bottom: 2px solid transparent;
+        // &[name='add-old-plant'] {
+        //     border: 2px solid transparent;
+        //     border-bottom: none;
+        // }
+        &.active {
+            border-color: $secondaryColor;
+        }
+    }
+}
 
 

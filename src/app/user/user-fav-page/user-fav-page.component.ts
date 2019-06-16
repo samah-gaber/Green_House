@@ -79,7 +79,7 @@ export class UserFavPageComponent implements OnInit {
 
   ngOnInit() {
     // accessing user id 
-    debugger;
+    ;
     this.route.queryParams.subscribe(params => {
       this.userId = params.userId;
     });

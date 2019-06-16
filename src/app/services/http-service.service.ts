@@ -61,7 +61,7 @@ export class HttpServiceService {
 
   // sending get rquest
   getRequest(inputUrl){
-    debugger;
+    ;
     console.log("http service , get request to ", inputUrl);
     const myheader = this.setHttpHeader();
     console.log("http service , header ", myheader);

@@ -92,9 +92,9 @@ export interface CartOrdersSentObj {
 
 // user orders sent OBJ
 export interface UserOrdersSentObj {
-    userPhone: string;
-    userCity: string;
-    userAddress: string;
+    phone: string;
+    city: string;
+    street: string;
     orders : CartOrdersAdjustedObj[];
 }
 

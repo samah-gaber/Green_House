@@ -27,19 +27,21 @@ export class PlantService {
     return this.httpService.getRequest(this.plantsURL);
   }
 
+  
+  // plantsCatGetRequest() {
+  //   return this.http.get("./assets/plantCatRes.json");
+  // }
+
+  // home plant categories
   plantsCatGetRequest() {
-    this.plantsCatURL = `/plants/categories`;
+    this.plantsCatURL = `plants/categories`;
     console.log('url: ' + this.plantsCatURL);
     // return this.http.get(this.plantsCatURL);
     return this.httpService.getRequest(this.plantsCatURL);
   }
 
-  // plantsCatGetRequest() {
-  //   return this.http.get("./assets/plantCatRes.json");
-  // }
-
   plantsSingleCatGetRequest(url) {
-    this.plantsCatURL = `/plants/category/${url}`;
+    this.plantsCatURL = `plants/category/${url}`;
     console.log('url: ' + this.plantsCatURL);
     // return this.http.get(this.plantsCatURL);
     return this.httpService.getRequest(this.plantsCatURL);

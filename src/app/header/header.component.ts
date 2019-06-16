@@ -7,6 +7,8 @@ import { AuthService } from '../services/auth.service';
 import { AuthUserData } from '../interfaces/user-interface';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { CartService } from '../services/cart.service';
+import { NotificationsService } from '../services/notifications.service';
+import { HttpServiceService } from '../services/http-service.service';
 
 @Component({
   selector: 'app-header',
@@ -19,15 +21,22 @@ export class HeaderComponent implements OnInit {
   showUserName: boolean = false;
   userData: AuthUserData;
   totalCartCount: number;
+  
+  // notifications service
+  notificationMsgs: any[];
+
 
   constructor( 
     private router: Router,
     private userService: UserService,
     private authService: AuthService,
     private fb: FormBuilder,
-    private cartService: CartService
+    private cartService: CartService,
+    private httpService: HttpServiceService,
+    // notifications service
+    public notificationsService: NotificationsService
   ) { }
-
+  
   ngOnInit() {
     // localStorage.setItem('authUserData', JSON.stringify({
     //   id: 1,
@@ -36,16 +45,20 @@ export class HeaderComponent implements OnInit {
     //   role:1
     // }))
     this.checkUserAuthenticated();
-
+    
     this.searchBarForm = this.fb.group ({
       seachBar: ''
     })
-
+    
     this.totalCartCount = this.getCartCount();
     
     this.cartService.getCartCount().subscribe( cartCount => {
       this.totalCartCount = cartCount;
     })
+    
+    // notifications service
+    // this.notificationsService.msgService();
+    
   }
 
   onSignIn() {
@@ -83,6 +96,8 @@ export class HeaderComponent implements OnInit {
   onSignOut() {
     this.userService.logOutUser().subscribe(
       res => {
+
+        console.log('signput response');
         console.log(res);
       },
       error => {
@@ -91,6 +106,16 @@ export class HeaderComponent implements OnInit {
     )
     this.userService.deleteAuthUserData();
     this.showUserName = false;
+    this.router.navigateByUrl('/');
+  }
+
+  getNotifications() {
+    let url = `notification/allnotification/${this.userData.userId}`;
+    this.httpService.getRequest(url).subscribe(
+      res => {
+        console.log(res);
+      }
+    )
   }
 
 }

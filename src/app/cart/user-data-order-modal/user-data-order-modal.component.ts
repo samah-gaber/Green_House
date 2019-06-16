@@ -68,9 +68,9 @@ export class UserDataOrderModalComponent implements OnInit {
 
   onSubmit(form) {
     this.userOrdersSentObj = {
-      userPhone: this.userPhone.value,
-      userCity: this.userCity.value,
-      userAddress: this.userAddress.value,
+      phone: this.userPhone.value,
+      city: this.userCity.value,
+      street: this.userAddress.value,
       orders: this.content.userOrdersObj.orders
     }
     console.log( this.userOrdersSentObj);

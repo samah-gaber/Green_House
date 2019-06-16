@@ -21,6 +21,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CartService } from '../services/cart.service';
 import { UserDataOrderModalComponent } from '../cart/user-data-order-modal/user-data-order-modal.component';
 import { OrderConfirmModalComponent } from '../cart/order-confirm-modal/order-confirm-modal.component';
+import { NotificationsService } from '../services/notifications.service';
+import { PlantationServiceService } from '../services/plantation-service.service';
 
 @NgModule({
   declarations: [
@@ -64,7 +66,9 @@ import { OrderConfirmModalComponent } from '../cart/order-confirm-modal/order-co
     DomainService,
     PlantService,
     UserFavPlantsService,
-    CartService
+    CartService,
+    NotificationsService,
+    PlantationServiceService
   ]
 })
 export class SharedModule { }

@@ -85,6 +85,9 @@ $Green-House-theme: mat-light-theme($Green-House-primary, $Green-House-accent, $
 .txt-arial-dark-bold-18 {
   @extend %txt-arial-dark-bold-18;
 }
+.txt-arial-secondary-bold-18 {
+  @extend %txt-arial-secondary-bold-18;
+}
 .txt-arial-dark-normal-20 {
   @extend %txt-arial-dark-normal-20;
 }
