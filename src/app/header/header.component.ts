@@ -42,7 +42,7 @@ export class HeaderComponent implements OnInit {
     //   id: 1,
     //   userName: 'ali',
     //   token: 'ffhbgfg43434',
-    //   role:1
+    //   role:2
     // }))
     this.checkUserAuthenticated();
     
@@ -57,7 +57,7 @@ export class HeaderComponent implements OnInit {
     })
     
     // notifications service
-    // this.notificationsService.msgService();
+    this.notificationsService.msgService();
     
   }
 

@@ -123,18 +123,20 @@ export class PlantationHomeComponent implements OnInit {
     this.modalService.dismissAll();
   }
 
+  // plantation adding new plant form
+  // this function toggles between the tabs
   showTabForm(event) {
-    let tabName = event.target.getAttribute('name');
-    let buttons = document.querySelectorAll('.tab-btn');
-    buttons.forEach(element => {
-      element.classList.remove('active');
-    });
-    event.target.classList.add('active');
-    let formsArr = document.querySelectorAll('.add-plant-form');
-    formsArr.forEach(element => {
-      element.style.display = 'none';
-    });
-    document.getElementById(tabName).style.display = 'block';
+    // let tabName = event.target.getAttribute('name');
+    // let buttons = document.querySelectorAll('.tab-btn');
+    // buttons.forEach(element => {
+    //   element.classList.remove('active');
+    // });
+    // event.target.classList.add('active');
+    // let formsArr = document.querySelectorAll('.add-plant-form');
+    // formsArr.forEach(element => {
+    //   element.style.display = 'none';
+    // });
+    // document.getElementById(tabName).style.display = 'block';
   }
 
   onAddOldPlant(form:FormGroup) {

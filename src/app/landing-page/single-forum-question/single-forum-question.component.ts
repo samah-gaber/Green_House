@@ -15,11 +15,20 @@ export class SingleForumQuestionComponent implements OnInit {
 
   ngOnInit() {
     this.replyCount = this.question.answers.length;
+    console.log('single forum ques', this.userRole);
   }
 
   submitComment(){
     const commentSubmitted = (<HTMLInputElement>document.getElementById("plantationQuestion"+this.question.questionId)).value;
-    this.plantationQuestionService.submitAnswerForPlantationQuestion(this.question.questionId,commentSubmitted);
+    this.plantationQuestionService.submitAnswerForPlantationQuestion(this.question.questionId,commentSubmitted).subscribe(
+      res => {
+        console.log('answer submitted');
+        console.log(res);
+      },
+      error => {
+        console.log(error);
+      }
+    )
   }
 
 }

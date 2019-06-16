@@ -46,10 +46,15 @@ $Green-House-theme: mat-light-theme($Green-House-primary, $Green-House-accent, $
 .btn-custom-text {
   @extend %text-btn;
 }
+.btn-custom-float {
+  margin-bottom: 10%;
+  margin-left: 5%;
+}
 // section title style
 .sec-style {
   @extend %sec-layout;
 }
+
 
 // fonts
 .txt-arial-darkGrey-normal-24 {

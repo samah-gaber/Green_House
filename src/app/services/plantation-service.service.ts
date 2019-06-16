@@ -13,20 +13,21 @@ export class PlantationServiceService {
     this.userData = this.userService.returnAuthUserData();
    }
 
-  sendFormData(data){
-    const bodyObject =
-                {comment: data,
-                plantation_id: this.userData.userId };
-    const url = 'http://192.168.43.132:9999/api/client/insertQuestion/112';
+  sendFormData(data, plantId){
+    const bodyObject = {
+      comment: data,
+      plant_id: plantId 
+    };
+    const url = 'plantations/comment';
     return this.httpService.postRequest(url, bodyObject);
   }
 
-  deleteData(id){
-    const bodyObject = {
-      plantId : id
-    };
-    const url = 'http://192.168.43.132:9999/api/client/insertQuestion/112';
-    return this.httpService.postRequest(url, bodyObject);
+  deleteData(plantId){
+    // const bodyObject = {
+    //   plantId : id
+    // };
+    const url = `plantations/removeplant/${plantId}`;
+    return this.httpService.getRequest(url);
   }
 
   // plantation add plant

@@ -27,10 +27,10 @@ export class UserQuestionServiceService {
   }
 
   getQuestions() {
-    // let url = 'client/Getquestions';
+    let url = 'client/Getquestions';
     // let url = this.userQuestionsURL + userId;
     // return this.http.get(url);
-    let url = './assets/genericQuestionObject.json';
+    // let url = './assets/genericQuestionObject.json';
     // return this.http.get(`${this.domainURL}client/Getquestions`, {
     //   'headers': this.headers
     // });

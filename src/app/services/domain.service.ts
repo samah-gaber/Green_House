@@ -5,7 +5,7 @@ export class DomainService {
 
   constructor() { }
 
-  domain = 'http://192.168.43.132:9999/api/';
+  domain = 'http://192.168.43.55:9999/api/';
 
   getDomain() {
     return this.domain;

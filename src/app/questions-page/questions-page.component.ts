@@ -39,7 +39,7 @@ export class QuestionsPageComponent implements OnInit {
   ) {
     this.userRole = userService.returnAuthUserData().role;
     if (this.userRole == 1) {
-      this.questionService = this.userService;
+      this.questionService = this.userQuestionService;
       userQuestionService
         .getUserQuestionCategories()
         .subscribe((questionCategories: any) => {
@@ -52,7 +52,9 @@ export class QuestionsPageComponent implements OnInit {
     this.userId = null;
     this.selectedCategory = null;
     this.questionService.getQuestions(this.userId)
+    // this.userService.getQuestions(this.userId)
       .subscribe((questionData: any) => {
+        console.log('questions page component', questionData);
         this.objData = questionData.questions;
       });
   }
