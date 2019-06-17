@@ -12,7 +12,8 @@ export class TimeServiceService {
     const month = date.getMonth() + 1;
     const day = date.getDate();
     const year = date.getFullYear();
-    const fullDateString = day + "/" + month + "/" + year;
+    const fullDateString = month + "/" + day + "/" + year;
+    // const fullDateString = day + "/" + month + "/" + year;
     return fullDateString;
   }
 }
