@@ -3,7 +3,7 @@ import { UserService } from "./../services/user.service";
 import { TimeServiceService } from "./../services/time-service.service";
 import { FormControl, FormGroup, FormBuilder } from "@angular/forms";
 import { UserQuestionServiceService } from "../services/user-question-service.service";
-import { Component, OnInit, ViewEncapsulation } from "@angular/core";
+import { Component, OnInit, ViewEncapsulation, ViewChild } from "@angular/core";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { ActivatedRoute } from "@angular/router";
 import { AuthUserData } from "../interfaces/user-interface";
@@ -27,6 +27,8 @@ export class QuestionsPageComponent implements OnInit {
   selectedCategory: string;
   selectedPlant: string;
   questionService;
+  retrievedPreviousRelatedQuestions: any;
+  @ViewChild('checkIfQuestionsExist') private checkIfQuestionExistsModal;
 
   constructor(
     private modalService: NgbModal,
@@ -35,7 +37,8 @@ export class QuestionsPageComponent implements OnInit {
     private userQuestionService: UserQuestionServiceService,
     private timeService: TimeServiceService,
     private userService: UserService,
-    private plantataionQuestionService: PlantationQuestionServiceService
+    private plantataionQuestionService: PlantationQuestionServiceService,
+
   ) {
     this.userRole = userService.returnAuthUserData().role;
     if (this.userRole == 1) {
@@ -89,8 +92,12 @@ export class QuestionsPageComponent implements OnInit {
     console.log("Sending form");
     this.userQuestionService
       .sendFormData(questionObject)
-      .subscribe(response => {
+      .subscribe((response: any) => {
         console.log("This is the response for sending form data" + response);
+        this.retrievedPreviousRelatedQuestions = response.questions;
+        if(response.questions.length>0){
+          this.modalService.open(this.checkIfQuestionExistsModal, { backdropClass: "light-blue-backdrop" });
+        }
       });
     this.modalService.dismissAll();
   }
@@ -126,5 +133,21 @@ export class QuestionsPageComponent implements OnInit {
   plantSelected() {
     console.log("Plant was selected" + this.selectPlant.value);
     this.selectedPlant = this.selectPlant.value;
+  }
+
+  imokDontSend(){
+    const body={
+
+    }
+
+    this.userQuestionService.resendQuestion(body)
+  }
+
+  resendComment(){
+    const body={
+
+    }
+
+    this.userQuestionService.resendQuestion(body)
   }
 }

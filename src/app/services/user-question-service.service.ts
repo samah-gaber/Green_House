@@ -15,7 +15,7 @@ export class UserQuestionServiceService {
   // userQuestionsURL = 'http://192.168.43.132:9999/api/client/Getquestions/112';
 
   constructor(
-    private http: HttpClient, 
+    private http: HttpClient,
     private httpService: HttpServiceService,
     private userService: UserService,
     private domainService: DomainService
@@ -44,7 +44,7 @@ export class UserQuestionServiceService {
     // return this.http.get(`${this.domainURL}plants/allcategories`, {
     //   'headers': this.headers
     // });
-    return this.httpService.getRequest(url);    
+    return this.httpService.getRequest(url);
   }
 
   getUserQuestionPlantByCategoryId(catId) {
@@ -58,9 +58,14 @@ export class UserQuestionServiceService {
   }
 
   sendFormData(data){
-    let url = `client/insertQuestion`;  
+    let url = `client/insertQuestion`;
     // const url = 'http://192.168.43.132:9999/api/client/insertQuestion/112';
     // return this.httpService.postRequest(url, data);
+    return this.httpService.postRequest(url, data);
+  }
+
+  resendQuestion(data){
+    let url ='';
     return this.httpService.postRequest(url, data);
   }
 }
