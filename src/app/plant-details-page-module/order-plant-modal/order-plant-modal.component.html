@@ -22,7 +22,7 @@
         <div class="row mb-3" *ngFor="let item of orderFormObj.plantItems">
           <div class="col-3 type-checkbox">
             <input type="checkbox" formControlName={{item.checkCName}} name={{item.type}} (click)='enableQtyInput($event)'>
-            <label for={{item.type}} class="txt-arial-darkGrey-normal-20">{{item.arType}}</label>
+            <label for={{item.type}} class="txt-arial-darkGrey-normal-20">{{item.artype}}</label>
           </div>
           <div class="col-3 price">
             <span class="txt-arial-darkGrey-normal-20" id={{item.priceName}}>{{item.price}}</span>

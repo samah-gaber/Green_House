@@ -10,8 +10,10 @@ export class PlantationQuestionServiceService {
   constructor(private http: HttpClient, private httpService: HttpServiceService) { }
 
   getQuestions(){
+    let url = `plantations/question`;
     //  return this.http.get('./assets/genericQuestionObject.json');
-    return this.http.get('http://192.168.43.132:9999/api/client/Getquestions/112');
+    // return this.http.get('http://192.168.43.132:9999/api/client/Getquestions/112');
+    this.httpService.getRequest(url);
   }
 
   submitAnswerForPlantationQuestion(questionId, answer){

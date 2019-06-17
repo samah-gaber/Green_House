@@ -10,7 +10,6 @@ import {
 import { FormGroup, FormBuilder } from "@angular/forms";
 import { CartService } from "../../services/cart.service";
 import { OrderFormObj } from "../../interfaces/order-interface";
-// import { UserSingleOrder } from '../../interfaces/order-interface';
 
 @Component({
   selector: "app-order-plant-modal",
@@ -23,31 +22,31 @@ export class OrderPlantModalComponent implements OnInit {
   // userOrder: userSingleOrder;
   content: any;
   showEmptyOrderError = false;
-  // orderFormObj: OrderFormObj;
-  orderFormObj = {
-    plantItems: [
-      {
-        type: 'graft',
-        arType: 'شتلة',
-        price: 7
-      },
-      {
-        type: 'seeds',
-        arType: 'بذور',
-        price: 7
-      },
-      {
-        type: 'soil',
-        arType: 'تربة',
-        price: 7
-      },
-      {
-        type: 'fert',
-        arType: 'سماد',
-        price: 7
-      }
-    ]
-  }
+  orderFormObj: OrderFormObj;
+  // orderFormObj = {
+  //   plantItems: [
+  //     {
+  //       type: 'graft',
+  //       artype: 'شتلة',
+  //       price: 7
+  //     },
+  //     {
+  //       type: 'seeds',
+  //       artype: 'بذور',
+  //       price: 7
+  //     },
+  //     {
+  //       type: 'soil',
+  //       artype: 'تربة',
+  //       price: 7
+  //     },
+  //     {
+  //       type: 'fert',
+  //       artype: 'سماد',
+  //       price: 7
+  //     }
+  //   ]
+  // }
 
   constructor(
     public orderModalRef: MDBModalRef,
@@ -56,10 +55,10 @@ export class OrderPlantModalComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // this.getOrderFormData({
-    //   plantationId: this.content.plantationId,
-    //   plantId: this.content.plantId
-    // });
+    this.getOrderFormData({
+      plantationid: this.content.plantationId,
+      plantid: this.content.plantId
+    });
 
     this.orderForm = this.fb.group(
       {
@@ -118,16 +117,20 @@ export class OrderPlantModalComponent implements OnInit {
       };
 
       if (form.value.graftType) {
-        this.addItemToOrder(form, "graftPrice", "شتلة");
+        let graftQty = form.value.graftQty;
+        this.addItemToOrder(graftQty, "graftPrice", "graft");
       }
       if (form.value.seedsType) {
-        this.addItemToOrder(form, "seedsPrice", "بذور");
+        let seedsQty = form.value.seedsQty;        
+        this.addItemToOrder(seedsQty, "seedsPrice", "seeds");
       }
       if (form.value.soilType) {
-        this.addItemToOrder(form, "soilPrice", "تربة");
+        let soilQty = form.value.soilQty;        
+        this.addItemToOrder(soilQty, "soilPrice", "soil");
       }
       if (form.value.fertType) {
-        this.addItemToOrder(form, "fertPrice", "سماد");
+        let fertQty = form.value.fertQty;        
+        this.addItemToOrder(fertQty, "fertPrice", "fert");
       }
 
       this.calcOrderTotalPrice(this.userOrder);
@@ -170,6 +173,7 @@ export class OrderPlantModalComponent implements OnInit {
   }
 
   adjustOrderFormObj(formObj) {
+    console.log('order plant modal component',formObj );
     formObj.plantItems.forEach(elt => {
       elt.checkCName = `${elt.type}Type`;
       elt.inputCName = `${elt.type}Qty`;
@@ -177,8 +181,8 @@ export class OrderPlantModalComponent implements OnInit {
     });
   }
 
-  addItemToOrder(form, priceId, type) {
-    let typeQty = +form.value.graftQty;
+  addItemToOrder(quantity, priceId, type) {
+    let typeQty = quantity;
     let typePrice = +document.getElementById(priceId).innerHTML;
     this.userOrder.itemContents.push({
       type: type,
@@ -207,10 +211,12 @@ export class OrderPlantModalComponent implements OnInit {
     }
   }
 
-  // getOrderFormData(plantationPlantObj) {
-  //   this.cartService.orderFormDataGetRequest().subscribe(
-  //     (res: OrderFormObj) => {
-  //       this.orderFormObj = res;
-  //     });
-  // }
+  getOrderFormData(plantationPlantObj) {
+    this.cartService.orderFormDataGetRequest(plantationPlantObj).subscribe(
+      (res: OrderFormObj) => {
+        this.orderFormObj = res;
+        console.log('order plant modal component => getOrderFormData response', res);
+        console.log('order plant modal component => getOrderFormData', this.orderFormObj);
+      });
+  }
 }

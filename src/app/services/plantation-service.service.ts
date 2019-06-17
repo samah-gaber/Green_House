@@ -42,4 +42,16 @@ export class PlantationServiceService {
     let url = `/${catName}`;
     return this.httpService.getRequest(url);
   }
+
+  // get fert types
+  addPlantFormGetFertTypes(plantId) {
+    let url = `/${plantId}`;
+    return this.httpService.getRequest(url);
+  }
+
+  // submit the added old plant
+  submitOldPlant(plantObj) {
+    let url = '';
+    return this.httpService.postRequest(url, plantObj);
+  }
 }

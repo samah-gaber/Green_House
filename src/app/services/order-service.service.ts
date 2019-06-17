@@ -29,8 +29,10 @@ export class OrderServiceService {
   }
 
   initiatePlantationOrderRequest() {
+    let url = `plantations/plantationorder`;
+    return this.httpService.getRequest(url);
     // return this.http.get(this.orderURL);
-    return this.httpService.getRequest("./assets/plantationOrders.json");
+    // return this.httpService.getRequest("./assets/plantationOrders.json");
     //return this.httpService.getRequest(this.orderURL);
   }
 }

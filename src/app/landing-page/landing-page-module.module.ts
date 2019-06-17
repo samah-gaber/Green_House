@@ -17,6 +17,8 @@ import { AddsComponent } from './adds/adds.component';
 import { SinglePlantComponent } from './single-plant/single-plant.component';
 import { SharedModule } from '../shared/shared.module';
 import { PlantationHomeComponent } from './plantation-home/plantation-home.component';
+import { AddNewPlantFormComponent } from './add-new-plant-form/add-new-plant-form.component';
+
 const routes: Routes = [
   {
     path: '', component: LandingPageComponent, children: [
@@ -28,6 +30,9 @@ const routes: Routes = [
       },
       {
         path: 'plantationHome', component: PlantationHomeComponent
+      },
+      {
+        path: 'addplantform', component: AddNewPlantFormComponent
       }
     ]
   }
@@ -45,7 +50,8 @@ const routes: Routes = [
     AddsComponent,
     SinglePlantComponent,
     PlantationHomeComponent,
-    SingleForumQuestionComponent
+    SingleForumQuestionComponent,
+    AddNewPlantFormComponent
   ],
   imports: [
     CommonModule,
