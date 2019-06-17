@@ -50,9 +50,22 @@ export class PlantCategoriesComponent implements OnInit {
   }
 
   showCatPlants(ev) {
-    const catName = ev.target.innerHTML;;
-    console.log('category name ' + catName);
-    this.plantService.plantsSingleCatGetRequest(catName).subscribe(
+    const catName = ev.target.innerHTML;
+    const catId = ev.target.getAttribute('id');
+    let catData;
+    if(this.userData) {
+      if(this.userData.role == 2) {
+        catData = catId;
+      }
+    } else {
+      catData = catName;
+    }
+    console.log('event.target ' , ev.target);
+    console.log('event.target.getAttribute ' , ev.target.getAttribute('id'));
+    console.log('category name ' , catName);
+    console.log('category id ' , catId);
+    console.log('category data ' , catData);
+    this.plantService.plantsSingleCatGetRequest(catData).subscribe(
       (res: PlantCatRes) => {
         console.log(res);
         this.plantCatRes.plant = res.plant;

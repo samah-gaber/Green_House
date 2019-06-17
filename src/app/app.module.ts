@@ -13,11 +13,13 @@ import { SharedModule } from './shared/shared.module';
 import { OrderPlantModalComponent } from './plant-details-page-module/order-plant-modal/order-plant-modal.component';
 import { UserDataOrderModalComponent } from './cart/user-data-order-modal/user-data-order-modal.component';
 import { OrderConfirmModalComponent } from './cart/order-confirm-modal/order-confirm-modal.component';
+// import { AddNewPlantFormComponent } from './add-new-plant-form/add-new-plant-form.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    // AddNewPlantFormComponent,
   ],
   imports: [
     BrowserModule,

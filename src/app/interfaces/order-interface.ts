@@ -103,7 +103,7 @@ export interface OrderFormObj {
     plantItems: [
       {
         type: string,
-        arType: string,
+        artype: string,
         price: number
       }
     ]

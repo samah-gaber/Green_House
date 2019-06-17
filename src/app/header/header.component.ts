@@ -34,7 +34,7 @@ export class HeaderComponent implements OnInit {
     private cartService: CartService,
     private httpService: HttpServiceService,
     // notifications service
-    public notificationsService: NotificationsService
+    // public notificationsService: NotificationsService
   ) { }
   
   ngOnInit() {
@@ -57,7 +57,7 @@ export class HeaderComponent implements OnInit {
     })
     
     // notifications service
-    this.notificationsService.msgService();
+    // this.notificationsService.msgService();
     
   }
 
@@ -109,13 +109,13 @@ export class HeaderComponent implements OnInit {
     this.router.navigateByUrl('/');
   }
 
-  getNotifications() {
-    let url = `notification/allnotification/${this.userData.userId}`;
-    this.httpService.getRequest(url).subscribe(
-      res => {
-        console.log(res);
-      }
-    )
-  }
+  // getNotifications() {
+  //   let url = `notification/allnotification/${this.userData.userId}`;
+  //   this.httpService.getRequest(url).subscribe(
+  //     res => {
+  //       console.log(res);
+  //     }
+  //   )
+  // }
 
 }

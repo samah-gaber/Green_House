@@ -6,6 +6,7 @@ import { formatDate } from '@angular/common';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { DomainService } from './domain.service';
 import { UserService } from './user.service';
+import { HttpServiceService } from './http-service.service';
 
 @Injectable()
 
@@ -13,8 +14,8 @@ export class CartService {
 
   totalCartCount: number;
   urlDomain = this.domain.getDomain();
-  urlSendOrder = `${this.urlDomain}/`;
-  urlOrderForm = `${this.urlDomain}/`;
+  urlSendOrder = `client/insertorder`;
+  urlOrderForm = `plants/orderdata`;
   userToken;
   headers;
 
@@ -25,7 +26,8 @@ export class CartService {
   constructor(
     private http: HttpClient,
     private domain: DomainService,
-    private userService: UserService
+    private userService: UserService,
+    private httpService: HttpServiceService
   ) {
     // setting cart count
     if(this.getStoredCartCount()) {
@@ -157,14 +159,16 @@ export class CartService {
 
   // send order http request
   sendOrder(userOrdersSentObj: UserOrdersSentObj) {
-    return this.http.post( this.urlSendOrder,  userOrdersSentObj, {
-      'headers': this.headers
-    });
+    // return this.http.post( this.urlSendOrder,  userOrdersSentObj, {
+    //   'headers': this.headers
+    // });
+    return this.httpService.postRequest(this.urlSendOrder, userOrdersSentObj);
   }
 
   // order form http request
   orderFormDataGetRequest(plantationPlantObj) {
-    return this.http.get(this.urlOrderForm, plantationPlantObj);
+    // return this.http.get(this.urlOrderForm, plantationPlantObj);
+    return this.httpService.postRequest(this.urlOrderForm, plantationPlantObj);
   }
 
   emptyCart() {

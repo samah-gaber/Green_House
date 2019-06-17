@@ -32,24 +32,7 @@ export interface PlantCatRes {
     }
   ]
 }
-// plantation home page plant categries response
-export interface AddPlantCatRes {
-  category: [
-    {
-      id: number;
-      name: string;
-    }
-  ]
-}
-// plantation home page category plants response
-export interface AddCatPlantsRes {
-  plant: [
-    {
-      id: number;
-      name: string;
-    }
-  ]
-}
+
 
 // plant page details section
 export interface PlantDetailsOBJ {
