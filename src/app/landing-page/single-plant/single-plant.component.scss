@@ -43,3 +43,12 @@
         }
     }
 }
+
+.trash-plant{
+  float: right !important;
+  color:$darkColor;
+  font-size: 20px;
+  &:hover{
+    color: $secondaryColor;
+  }
+}

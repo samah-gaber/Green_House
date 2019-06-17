@@ -27,10 +27,10 @@ export class UserQuestionServiceService {
   }
 
   getQuestions() {
-    let url = 'client/Getquestions';
+    //let url = 'client/Getquestions';
     // let url = this.userQuestionsURL + userId;
     // return this.http.get(url);
-    // let url = './assets/genericQuestionObject.json';
+    let url = './assets/genericQuestionObject.json';
     // return this.http.get(`${this.domainURL}client/Getquestions`, {
     //   'headers': this.headers
     // });
@@ -40,7 +40,7 @@ export class UserQuestionServiceService {
 
   getUserQuestionCategories() {
     let url = 'plants/allcategories';
-    // return this.http.get('./assets/userQuestionCategories.json');
+     return this.http.get('./assets/userQuestionCategories.json');
     // return this.http.get(`${this.domainURL}plants/allcategories`, {
     //   'headers': this.headers
     // });
@@ -50,22 +50,26 @@ export class UserQuestionServiceService {
   getUserQuestionPlantByCategoryId(catId) {
     console.log('getting plants ');
     let url = `plants/category/${catId}`;
-    // return this.http.get('./assets/userQuestionPlants.json');
+    return this.http.get('./assets/userQuestionPlants.json');
     // return this.http.get(`${this.domainURL}/plants/category/cat1`, {
     //   'headers': this.headers
     // });
     return this.httpService.getRequest(url);
   }
 
+  //this is the first function that will send the first request
   sendFormData(data){
-    let url = `client/insertQuestion`;
+    //let url = `client/insertQuestion`;
+    let url =  './assets/firstResponseToSubmittingAQuestion.json';
     // const url = 'http://192.168.43.132:9999/api/client/insertQuestion/112';
     // return this.httpService.postRequest(url, data);
-    return this.httpService.postRequest(url, data);
+    return this.httpService.getRequest(url)//this is just a mock
+    //return this.httpService.postRequest(url, data);
   }
 
+  //this is the second request to send the question
   resendQuestion(data){
-    let url ='';
+    let url ='./assets/firstResponseToSubmittingAQuestion.json';
     return this.httpService.postRequest(url, data);
   }
 }

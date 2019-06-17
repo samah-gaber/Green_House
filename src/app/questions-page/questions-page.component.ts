@@ -28,7 +28,10 @@ export class QuestionsPageComponent implements OnInit {
   selectedPlant: string;
   questionService;
   retrievedPreviousRelatedQuestions: any;
+  generateQuestionIdAfterSubmitting: any;
+  successAlert:boolean;
   @ViewChild('checkIfQuestionsExist') private checkIfQuestionExistsModal;
+  @ViewChild('questionSentSuccess') private questionSentSuccessModal;
 
   constructor(
     private modalService: NgbModal,
@@ -95,11 +98,16 @@ export class QuestionsPageComponent implements OnInit {
       .subscribe((response: any) => {
         console.log("This is the response for sending form data" + response);
         this.retrievedPreviousRelatedQuestions = response.questions;
-        if(response.questions.length>0){
+        this.generateQuestionIdAfterSubmitting = response.currentQuestionId;
+        this.successAlert = true;
+        this.modalService.dismissAll();
+        if(response.questions.length > 0){
           this.modalService.open(this.checkIfQuestionExistsModal, { backdropClass: "light-blue-backdrop" });
         }
+        else{
+          this.modalService.open(this.questionSentSuccessModal, { backdropClass: "light-blue-backdrop" });
+        }
       });
-    this.modalService.dismissAll();
   }
 
   createFormControls() {
@@ -137,17 +145,24 @@ export class QuestionsPageComponent implements OnInit {
 
   imokDontSend(){
     const body={
-
+      flag:true,
+      currentQuestionId:this.generateQuestionIdAfterSubmitting
     }
-
-    this.userQuestionService.resendQuestion(body)
+    this.modalService.dismissAll();
+    this.userQuestionService.resendQuestion(body).subscribe((response) =>{
+      this.modalService.open(this.questionSentSuccessModal, { backdropClass: "light-blue-backdrop" });
+    });
   }
 
-  resendComment(){
+  resendComment() {
     const body={
+      flag:false,
+      currentQuestionId:this.generateQuestionIdAfterSubmitting
+    };
+    this.modalService.dismissAll();
 
-    }
-
-    this.userQuestionService.resendQuestion(body)
+    this.userQuestionService.resendQuestion(body).subscribe((response) =>{
+      this.modalService.open(this.questionSentSuccessModal, { backdropClass: "light-blue-backdrop" });
+    });
   }
 }

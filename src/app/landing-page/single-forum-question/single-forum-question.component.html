@@ -1,68 +1,61 @@
 <section class="plant-questions" *ngIf="question">
-    <div class="user-question">
-      <div class="row">
-        <div class="col-10 col-md-12">
-          <span class="since-date txt-arial-faintGrey-normal-18 mb-3">{{
-            question.questionTime
-          }}</span>
-          <p class="question-text txt-arial-lightGrey-bold-24 mb-4">
-            {{ question.questionContain }}
-          </p>
-          <img
-            src="{{ question.plantimage }}"
-            alt=""
-            *ngIf="question.plantimage"
-            class="mt-4"
-          />
-        </div>
+  <div class="user-question">
+    <div class="row">
+      <div class="col-10 col-md-12">
+        <span class="since-date txt-arial-faintGrey-normal-18 mb-3">{{ question.questionTime}}</span>
+        <p class="question-text txt-arial-lightGrey-bold-24 mb-4">
+          {{ question.questionContain }}
+        </p>
+        <img src="{{ question.plantimage }}" alt="" *ngIf="question.plantimage" class=" " />
       </div>
     </div>
-    <p class="reply-count txt-arial-dark-bold-24  my-4 d-inline-block">
-      عدد الردود: {{replyCount}}
-    </p>
-    <div class="plantation-answers">
-      <div class="single-answer mb-4" *ngFor="let answer of question.answers">
-        <div class="row">
-          <div class="col-9 col-md-12">
-            <p class="user-name txt-arial-darkGrey-bold-24  mb-2">
-              {{ answer.plantatoinname }}
-            </p>
-            <span class="since-date txt-arial-faintGrey-normal-18 mb-3">{{
-              answer.date
-            }}</span>
-            <p class="question-text txt-arial-lightGrey-bold-24 mb-4">
+  </div>
+  <p class="reply-count txt-arial-dark-bold-24  my-4 d-inline-block">
+    عدد الردود: {{replyCount}}
+  </p>
+  <div class="plantation-answers">
+    <div class="single-answer mb-4" *ngFor="let answer of question.answers">
+      <div class="row">
+        <div class="col-9 col-md-12">
+          <p class="user-name txt-arial-darkGrey-bold-24  mb-2">
+            {{ answer.plantatoinname }}
+          </p>
+          <span class="since-date txt-arial-faintGrey-normal-18 mb-3">{{answer.date}}</span>
+          <div class="d-flex align-items-center mb-4">
+            <p class="question-text txt-arial-lightGrey-bold-24 mb-0 ">
               {{ answer.answer }}
             </p>
-            <div class="icons">
-              <i *ngIf="userRole==2 && userName==answer.plantatoinname" class="fas fa-pen" (click)='editOwnPlantationComment(editCommentModal,answer,question)'></i>
-            </div>
+            <i *ngIf="userRole==2 && userName==answer.plantatoinname" class="fas fa-pen icons mr-3"
+              (click)='editOwnPlantationComment(editCommentModal,answer,question)'></i>
           </div>
         </div>
       </div>
-      <div *ngIf="userRole == 2" class="d-flex align-items-end">
-        <textarea id = "plantationQuestion{{question.questionId}}" placeholder="اضف رد" cols="40"></textarea>
-        <button  class="btn-custom btn-custom-primary mr-2" (click)="submitComment()">اسأل</button>
-      </div>
     </div>
-  </section>
+    <div *ngIf="userRole == 2" class="d-flex align-items-end">
+      <textarea id="plantationQuestion{{question.questionId}}" placeholder="اضف رد" cols="40"></textarea>
+      <button class="btn-custom btn-custom-primary mr-2" (click)="submitComment()">اسأل</button>
+    </div>
+  </div>
+</section>
 
-  <div class="row">
-    <ng-template #editCommentModal let-modal>
-        <div class="modal-header">
-          <h4 class="modal-title">اسأل</h4>
-          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <p>One fine body&hellip;</p>
-        </div>
-        <form [formGroup]="plantCommentForm" (ngSubmit)="submitEditedComment(plantCommentForm)">
-            <textarea [(ngModel)]='answerTextBeingEdited' id="editCommentTextArea" type="text"  formControlName="plantComment" class="form-control"></textarea>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-light">ارسل</button>
-                <button type="button" class="btn btn-light" (click)="modal.close('Close click')">اغلق</button>
-            </div>
-        </form>
-      </ng-template>
+<div class="row">
+  <ng-template #editCommentModal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">اسأل</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>One fine body&hellip;</p>
+    </div>
+    <form [formGroup]="plantCommentForm" (ngSubmit)="submitEditedComment(plantCommentForm)">
+      <textarea [(ngModel)]='answerTextBeingEdited' id="editCommentTextArea" type="text" formControlName="plantComment"
+        class="form-control"></textarea>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-light">ارسل</button>
+        <button type="button" class="btn btn-light" (click)="modal.close('Close click')">اغلق</button>
+      </div>
+    </form>
+  </ng-template>
 </div>

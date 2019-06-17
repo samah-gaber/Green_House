@@ -9,11 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ForumPageComponent implements OnInit {
   model: any;
-  categories : any;
+  categories: any;
   userRole: number;
-  userName : string;
+  userName: string;
   // categories : Array<any>;
-  currentLoadedQuestions : any;
+  currentLoadedQuestions: any;
   constructor(private forumService: ForumServiceService, private userService : UserService) {
     forumService.initiateInitForumRequest().subscribe((initForumData) => {
       console.log(initForumData);
@@ -29,7 +29,7 @@ export class ForumPageComponent implements OnInit {
 
   }
 
-  toggle(catId){
+  toggle(catId) {
     this.forumService.getCategoryQuestions(catId).subscribe((newCatQuestions)=>{
       this.currentLoadedQuestions = newCatQuestions;
     });
