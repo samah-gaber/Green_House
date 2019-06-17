@@ -1,0 +1,11 @@
+// import sytle files
+@import "../../../styles.scss";
+.btn-primary {
+  background-color:$darkColor !important;
+  color: #fff;
+}
+
+.btn-primary:not([disabled]):not(.disabled).active{
+  background-color:$secondaryColor !important;
+
+}

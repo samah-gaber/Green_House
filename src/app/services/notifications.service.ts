@@ -16,26 +16,26 @@ export class NotificationsService {
      //this.nick = window.prompt('Your name:', 'John');
      this.hubConnection = new HubConnectionBuilder().withUrl('http://localhost:5000/notification',
      {skipNegotiation:true,transport:HttpTransportType.WebSockets}).build();
- 
-   this.hubConnection
+
+     this.hubConnection
        .start()
       .then(() => console.log('Connection started!'))
        .catch(err => console.log('Error while establishing connection :('));
- 
-       this.hubConnection.on('sendmessageToClientInOnePlant', (name: string, receivedMessage: string) => {
+
+     this.hubConnection.on('sendmessageToClientInOnePlant', (name: string, receivedMessage: string) => {
          const text = `${name}: ${receivedMessage}`;
          this.messages.push(text);
-       }); 
-         
-       this.hubConnection.on('SendnotificationFOrUserOrder', (name: string, receivedMessage: string) => {
+       });
+
+     this.hubConnection.on('SendnotificationFOrUserOrder', (name: string, receivedMessage: string) => {
          const text = `${name}: ${receivedMessage}`;
          this.messages.push(text);
-       }); 
-      
-       this.hubConnection.on('SendnotificationFOrUserQuestion', (name: string, receivedMessage: string) => {
+       });
+
+     this.hubConnection.on('SendnotificationFOrUserQuestion', (name: string, receivedMessage: string) => {
          const text = `${name}: ${receivedMessage}`;
          this.messages.push(text);
        });
   }
-  
+
 }

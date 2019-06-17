@@ -11,6 +11,7 @@ export class ForumPageComponent implements OnInit {
   model: any;
   categories : any;
   userRole: number;
+  userName : string;
   // categories : Array<any>;
   currentLoadedQuestions : any;
   constructor(private forumService: ForumServiceService, private userService : UserService) {
@@ -21,6 +22,7 @@ export class ForumPageComponent implements OnInit {
       this.currentLoadedQuestions = initForumData;
     })
     this.userRole = userService.returnAuthUserData().role;
+    this.userName = userService.returnAuthUserData().userName;
   }
 
   ngOnInit() {

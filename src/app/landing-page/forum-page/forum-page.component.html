@@ -1,16 +1,22 @@
-<div *ngIf="categories">
-    <div  *ngFor="let category of categories.categories" class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="model">
-        <label ngbButtonLabel class="btn-primary">
-          <input ngbButton type="radio" [value]="category.name" (click)="toggle(category.id)"> {{category.name}}
-        </label>
+<div class="container">
+  <div class="row ">
+      <div *ngIf="categories" >
+          <div  *ngFor="let category of categories.categories" class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="model">
+              <label ngbButtonLabel class="btn-primary">
+                <input ngbButton type="radio" [value]="category.name" (click)="toggle(category.id)"> {{category.name}}
+              </label>
+            </div>
       </div>
-</div>
-<div class="container mb-5 pt-5">
-    <div class="row">
-        <div *ngIf="currentLoadedQuestions">
-            <div class="question py-5" *ngFor="let questionItem of currentLoadedQuestions.questions">
-                <app-single-forum-question [userRole] = "userRole" [question]='questionItem'></app-single-forum-question>
+      <div class="container mb-5 pt-5">
+          <div class="row">
+              <div *ngIf="currentLoadedQuestions">
+                  <div class="question py-5" *ngFor="let questionItem of currentLoadedQuestions.questions">
+                      <app-single-forum-question [userName]="userName" [userRole] = "userRole" [question]='questionItem'></app-single-forum-question>
+                    </div>
               </div>
-        </div>
-    </div>
+          </div>
 
+
+  </div>
+
+</div>
