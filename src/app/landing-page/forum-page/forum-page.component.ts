@@ -35,4 +35,13 @@ export class ForumPageComponent implements OnInit {
     });
 
   }
+
+  forumPageRefreshWasTriggered(){
+    this.forumService.initiateInitForumRequest().subscribe((initForumData) => {
+      console.log(initForumData);
+      this.categories = initForumData;
+      this.model = this.categories.categories[0].name;
+      this.currentLoadedQuestions = initForumData;
+    })
+  }
 }

@@ -13,22 +13,22 @@ export class ForumServiceService {
     private http: HttpClient,
     private httpService: HttpServiceService
   ) {
-    // this.forumInitUrl = "./assets/forumPageLoad.json";
-    this.forumInitUrl = 'plants/forum';
+    this.forumInitUrl = "./assets/forumPageLoad.json";
+    // this.forumInitUrl = 'plants/forum';
 
   }
 
   initiateInitForumRequest() {
-    // return this.http.get(this.forumInitUrl);
-    return this.httpService.getRequest(this.forumInitUrl);
+    return this.http.get(this.forumInitUrl);
+    // return this.httpService.getRequest(this.forumInitUrl);
   }
-  
+
   getCategoryQuestions(catId) {
     console.log("fetching forum question data for cat : " + catId);
-    let catUrl = 'plants/forum'
-    
+    // let catUrl = 'plants/forum'
+
     // return this.http.get(this.forumInitUrl + '/' + catName);
-    console.log(`${this.forumInitUrl}/${catId}`);
+    // console.log(`${this.forumInitUrl}/${catId}`);
     return this.httpService.getRequest(`${this.forumInitUrl}/${catId}`);
   }
 

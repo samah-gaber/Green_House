@@ -20,12 +20,12 @@
           "plantimage": "../assets//imgs/forums-page/lavander.png",
           "questionId": 1,
           "clientname": "amira",
-          "questionContain": "ay klam fady ",
+          "questionContain":  " صِرَٰطَ ٱلَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ ٱلْمَغْضُوبِ عَلَيْهِمْ وَلَا ٱلضَّآلِّينَ,ٱهْدِنَا ٱلصِّرَٰطَ ٱلْمُسْتَقِيمَ ٱهْدِنَا ٱلصِّرَٰطَ ٱلْمُسْتَقِيمَ ٱهْدِنَا ٱلصِّرَٰطَ ٱلْمُسْتَقِيمَ ٱهْدِنَا ٱلصِّرَٰطَ ٱلْمُسْتَقِيمَ ",
           "questionTime": "2002-02-02T00:00:00",
           "answers": [
               {
                   "plantatoinname": "blkona",
-                  "answer": "kkkkkkkkkkkkkkkkkk",
+                  "answer": "صِرَٰطَ ٱلَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ ٱلْمَغْضُوبِ عَلَيْهِمْ وَلَا ٱلضَّآلِّينَ",
                   "date": "2003-06-06T00:00:00"
               },
               {
@@ -43,7 +43,13 @@
           "clientname": "amira",
           "questionContain": "ggggggggggggggg",
           "questionTime": "2002-02-02T00:00:00",
-          "answers": []
+          "answers": [
+              {
+                "plantatoinname": "mashtlllll yarab",
+                "answer": "صِرَٰطَ ٱلَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ ٱلْمَغْضُوبِ عَلَيْهِمْ وَلَا ٱلضَّآلِّينَ",
+                "date": "2003-06-06T00:00:00"
+              }
+          ]
       }
   ]
 }

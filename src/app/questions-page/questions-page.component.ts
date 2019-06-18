@@ -3,7 +3,7 @@ import { UserService } from "./../services/user.service";
 import { TimeServiceService } from "./../services/time-service.service";
 import { FormControl, FormGroup, FormBuilder } from "@angular/forms";
 import { UserQuestionServiceService } from "../services/user-question-service.service";
-import { Component, OnInit, ViewEncapsulation, ViewChild } from "@angular/core";
+import { Component, OnInit, ViewEncapsulation, ViewChild, EventEmitter, Output } from "@angular/core";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { ActivatedRoute } from "@angular/router";
 import { AuthUserData } from "../interfaces/user-interface";
@@ -30,6 +30,7 @@ export class QuestionsPageComponent implements OnInit {
   retrievedPreviousRelatedQuestions: any;
   generateQuestionIdAfterSubmitting: any;
   successAlert:boolean;
+
   @ViewChild('checkIfQuestionsExist') private checkIfQuestionExistsModal;
   @ViewChild('questionSentSuccess') private questionSentSuccessModal;
 
@@ -66,9 +67,7 @@ export class QuestionsPageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userQuestionService.getQuestions().subscribe((questionData: any) => {
-      this.objData = questionData.questions;
-    });
+    //how are we calling user categories even if role is 2???
     this.userQuestionService
       .getUserQuestionCategories()
       .subscribe((questionCategories: any) => {
@@ -146,7 +145,7 @@ export class QuestionsPageComponent implements OnInit {
   imokDontSend(){
     const body={
       flag:true,
-      currentQuestionId:this.generateQuestionIdAfterSubmitting
+      questionID:this.generateQuestionIdAfterSubmitting
     }
     this.modalService.dismissAll();
     this.userQuestionService.resendQuestion(body).subscribe((response) =>{
@@ -157,12 +156,19 @@ export class QuestionsPageComponent implements OnInit {
   resendComment() {
     const body={
       flag:false,
-      currentQuestionId:this.generateQuestionIdAfterSubmitting
+      questionID:this.generateQuestionIdAfterSubmitting
     };
     this.modalService.dismissAll();
 
     this.userQuestionService.resendQuestion(body).subscribe((response) =>{
       this.modalService.open(this.questionSentSuccessModal, { backdropClass: "light-blue-backdrop" });
+    });
+  }
+
+  refreshQuestionPageTrigger(){
+    console.log("Refresh question page trigger");
+    this.userQuestionService.getQuestions().subscribe((questionData: any) => {
+      this.objData = questionData.questions;
     });
   }
 }

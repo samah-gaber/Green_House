@@ -2,11 +2,19 @@
   <div class="user-question">
     <div class="row">
       <div class="col-10 col-md-12">
-        <span class="since-date txt-arial-faintGrey-normal-18 mb-3">{{ question.questionTime}}</span>
-        <p class="question-text txt-arial-lightGrey-bold-24 mb-4">
-          {{ question.questionContain }}
-        </p>
-        <img src="{{ question.plantimage }}" alt="" *ngIf="question.plantimage" class=" " />
+        <div class="row d-flex align-items-center">
+          <div class="col-md-3 col-12 ">
+            <img src="{{ question.plantimage }}" alt="" *ngIf="question.plantimage" class="img-fluid" />
+          </div>
+
+         <div class="col-md-9 col-12">
+            <span class="since-date txt-arial-faintGrey-normal-18 mb-3">{{ question.questionTime}}</span>
+            <p class="question-text txt-arial-lightGrey-bold-24 mb-4">
+              {{ question.questionContain }}
+            </p>
+         </div>
+        </div>
+
       </div>
     </div>
   </div>

@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { 
-  FormControl, 
-  FormGroup, 
+import {
+  FormControl,
+  FormGroup,
   FormBuilder,
   Validators,
   AbstractControl,
@@ -11,7 +11,6 @@ import {
 import { CustomValidators } from "ng2-validation";
 import { validateConfig } from "@angular/router/src/config";
 import { PlantationServiceService } from 'src/app/services/plantation-service.service';
-import { AddPlantCatRes, AddCatPlantsRes } from '../../interfaces/plant-interface';
 import { PlantService } from '../../services/plant.service';
 import { Router } from '@angular/router';
 
@@ -121,12 +120,12 @@ export class PlantationHomeComponent implements OnInit {
   // oldfertPrice: FormControl;
 
   // showEmptyOrderError = false;
-  
+
 
 
 
   constructor(
-    private modalService: NgbModal, 
+    private modalService: NgbModal,
     private fb: FormBuilder,
     private plantationService: PlantationServiceService,
     private router: Router

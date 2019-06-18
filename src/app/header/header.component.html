@@ -63,9 +63,9 @@
           </form>
         </div>
         <div class="signin-cart col-md-2 col-4 text-left">
-          <div class="row align-items-center">
-            <div class="cart col-4">
-              <a (click)=goToCart()><i class="fas fa-shopping-cart"></i></a>
+          <div class="row align-items-center" >
+            <div class="cart col-4" *ngIf="userData.role!=2">
+              <a  (click)=goToCart()><i class="fas fa-shopping-cart" ></i></a>
               <p class="cart-count txt-arial-secondary-bold-14 d-inline-block" *ngIf="totalCartCount>0">
                 {{totalCartCount}}
               </p>

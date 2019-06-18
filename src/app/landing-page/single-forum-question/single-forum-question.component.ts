@@ -1,8 +1,9 @@
 import { PlantationQuestionServiceService } from './../../services/plantation-question-service.service';
-import { Component, OnInit,Input } from '@angular/core';
+import { Component,EventEmitter, OnInit,Input, Output } from '@angular/core';
 import { UserDataOrderModalComponent } from 'src/app/cart/user-data-order-modal/user-data-order-modal.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+
 
 @Component({
   selector: 'app-single-forum-question',
@@ -13,10 +14,12 @@ export class SingleForumQuestionComponent implements OnInit {
   @Input() question;
   @Input() userRole;
   @Input() userName;
+  @Output() triggerForumPageQuestionRefresh = new EventEmitter();
   replyCount: number;
   plantCommentForm: FormGroup;
   plantNewComment : FormControl;
   answerTextBeingEdited : any;
+  Counter = 0;
   constructor(private plantationQuestionService: PlantationQuestionServiceService,
               private ngbModalService: NgbModal, private fb: FormBuilder) { }
 
@@ -42,6 +45,7 @@ export class SingleForumQuestionComponent implements OnInit {
       res => {
         console.log('answer submitted');
         console.log(res);
+        this.triggerForumPageQuestionRefresh.emit(true);
       },
       error => {
         console.log(error);
@@ -65,8 +69,10 @@ export class SingleForumQuestionComponent implements OnInit {
       res => {
         console.log('answer submitted');
         console.log(res);
+        this.triggerForumPageQuestionRefresh.emit(true);
       },
       error => {
+
         console.log(error);
       }
     )

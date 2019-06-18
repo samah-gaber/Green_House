@@ -13,8 +13,8 @@ export class OrderServiceService {
     private http: HttpClient,
     private httpService: HttpServiceService
   ) {
-    // this.orderURL = './assets/userOrderData.json'; // url bta3 el data
-    this.orderURL = 'client/orders';
+    this.orderURL = './assets/userOrderData.json'; // url bta3 el data
+    // this.orderURL = 'client/orders';
   }
   // domain
   // userId
@@ -29,10 +29,10 @@ export class OrderServiceService {
   }
 
   initiatePlantationOrderRequest() {
-    let url = `plantations/plantationorder`;
-    return this.httpService.getRequest(url);
-    // return this.http.get(this.orderURL);
-    // return this.httpService.getRequest("./assets/plantationOrders.json");
-    //return this.httpService.getRequest(this.orderURL);
+
+    //let url = `plantations/plantationorder`;
+    //return this.httpService.getRequest(url);
+
+     return this.httpService.getRequest("./assets/plantationOrders.json");
   }
 }

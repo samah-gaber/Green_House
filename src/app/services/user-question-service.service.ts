@@ -9,67 +9,46 @@ import { UserService } from './user.service';
 })
 export class UserQuestionServiceService {
   questionData: any;
-  // domainURL = this.domainService.getDomain();
-  // headers;
-  // userToken;
-  // userQuestionsURL = 'http://192.168.43.132:9999/api/client/Getquestions/112';
-
   constructor(
     private http: HttpClient,
     private httpService: HttpServiceService,
     private userService: UserService,
     private domainService: DomainService
-  ) {
-
-    // if(this.userService.returnAuthUserData()) {
-    //   this.userToken = this.userService.returnAuthUserData().token;
-    // }
-  }
+  ) { }
 
   getQuestions() {
-    //let url = 'client/Getquestions';
-    // let url = this.userQuestionsURL + userId;
-    // return this.http.get(url);
-    let url = './assets/genericQuestionObject.json';
-    // return this.http.get(`${this.domainURL}client/Getquestions`, {
-    //   'headers': this.headers
-    // });
+    let url = 'client/Getquestions';
+    //let url = './assets/genericQuestionObject.json';
     return this.httpService.getRequest(url);
 
   }
 
   getUserQuestionCategories() {
     let url = 'plants/allcategories';
-     return this.http.get('./assets/userQuestionCategories.json');
-    // return this.http.get(`${this.domainURL}plants/allcategories`, {
-    //   'headers': this.headers
-    // });
+    //let url = './assets/userQuestionCategories.json';
     return this.httpService.getRequest(url);
   }
 
   getUserQuestionPlantByCategoryId(catId) {
     console.log('getting plants ');
     let url = `plants/category/${catId}`;
-    return this.http.get('./assets/userQuestionPlants.json');
-    // return this.http.get(`${this.domainURL}/plants/category/cat1`, {
-    //   'headers': this.headers
-    // });
+    //let url = './assets/userQuestionPlants.json';
+
     return this.httpService.getRequest(url);
   }
 
   //this is the first function that will send the first request
   sendFormData(data){
-    //let url = `client/insertQuestion`;
-    let url =  './assets/firstResponseToSubmittingAQuestion.json';
-    // const url = 'http://192.168.43.132:9999/api/client/insertQuestion/112';
-    // return this.httpService.postRequest(url, data);
-    return this.httpService.getRequest(url)//this is just a mock
-    //return this.httpService.postRequest(url, data);
+    let url = `client/insertQuestion`;
+    //let url =  './assets/firstResponseToSubmittingAQuestion.json';
+    //return this.httpService.getRequest(url)//this is just a mock
+    return this.httpService.postRequest(url, data);
   }
 
   //this is the second request to send the question
   resendQuestion(data){
-    let url ='./assets/firstResponseToSubmittingAQuestion.json';
+    // let url ='./assets/firstResponseToSubmittingAQuestion.json';
+    let url ="client/notusedques"
     return this.httpService.postRequest(url, data);
   }
 }

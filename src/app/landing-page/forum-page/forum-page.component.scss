@@ -1,11 +1,26 @@
 // import sytle files
 @import "../../../styles.scss";
 .btn-primary {
-  background-color:$darkColor !important;
-  color: #fff;
+  background-color:transparent !important;
+  @extend %txt-arial-dark-bold-18;
 }
 
 .btn-primary:not([disabled]):not(.disabled).active{
-  background-color:$secondaryColor !important;
+  color:$secondaryColor !important;
+  border-bottom: 2px solid $secondaryColor !important;
+  background-color:transparent !important;
+  @extend %txt-arial-secondary-bold-18;
+  border-color: none !important;
 
+}
+.btn-primary:not([disabled]):not(.disabled):active{
+  background-color: transparent !important;
+  color: $darkColor;
+}
+
+.btn{
+  box-shadow:none !important;
+}
+.sass-margin-tabs{
+  margin: auto !important;
 }
