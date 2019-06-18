@@ -75,15 +75,15 @@ export class UserDataOrderModalComponent implements OnInit {
     }
     console.log( this.userOrdersSentObj);
 
-    this.cartService.sendOrder(this.userOrdersSentObj).subscribe(
-      res => {
-        console.log(res);
-        // this.userOrderNo = res.orderNo;
-      },
-      error => {
-        console.log(error);
-      }
-    );
+    // this.cartService.sendOrder(this.userOrdersSentObj).subscribe(
+    //   res => {
+    //     console.log(res);
+    //     // this.userOrderNo = res.orderNo;
+    //   },
+    //   error => {
+    //     console.log(error);
+    //   }
+    // );
     this.modalRef.hide();
     let emptyCart = this.cartService.emptyCart();
     this.action.next(emptyCart);

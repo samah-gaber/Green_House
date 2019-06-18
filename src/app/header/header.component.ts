@@ -7,7 +7,7 @@ import { AuthService } from '../services/auth.service';
 import { AuthUserData } from '../interfaces/user-interface';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { CartService } from '../services/cart.service';
-import { NotificationsService } from '../services/notifications.service';
+// import { NotificationsService } from '../services/notifications.service';
 import { HttpServiceService } from '../services/http-service.service';
 
 @Component({
@@ -21,9 +21,10 @@ export class HeaderComponent implements OnInit {
   showUserName: boolean = false;
   userData: AuthUserData;
   totalCartCount: number;
+  userName: string;
   
   // notifications service
-  notificationMsgs: any[];
+  // notificationMsgs: any[];
 
 
   constructor( 
@@ -38,12 +39,12 @@ export class HeaderComponent implements OnInit {
   ) { }
   
   ngOnInit() {
-    // localStorage.setItem('authUserData', JSON.stringify({
-    //   id: 1,
-    //   userName: 'ali',
-    //   token: 'ffhbgfg43434',
-    //   role:2
-    // }))
+    localStorage.setItem('authUserData', JSON.stringify({
+      id: 1,
+      userName: 'ali',
+      token: 'ffhbgfg43434',
+      role:2
+    }))
     this.checkUserAuthenticated();
     
     this.searchBarForm = this.fb.group ({
@@ -69,6 +70,7 @@ export class HeaderComponent implements OnInit {
     if( this.authService.isAuthenticated() ) {
       this.showUserName = true;
       this.userData = this.userService.returnAuthUserData();
+      this.userName = this.userData.userName.split(" ")[0];
       console.log("User is authenticated", this.userData);
       console.log("User is authenticated role", this.userData.role);
     }
@@ -113,7 +115,7 @@ export class HeaderComponent implements OnInit {
   //   let url = `notification/allnotification/${this.userData.userId}`;
   //   this.httpService.getRequest(url).subscribe(
   //     res => {
-  //       console.log(res);
+  //       this.notificationMsgs = res;
   //     }
   //   )
   // }

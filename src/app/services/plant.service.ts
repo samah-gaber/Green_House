@@ -35,9 +35,9 @@ export class PlantService {
 
   // home plant categories
   plantsCatGetRequest() {
-    if (this.authUserData) {
-      if (this.authUserData.role == 2) {
-        this.plantsCatURL = `plantations/plantation`;
+    if(this.authUserData) {
+      if(this.authUserData.role == 2) {
+        this.plantsCatURL = `plantations/plantation`
       } else {
         this.plantsCatURL = `plants/categories`;
       }
@@ -48,11 +48,14 @@ export class PlantService {
   }
 
   plantsSingleCatGetRequest(catData) {
-    if (this.authUserData) {
-      if (this.authUserData.role == 2) {
-        this.plantsCatURL = `plantations/category/${catData}`;
+    if(this.authUserData) {
+      if(this.authUserData.role ==2) {
+        this.plantsCatURL = `plantations/category/${catData}`
+      } else {
+        this.plantsCatURL = `plants/category/${catData}`;
       }
-    } else {
+    }
+    else {
       this.plantsCatURL = `plants/category/${catData}`;
     }
     console.log('url: ' + this.plantsCatURL);

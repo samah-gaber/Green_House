@@ -22,31 +22,31 @@ export class OrderPlantModalComponent implements OnInit {
   // userOrder: userSingleOrder;
   content: any;
   showEmptyOrderError = false;
-  orderFormObj: OrderFormObj;
-  // orderFormObj = {
-  //   plantItems: [
-  //     {
-  //       type: 'graft',
-  //       artype: 'شتلة',
-  //       price: 7
-  //     },
-  //     {
-  //       type: 'seeds',
-  //       artype: 'بذور',
-  //       price: 7
-  //     },
-  //     {
-  //       type: 'soil',
-  //       artype: 'تربة',
-  //       price: 7
-  //     },
-  //     {
-  //       type: 'fert',
-  //       artype: 'سماد',
-  //       price: 7
-  //     }
-  //   ]
-  // }
+  // orderFormObj: OrderFormObj;
+  orderFormObj = {
+    plantItems: [
+      {
+        type: 'plant',
+        artype: 'شتلة',
+        price: 7
+      },
+      {
+        type: 'seed',
+        artype: 'بذور',
+        price: 7
+      },
+      {
+        type: 'soil',
+        artype: 'تربة',
+        price: 7
+      },
+      {
+        type: 'fertilizer',
+        artype: 'سماد',
+        price: 7
+      }
+    ]
+  }
 
   constructor(
     public orderModalRef: MDBModalRef,
@@ -55,21 +55,21 @@ export class OrderPlantModalComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.getOrderFormData({
-      plantationid: this.content.plantationId,
-      plantid: this.content.plantId
-    });
+    // this.getOrderFormData({
+    //   plantationid: this.content.plantationId,
+    //   plantid: this.content.plantId
+    // });
 
     this.orderForm = this.fb.group(
       {
-        graftType: "",
-        graftQty: "1",
-        seedsType: "",
-        seedsQty: "1",
+        plantType: "",
+        plantQty: "1",
+        seedType: "",
+        seedQty: "1",
         soilType: "",
         soilQty: "1",
-        fertType: "",
-        fertQty: "1"
+        fertilizerType: "",
+        fertilizerQty: "1"
       },
       {
         validator: (formGroup: FormGroup) => {
@@ -83,10 +83,10 @@ export class OrderPlantModalComponent implements OnInit {
 
   validateOrderForm(formGroup: FormGroup) {
     if (
-      !formGroup.controls["graftType"].value &&
-      !formGroup.controls["seedsType"].value &&
+      !formGroup.controls["plantType"].value &&
+      !formGroup.controls["seedType"].value &&
       !formGroup.controls["soilType"].value &&
-      !formGroup.controls["fertType"].value
+      !formGroup.controls["fertilizerType"].value
     ) {
       return { validateOrderForm: true };
     } else {
@@ -116,21 +116,21 @@ export class OrderPlantModalComponent implements OnInit {
         itemContents: []
       };
 
-      if (form.value.graftType) {
-        let graftQty = form.value.graftQty;
-        this.addItemToOrder(graftQty, "graftPrice", "graft");
+      if (form.value.plantType) {
+        let graftQty = form.value.plantQty;
+        this.addItemToOrder(graftQty, "plantPrice", "plant", "شتلة");
       }
-      if (form.value.seedsType) {
-        let seedsQty = form.value.seedsQty;        
-        this.addItemToOrder(seedsQty, "seedsPrice", "seeds");
+      if (form.value.seedType) {
+        let seedsQty = form.value.seedQty;        
+        this.addItemToOrder(seedsQty, "seedPrice", "seed", "بذور");
       }
       if (form.value.soilType) {
         let soilQty = form.value.soilQty;        
-        this.addItemToOrder(soilQty, "soilPrice", "soil");
+        this.addItemToOrder(soilQty, "soilPrice", "soil", "تربة");
       }
-      if (form.value.fertType) {
-        let fertQty = form.value.fertQty;        
-        this.addItemToOrder(fertQty, "fertPrice", "fert");
+      if (form.value.fertilizerType) {
+        let fertQty = form.value.fertilizerQty;        
+        this.addItemToOrder(fertQty, "fertilizerPrice", "fertilizer", "سماد");
       }
 
       this.calcOrderTotalPrice(this.userOrder);
@@ -181,11 +181,13 @@ export class OrderPlantModalComponent implements OnInit {
     });
   }
 
-  addItemToOrder(quantity, priceId, type) {
+  addItemToOrder(quantity, priceId, type, arType) {
+    console.log(priceId);
     let typeQty = quantity;
     let typePrice = +document.getElementById(priceId).innerHTML;
     this.userOrder.itemContents.push({
       type: type,
+      arType: arType,
       price: typePrice,
       quantity: typeQty,
       totalPrice: typePrice * typeQty

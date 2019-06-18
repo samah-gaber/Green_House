@@ -97,6 +97,7 @@ export class CartComponent implements OnInit {
     if(this.authUser.isAuthenticated()) {
       this.emptyCart = false;
       let finalSentOrdersObj = this.cartService.adjustOrdersObj(this.ordersArr);
+      console.log('finalSentOrdersObj', finalSentOrdersObj);
       this.modalRef = this.modalService.show(UserDataOrderModalComponent, {
         data: {
           content: {
