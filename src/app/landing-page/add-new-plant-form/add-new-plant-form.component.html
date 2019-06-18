@@ -1,331 +1,650 @@
-<section class="add-new-plant-form text-center">
-  <div class="sec-style">
-    <h4 class="title">أضف إلى نباتاتك</h4>
-  </div>
-    <div class="form-type-tabs">
-        <div class="add-old-plant-div">
-          <button class="txt-arial-secondary-bold-18 tab-btn active" id="old-plant-btn" name='add-old-plant' (click)='showTabForm($event)'>اختار من مجموعة نباتاتنا</button>      
-        </div>
-        <div class="add-new-plant-div">
-          <button class="txt-arial-secondary-bold-18 tab-btn" id="new-plant-btn" name='add-new-plant' (click)='showTabForm($event)'>أضف نبات جديد</button>      
-        </div>
+<section class="add-new-plant-form text-center py-5">
+  <div class="container pb-5 pt-4">
+    <div class="sec-title mb-4">
+      <h4 class="title text-center txt-arial-dark-bold-30">أضف إلى نباتاتك</h4>
+    </div>
+    <div class="form-type-tabs mb-5">
+      <div class="add-old-plant-div pl-5">
+        <button
+          class="txt-arial-secondary-bold-18 tab-btn active"
+          id="old-plant-btn"
+          name="add-old-plant"
+          (click)="showTabForm($event)"
+        >
+          اختار من مجموعة نباتاتنا
+        </button>
+      </div>
+      <div class="add-new-plant-div pr-5">
+        <button
+          class="txt-arial-secondary-bold-18 tab-btn"
+          id="new-plant-btn"
+          name="add-new-plant"
+          (click)="showTabForm($event)"
+        >
+          أضف نبات جديد
+        </button>
+      </div>
     </div>
     <!-- form for adding already existing plant -->
     <div class="add-plant-form" id="add-old-plant">
-        <form [formGroup]="addOldPlantForm" (ngSubmit)="onAddOldPlant(addOldPlantForm)">
-          <div class="form-group mb-5">
-            <label class="txt-arial-dark-bold-16">
-              فئة النبات
-            </label>
-            <select id="oldPlantCategory" formControlName="oldPlantCategory" placeholder='اختر فئة النبات' (change)='onSelectCategory()'>
-              <option *ngFor="let cat of plantCategories.category" [ngValue]="cat.name">{{ cat.name }}</option>
-            </select>
-            <div *ngIf="oldPlantCategory.invalid && (oldPlantCategory.dirty || oldPlantCategory.touched)">
-              <div *ngIf="oldPlantCategory.errors.required" class="error-msg">
-                يجب اختيار فئة النبات
+      <form
+        [formGroup]="addOldPlantForm"
+        (ngSubmit)="onAddOldPlant(addOldPlantForm)"
+      >
+      <div class="row">
+        <div class="form-group mb-5 col-6">
+          <label class="txt-arial-dark-bold-20 ml-4">
+            فئة النبات
+          </label>
+          <select
+            id="oldPlantCategory"
+            formControlName="oldPlantCategory"
+            placeholder="اختر فئة النبات"
+            (change)="onSelectCategory()"
+          >
+            <option
+              *ngFor="let cat of plantCategories.category"
+              [ngValue]="cat.name"
+              >{{ cat.name }}</option
+            >
+          </select>
+          <div
+            *ngIf="
+              oldPlantCategory.invalid &&
+              (oldPlantCategory.dirty || oldPlantCategory.touched)
+            "
+          >
+            <div *ngIf="oldPlantCategory.errors.required" class="error-msg">
+              يجب اختيار فئة النبات
+            </div>
+          </div>
+        </div>
+        <div class="form-group mb-5 col-6">
+          <label class="txt-arial-dark-bold-20">
+            اسم النبات
+          </label>
+          <select
+            id="newPlantName"
+            class="mr-4"
+            formControlName="oldPlantName"
+            placeholder="اختر فئة النبات"
+            disabled
+          >
+            <option
+              *ngFor="let plant of catPlants.plant"
+              [ngValue]="plant.id"
+              >{{ plant.name }}</option
+            >
+          </select>
+          <div
+            *ngIf="
+              oldPlantName.invalid &&
+              (oldPlantName.dirty || oldPlantName.touched)
+            "
+          >
+            <div *ngIf="oldPlantName.errors.required" class="error-msg">
+              يجب اختيار اسم النبات
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="row titles">
+          <div class="col-6">
+            <h6 class="txt-arial-dark-bold-20">النوع</h6>
+          </div>
+          <div class="col-6">
+            <h6 class="txt-arial-dark-bold-20">سعر الوحدة</h6>
+          </div>
+        </div>
+        <div formGroupName="oldPlantType" class="form-group">
+          <div class="plant-types row mb-3">
+            <div class="col-6 type-checkbox">
+              <input
+                type="checkbox"
+                formControlName="oldGraftType"
+                name="graft"
+                (click)="enablePriceInput($event,'old')"
+              />
+              <label for="graft" class="txt-arial-darkGrey-normal-20"
+                >شتلة</label
+              >
+            </div>
+            <div class="col-6 price">
+              <input
+                type="text"
+                formControlName="oldGraftPrice"
+                name="oldGraftPrice"
+                class="form-control d-inline-block"
+                id="oldgraft"
+                disabled
+              />
+              <span class="txt-arial-darkGrey-normal-20">جنيه</span>
+            </div>
+            <div
+              *ngIf="
+                oldGraftPrice.invalid &&
+                (oldGraftPrice.dirty || oldGraftPrice.touched)
+              "
+            >
+              <div *ngIf="oldGraftPrice.errors.required" class="error-msg">
+                يجب ان تضيف سعر المنتج
+              </div>
+              <div *ngIf="oldGraftPrice.errors.digits" class="error-msg">
+                السعر يجب ان يحتوى على أرقام فقط
               </div>
             </div>
           </div>
-          <div class="form-group mb-5">
-            <label class="txt-arial-dark-bold-16">
-              اسم النبات
-            </label>
-            <select id="newPlantName" formControlName="oldPlantName" placeholder='اختر فئة النبات'  (change)='onSelectPlant()' disabled>
-              <option *ngFor="let plant of catPlants.plant" [ngValue]="plant.id">{{ plant.name }}</option>
-            </select>
-            <div *ngIf="oldPlantName.invalid && (oldPlantName.dirty || oldPlantName.touched)">
-              <div *ngIf="oldPlantName.errors.required" class="error-msg">
-                يجب اختيار اسم النبات
+          <div class="plant-types row mb-3">
+            <div class="col-6 type-checkbox">
+              <input
+                type="checkbox"
+                formControlName="oldSeedsType"
+                name="seeds"
+                (click)="enablePriceInput($event,'old')"
+              />
+              <label for="seeds" class="txt-arial-darkGrey-normal-20"
+                >بذور</label
+              >
+            </div>
+            <div class="col-6 price">
+              <!-- <label for='oldSeedsPrice' class="txt-arial-darkGrey-normal-20">بذور</label> -->
+              <input
+                type="text"
+                formControlName="oldSeedsPrice"
+                name="oldSeedsPrice"
+                class="form-control d-inline-block"
+                id="oldseeds"
+                disabled
+              />
+              <span class="txt-arial-darkGrey-normal-20">جنيه</span>
+            </div>
+            <div
+              *ngIf="
+                oldSeedsPrice.invalid &&
+                (oldSeedsPrice.dirty || oldSeedsPrice.touched)
+              "
+            >
+              <!-- <div *ngIf="oldSeedsPrice.errors.required" class="error-msg">
+                              يجب ان تضيف سعر المنتج
+                            </div> -->
+              <div *ngIf="oldSeedsPrice.errors.digits" class="error-msg">
+                السعر يجب ان يحتوى على أرقام فقط
               </div>
             </div>
           </div>
-          <div formGroupName='oldPlantType' class="form-group mb-5 row mb-3">
-            <div class="plant-types">
-                <div class="col-3 type-checkbox">
-                    <input type="checkbox" formControlName='oldGraftType' name='graft' (click)='enablePriceInput($event)'>
-                    <label for='graft' class="txt-arial-darkGrey-normal-20">شتلة</label>
-                  </div>
-                  <div class="col-3 price">
-                    <!-- <label for='oldGraftPrice' class="txt-arial-darkGrey-normal-20">شتلة</label> -->
-                    <input type="text" formControlName='oldGraftPrice' name='oldGraftPrice' class="form-control" id='graft' disabled>
-                    <span class="txt-arial-darkGrey-normal-20">جنيه</span>
-                  </div>
-                  <div *ngIf="oldGraftPrice.invalid && (oldGraftPrice.dirty || oldGraftPrice.touched)">
-                      <div *ngIf="oldGraftPrice.errors.required" class="error-msg">
-                        يجب ان تضيف سعر المنتج
-                      </div>
-                      <div *ngIf="oldGraftPrice.errors.digits" class="error-msg">
-                        السعر يجب ان يحتوى على أرقام فقط
-                      </div>
-                    </div>
+          <div class="plant-types row mb-3">
+            <div class="col-6 type-checkbox">
+              <input
+                type="checkbox"
+                formControlName="oldSoilType"
+                name="soil"
+                (click)="enablePriceInput($event,'old')"
+              />
+              <label for="soil" class="txt-arial-darkGrey-normal-20"
+                >تربة</label
+              >
             </div>
-            <div class="plant-types">
-                <div class="col-3 type-checkbox">
-                    <input type="checkbox" formControlName='oldSeedsType' name='seeds' (click)='enablePriceInput($event)'>
-                    <label for='seeds' class="txt-arial-darkGrey-normal-20">بذور</label>
-                  </div>
-                  <div class="col-3 price">
-                    <!-- <label for='oldSeedsPrice' class="txt-arial-darkGrey-normal-20">بذور</label> -->
-                    <input type="text" formControlName='oldSeedsPrice' name='oldSeedsPrice' class="form-control" id='seeds' disabled>
-                    <span class="txt-arial-darkGrey-normal-20">جنيه</span>
-                  </div>
-                  <div *ngIf="oldSeedsPrice.invalid && (oldSeedsPrice.dirty || oldSeedsPrice.touched)">
-                      <!-- <div *ngIf="oldSeedsPrice.errors.required" class="error-msg">
-                        يجب ان تضيف سعر المنتج
-                      </div> -->
-                      <div *ngIf="oldSeedsPrice.errors.digits" class="error-msg">
-                        السعر يجب ان يحتوى على أرقام فقط
-                      </div>
-                    </div>
+            <div class="col-6 price">
+              <!-- <label for='oldSoilPrice' class="txt-arial-darkGrey-normal-20">تربة</label> -->
+              <input
+                type="text"
+                formControlName="oldSoilPrice"
+                name="oldSoilPrice"
+                class="form-control d-inline-block"
+                id="oldsoil"
+                disabled
+              />
+              <span class="txt-arial-darkGrey-normal-20">جنيه</span>
             </div>
-            <div class="plant-types">
-                <div class="col-3 type-checkbox">
-                    <input type="checkbox" formControlName='oldSoilType' name='soil' (click)='enablePriceInput($event)'>
-                    <label for='soil' class="txt-arial-darkGrey-normal-20">تربة</label>
-                  </div>
-                  <div class="col-3 price">
-                    <!-- <label for='oldSoilPrice' class="txt-arial-darkGrey-normal-20">تربة</label> -->
-                    <input type="text" formControlName='oldSoilPrice' name='oldSoilPrice' class="form-control" id='soil' disabled>
-                    <span class="txt-arial-darkGrey-normal-20">جنيه</span>
-                  </div>
-                  <div *ngIf="oldSoilPrice.invalid && (oldSoilPrice.dirty || oldSoilPrice.touched)">
-                      <!-- <div *ngIf="oldSoilPrice.errors.required" class="error-msg">
-                        يجب ان تضيف سعر المنتج
-                      </div> -->
-                      <div *ngIf="oldSoilPrice.errors.digits" class="error-msg">
-                        السعر يجب ان يحتوى على أرقام فقط
-                      </div>
-                    </div>
-            </div>
-            <div class="plant-types">
-                <div class="col-3 type-checkbox">
-                    <input type="checkbox" formControlName='oldFertType' name='fert' (click)='enablePriceInput($event)'>
-                    <label for='fert' class="txt-arial-darkGrey-normal-20">سماد</label>
-                  </div>
-                  <div class="col-3 price">
-                    <!-- <label for='oldFertPrice' class="txt-arial-darkGrey-normal-20">تربة</label> -->
-                    <input type="text" formControlName='oldFertPrice' name='oldFertPrice' class="form-control" id='fert' disabled>
-                    <span class="txt-arial-darkGrey-normal-20">جنيه</span>
-                  </div>
-                  <div *ngIf="oldFertPrice.invalid && (oldFertPrice.dirty || oldFertPrice.touched)">
-                      <!-- <div *ngIf="oldFertPrice.errors.required" class="error-msg">
-                        يجب ان تضيف سعر المنتج
-                      </div> -->
-                      <div *ngIf="oldFertPrice.errors.digits" class="error-msg">
-                        السعر يجب ان يحتوى على أرقام فقط
-                      </div>
-                    </div>
-            </div>
-          </div>
-          <div *ngIf="addOldPlantForm.get('oldPlantType').invalid && (addOldPlantForm.get('oldPlantType').dirty || addOldPlantForm.get('oldPlantType').touched)">
-              <div *ngIf="addOldPlantForm.get('oldPlantType').hasError('validateOrderForm')" class="error-msg">
-                يجب اختيار منتج واحد على الأقل
+            <div
+              *ngIf="
+                oldSoilPrice.invalid &&
+                (oldSoilPrice.dirty || oldSoilPrice.touched)
+              "
+            >
+              <!-- <div *ngIf="oldSoilPrice.errors.required" class="error-msg">
+                              يجب ان تضيف سعر المنتج
+                            </div> -->
+              <div *ngIf="oldSoilPrice.errors.digits" class="error-msg">
+                السعر يجب ان يحتوى على أرقام فقط
               </div>
             </div>
-          <!-- <p class="empty-order-error" *ngIf="showEmptyOrderError">يجب أن تختار ما تريد شرائه</p> -->
-        
-          <button type="submit" class="btn-custom btn-custom-primary">Send</button>
-        </form>
+          </div>
+          <div class="plant-types row mb-3">
+            <div class="col-6 type-checkbox">
+              <input
+                type="checkbox"
+                formControlName="oldFertType"
+                name="fert"
+                (click)="enablePriceInput($event,'old')"
+              />
+              <label for="fert" class="txt-arial-darkGrey-normal-20"
+                >سماد</label
+              >
+            </div>
+            <div class="col-6 price">
+              <!-- <label for='oldFertPrice' class="txt-arial-darkGrey-normal-20">تربة</label> -->
+              <input
+                type="text"
+                formControlName="oldFertPrice"
+                name="oldFertPrice"
+                class="form-control d-inline-block"
+                id="oldfert"
+                disabled
+              />
+              <span class="txt-arial-darkGrey-normal-20">جنيه</span>
+            </div>
+            <div
+              *ngIf="
+                oldFertPrice.invalid &&
+                (oldFertPrice.dirty || oldFertPrice.touched)
+              "
+            >
+              <!-- <div *ngIf="oldFertPrice.errors.required" class="error-msg">
+                              يجب ان تضيف سعر المنتج
+                            </div> -->
+              <div *ngIf="oldFertPrice.errors.digits" class="error-msg">
+                السعر يجب ان يحتوى على أرقام فقط
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          *ngIf="
+            addOldPlantForm.get('oldPlantType').invalid &&
+            (addOldPlantForm.get('oldPlantType').dirty ||
+              addOldPlantForm.get('oldPlantType').touched)
+          "
+        >
+          <div
+            *ngIf="
+              addOldPlantForm.get('oldPlantType').hasError('validateOrderForm')
+            "
+            class="error-msg"
+          >
+            يجب اختيار منتج واحد على الأقل
+          </div>
+        </div>
+        <!-- <p class="empty-order-error" *ngIf="showEmptyOrderError">يجب أن تختار ما تريد شرائه</p> -->
+
+        <button type="submit" class="btn-custom btn-custom-primary mt-5">
+          أضف النبات
+        </button>
+      </form>
     </div>
-    <!-- form for adding a new plant -->    
+    <!-- form for adding a new plant -->
     <div class="add-plant-form" id="add-new-plant">
-        <form [formGroup]="addNewPlantForm" (ngSubmit)="onAddNewPlant(addNewPlantForm)">
-          <!-- plant category   -->
-          <div class="form-group mb-5">
-              <label class="txt-arial-dark-bold-16">
-                فئة النبات
+      <form
+        [formGroup]="addNewPlantForm"
+        (ngSubmit)="onAddNewPlant(addNewPlantForm)"
+      >
+      <div class="row">
+        <!-- plant category   -->
+        <div class="form-group mb-5 col-6">
+          <label class="txt-arial-dark-bold-20 ml-4">
+            فئة النبات
+          </label>
+          <select
+            id="newPlantCategory"
+            formControlName="newPlantCategory"
+            placeholder="اختر فئة النبات"
+            (change)="onSelectCategory()"
+          >
+            <option
+              *ngFor="let cat of plantCategories.category"
+              [ngValue]="cat.name"
+              >{{ cat.name }}</option
+            >
+          </select>
+          <!-- <div *ngIf="oldPlantCategory.invalid && (oldPlantCategory.dirty || oldPlantCategory.touched)">
+                      <div *ngIf="oldPlantCategory.errors.required" class="error-msg"> -->
+          <div
+            *ngIf="
+              oldPlantCategory.invalid &&
+              (oldPlantCategory.dirty || oldPlantCategory.touched)
+            "
+          >
+            <div *ngIf="oldPlantCategory.errors.required" class="error-msg">
+              يجب اختيار فئة النبات
+            </div>
+          </div>
+        </div>
+        <!-- plant name -->
+        <div class="form-group mb-5 col-6">
+          <label class="txt-arial-dark-bold-20">
+            اسم النبات
+          </label>
+          <input
+            type="text"
+            formControlName="newPlantName"
+            name="newPlantName"
+            class="form-control mr-4 d-inline-block"
+          />
+          <div
+            *ngIf="
+              newPlantName.invalid &&
+              (newPlantName.dirty || newPlantName.touched)
+            "
+          >
+            <div *ngIf="newPlantName.errors.required" class="error-msg">
+              يجب اختيار اسم النبات
+            </div>
+          </div>
+        </div>
+      </div>
+        <!-- plant types -->
+        <div class="row titles">
+            <div class="col-6">
+              <h6 class="txt-arial-dark-bold-20">النوع</h6>
+            </div>
+            <div class="col-6">
+              <h6 class="txt-arial-dark-bold-20">سعر الوحدة</h6>
+            </div>
+          </div>
+        <div formGroupName="newPlantType" class="form-group mb-5">
+          <div class="plant-types row mb-3">
+            <div class="col-6 type-checkbox">
+              <input
+                type="checkbox"
+                formControlName="newGraftType"
+                name="graft"
+                (click)="enablePriceInput($event,'new')"
+              />
+              <label for="graft" class="txt-arial-darkGrey-normal-20"
+                >شتلة</label
+              >
+            </div>
+            <div class="col-6 price">
+              <input
+                type="text"
+                formControlName="newGraftPrice"
+                name="newGraftPrice"
+                class="form-control d-inline-block"
+                id="newgraft"
+                disabled
+              />
+              <span class="txt-arial-darkGrey-normal-20">جنيه</span>
+            </div>
+            <div
+              *ngIf="
+                newGraftPrice.invalid &&
+                (newGraftPrice.dirty || newGraftPrice.touched)
+              "
+            >
+              <!-- <div *ngIf="newGraftPrice.errors.required" class="error-msg">
+                يجب ان تضيف سعر المنتج
+              </div> -->
+              <div *ngIf="newGraftPrice.errors.digits" class="error-msg">
+                السعر يجب ان يحتوى على أرقام فقط
+              </div>
+            </div>
+          </div>
+          <div class="plant-types row mb-3">
+            <div class="col-6 type-checkbox">
+              <input
+                type="checkbox"
+                formControlName="newSeedsType"
+                name="seeds"
+                (click)="enablePriceInput($event,'new')"
+              />
+              <label for="seeds" class="txt-arial-darkGrey-normal-20"
+                >بذور</label
+              >
+            </div>
+            <div class="col-6 price">
+              <!-- <label for='newSeedsPrice' class="txt-arial-darkGrey-normal-20">بذور</label> -->
+              <input
+                type="text"
+                formControlName="newSeedsPrice"
+                name="newSeedsPrice"
+                class="form-control d-inline-block"
+                id="newseeds"
+                disabled
+              />
+              <span class="txt-arial-darkGrey-normal-20">جنيه</span>
+            </div>
+            <div
+              *ngIf="
+                newSeedsPrice.invalid &&
+                (newSeedsPrice.dirty || newSeedsPrice.touched)
+              "
+            >
+              <!-- <div *ngIf="newSeedsPrice.errors.required" class="error-msg">
+                يجب ان تضيف سعر المنتج
+              </div> -->
+              <div *ngIf="newSeedsPrice.errors.digits" class="error-msg">
+                السعر يجب ان يحتوى على أرقام فقط
+              </div>
+            </div>
+          </div>
+          <!-- <div class="plant-types">
+            <div class="col-3 type-checkbox">
+              <input
+                type="checkbox"
+                formControlName="newSoilType"
+                name="soil"
+                (click)="enablePriceInput($event)"
+              />
+              <label for="soil" class="txt-arial-darkGrey-normal-20"
+                >تربة</label
+              >
+            </div>
+            <div class="col-3 price">
+              <input
+                type="text"
+                formControlName="newSoilPrice"
+                name="newSoilPrice"
+                class="form-control"
+                id="soil"
+                disabled
+              />
+              <span class="txt-arial-darkGrey-normal-20">جنيه</span>
+            </div>
+            <div
+              *ngIf="
+                newSoilPrice.invalid &&
+                (newSoilPrice.dirty || newSoilPrice.touched)
+              "
+            >
+              <div *ngIf="newSoilPrice.errors.required" class="error-msg">
+                يجب ان تضيف سعر المنتج
+              </div>
+              <div *ngIf="newSoilPrice.errors.digits" class="error-msg">
+                السعر يجب ان يحتوى على أرقام فقط
+              </div>
+            </div>
+          </div> -->
+          <!-- <div class="plant-types">
+            <div class="col-3 type-checkbox">
+              <input
+                type="checkbox"
+                formControlName="newFertType"
+                name="fert"
+                (click)="enablePriceInput($event)"
+              />
+              <label for="fert" class="txt-arial-darkGrey-normal-20"
+                >سماد</label
+              >
+            </div>
+            <div class="col-3 price">
+              <input
+                type="text"
+                formControlName="newFertPrice"
+                name="newFertPrice"
+                class="form-control"
+                id="fert"
+                disabled
+              />
+              <span class="txt-arial-darkGrey-normal-20">جنيه</span>
+            </div>
+            <div
+              *ngIf="
+                newFertPrice.invalid &&
+                (newFertPrice.dirty || newFertPrice.touched)
+              "
+            >
+              <div *ngIf="newFertPrice.errors.required" class="error-msg">
+                يجب ان تضيف سعر المنتج
+              </div>
+              <div *ngIf="newFertPrice.errors.digits" class="error-msg">
+                السعر يجب ان يحتوى على أرقام فقط
+              </div>
+            </div>
+          </div> -->
+        </div>
+        <div
+          *ngIf="
+            addNewPlantForm.get('newPlantType').invalid &&
+            (addNewPlantForm.get('newPlantType').dirty ||
+              addNewPlantForm.get('newPlantType').touched)
+          "
+        >
+          <div
+            *ngIf="
+              addNewPlantForm.get('newPlantType').hasError('validateOrderForm')
+            "
+            class="error-msg"
+          >
+            يجب اختيار منتج واحد على الأقل
+          </div>
+        </div>
+        <div class="row titles">
+            <div class="col-6">
+              <h6 class="txt-arial-dark-bold-20">معلومات عن النبات</h6>
+            </div>
+          </div>
+          <div class="row">
+            <!-- plant season -->
+            <div class="form-group mb-3 col-6 d-flex justify-content-center">
+              <label class="txt-arial-darkGrey-normal-20 ml-4">
+                موسم الزراعة: 
               </label>
-              <select id="newPlantCategory" formControlName="newPlantCategory" placeholder='اختر فئة النبات'>
-                <option *ngFor="let cat of plantCategories.category" [ngValue]="cat.name">{{ cat.name }}</option>
+              <select
+                multiple
+                id="newPlantSeason"
+                formControlName="newPlantSeason"
+                placeholder="اختر موسم الزراعة"
+              >
+                <option *ngFor="let mon of months" [ngValue]=mon.value>{{mon.name}}</option>
+                <!-- <option [ngValue]="Feb">فبراير</option>
+                <option [ngValue]="Mar">مارس</option>
+                <option [ngValue]="Apr">ابريل</option>
+                <option [ngValue]="May">مايو</option>
+                <option [ngValue]="Jun">يونيو</option>
+                <option [ngValue]="Jul">يوليو</option>
+                <option [ngValue]="Aug">اغسطس</option>
+                <option [ngValue]="Sep">سبتمبر</option>
+                <option [ngValue]="Oct">اكتوبر</option>
+                <option [ngValue]="Nov">نوفمبر</option>
+                <option [ngValue]="Dec">ديسمبر</option>
+                <option [ngValue]="always">دائمة</option> -->
               </select>
               <!-- <div *ngIf="oldPlantCategory.invalid && (oldPlantCategory.dirty || oldPlantCategory.touched)">
-                <div *ngIf="oldPlantCategory.errors.required" class="error-msg"> -->
-              <div *ngIf="oldPlantCategory.invalid && (oldPlantCategory.dirty || oldPlantCategory.touched)">
-                <div *ngIf="oldPlantCategory.errors.required" class="error-msg">
-                  يجب اختيار فئة النبات
+                              <div *ngIf="oldPlantCategory.errors.required" class="error-msg"> -->
+              <div
+                *ngIf="
+                  newPlantSeason.invalid &&
+                  (newPlantSeason.dirty || newPlantSeason.touched)
+                "
+              >
+                <div *ngIf="newPlantSeason.errors.required" class="error-msg">
+                  يجب اختيار موسم الزراعة
                 </div>
               </div>
             </div>
-            <!-- plant name -->
-            <div class="form-group mb-5">
-              <label class="txt-arial-dark-bold-16">
-                اسم النبات
-              </label>
-              <input type="text" formControlName='newPlantName' name='newPlantName' class="form-control">
-              <div *ngIf="newPlantName.invalid && (newPlantName.dirty || newPlantName.touched)">
-                <div *ngIf="newPlantName.errors.required" class="error-msg">
-                  يجب اختيار اسم النبات
+            <!-- plant irrigation -->
+            <div class="form-group mb-3 col-6">
+                <label class="txt-arial-darkGrey-normal-20 ml-4">
+                  معدل الرى:
+                </label>
+                <span>كل</span>
+                <input
+                  type="number"
+                  min="1"
+                  max="10"
+                  formControlName="newPlantIrrigation"
+                />
+                <span>يوم</span>
+                <div
+                  *ngIf="
+                    newPlantIrrigation.invalid &&
+                    (newPlantIrrigation.dirty || newPlantIrrigation.touched)
+                  "
+                >
+                  <div *ngIf="newPlantIrrigation.errors.required" class="error-msg">
+                    يجب اختيار معدل الرى
+                  </div>
                 </div>
               </div>
+            <!-- plant humidity -->
+            <div class="form-group mb-3 col-6">
+              <label class="txt-arial-darkGrey-normal-20 ml-4">الرطوبة:</label>
+              <input type="radio" formControlName="newPlantHumidity" value="high"/>
+              عالية
+              <input type="radio" formControlName="newPlantHumidity" value="low" class="mr-3"/>
+              منخفضة
+              <!-- <div *ngIf="newPlantHumidity.invalid && (newPlantHumidity.dirty || newPlantHumidity.touched)">
+                                <div *ngIf="newPlantHumidity.errors.required" class="error-msg">
+                                  يجب اختيار الرطوبة
+                                </div>
+                              </div> -->
+                            </div>
+                            <!-- plant wind -->
+            <div class="form-group mb-3 col-6">
+              <label class="txt-arial-darkGrey-normal-20 ml-4">الرياح:</label>
+              <input type="radio" formControlName="newPlantWind" value="resist">
+              يقاوم
+              <input
+                type="radio"
+                formControlName="newPlantWind"
+                value="doesnot-resist"
+                class="mr-3"
+              />
+              لا يقاوم
+              <!-- <div *ngIf="newPlantWind.invalid && (newPlantWind.dirty || newPlantWind.touched)">
+                                <div *ngIf="newPlantWind.errors.required" class="error-msg">
+                                  يجب اختيار الرياح
+                                </div>
+                              </div> -->
             </div>
-            <!-- plant types -->
-            <div formGroupName='newPlantType' class="form-group mb-5 row mb-3">
-              <div class="plant-types">
-                  <div class="col-3 type-checkbox">
-                      <input type="checkbox" formControlName='newGraftType' name='graft' (click)='enablePriceInput($event)'>
-                      <label for='graft' class="txt-arial-darkGrey-normal-20">شتلة</label>
-                    </div>
-                    <div class="col-3 price">
-                      <!-- <label for='newGraftPrice' class="txt-arial-darkGrey-normal-20">شتلة</label> -->
-                      <input type="text" formControlName='newGraftPrice' name='newGraftPrice' class="form-control" id='graft' disabled>
-                      <span class="txt-arial-darkGrey-normal-20">جنيه</span>
-                    </div>
-                    <div *ngIf="newGraftPrice.invalid && (newGraftPrice.dirty || newGraftPrice.touched)">
-                        <div *ngIf="newGraftPrice.errors.required" class="error-msg">
-                          يجب ان تضيف سعر المنتج
-                        </div>
-                        <div *ngIf="newGraftPrice.errors.digits" class="error-msg">
-                          السعر يجب ان يحتوى على أرقام فقط
-                        </div>
-                      </div>
-              </div>
-              <div class="plant-types">
-                  <div class="col-3 type-checkbox">
-                      <input type="checkbox" formControlName='newSeedsType' name='seeds' (click)='enablePriceInput($event)'>
-                      <label for='seeds' class="txt-arial-darkGrey-normal-20">بذور</label>
-                    </div>
-                    <div class="col-3 price">
-                      <!-- <label for='newSeedsPrice' class="txt-arial-darkGrey-normal-20">بذور</label> -->
-                      <input type="text" formControlName='newSeedsPrice' name='newSeedsPrice' class="form-control" id='seeds' disabled>
-                      <span class="txt-arial-darkGrey-normal-20">جنيه</span>
-                    </div>
-                    <div *ngIf="newSeedsPrice.invalid && (newSeedsPrice.dirty || newSeedsPrice.touched)">
-                        <div *ngIf="newSeedsPrice.errors.required" class="error-msg">
-                          يجب ان تضيف سعر المنتج
-                        </div>
-                        <div *ngIf="newSeedsPrice.errors.digits" class="error-msg">
-                          السعر يجب ان يحتوى على أرقام فقط
-                        </div>
-                      </div>
-              </div>
-              <div class="plant-types">
-                  <div class="col-3 type-checkbox">
-                      <input type="checkbox" formControlName='newSoilType' name='soil' (click)='enablePriceInput($event)'>
-                      <label for='soil' class="txt-arial-darkGrey-normal-20">تربة</label>
-                    </div>
-                    <div class="col-3 price">
-                      <!-- <label for='newSoilPrice' class="txt-arial-darkGrey-normal-20">تربة</label> -->
-                      <input type="text" formControlName='newSoilPrice' name='newSoilPrice' class="form-control" id='soil' disabled>
-                      <span class="txt-arial-darkGrey-normal-20">جنيه</span>
-                    </div>
-                    <div *ngIf="newSoilPrice.invalid && (newSoilPrice.dirty || newSoilPrice.touched)">
-                        <div *ngIf="newSoilPrice.errors.required" class="error-msg">
-                          يجب ان تضيف سعر المنتج
-                        </div>
-                        <div *ngIf="newSoilPrice.errors.digits" class="error-msg">
-                          السعر يجب ان يحتوى على أرقام فقط
-                        </div>
-                      </div>
-              </div>
-              <div class="plant-types">
-                  <div class="col-3 type-checkbox">
-                      <input type="checkbox" formControlName='newFertType' name='fert' (click)='enablePriceInput($event)'>
-                      <label for='fert' class="txt-arial-darkGrey-normal-20">سماد</label>
-                    </div>
-                    <div class="col-3 price">
-                      <!-- <label for='newSoilPrice' class="txt-arial-darkGrey-normal-20">تربة</label> -->
-                      <input type="text" formControlName='newFertPrice' name='newFertPrice' class="form-control" id='fert' disabled>
-                      <span class="txt-arial-darkGrey-normal-20">جنيه</span>
-                    </div>
-                    <div *ngIf="newFertPrice.invalid && (newFertPrice.dirty || newFertPrice.touched)">
-                        <div *ngIf="newFertPrice.errors.required" class="error-msg">
-                          يجب ان تضيف سعر المنتج
-                        </div>
-                        <div *ngIf="newFertPrice.errors.digits" class="error-msg">
-                          السعر يجب ان يحتوى على أرقام فقط
-                        </div>
-                      </div>
-              </div>
-            </div>
-            <div *ngIf="addNewPlantForm.get('newPlantType').invalid && (addNewPlantForm.get('newPlantType').dirty || addNewPlantForm.get('newPlantType').touched)">
-                <div *ngIf="addNewPlantForm.get('newPlantType').hasError('validateOrderForm')" class="error-msg">
-                  يجب اختيار منتج واحد على الأقل
-                </div>
-              </div>
-              <!-- plant season -->
-              <div class="form-group mb-5">
-                  <label class="txt-arial-dark-bold-16">
-                    موسم الزراعة
-                  </label>
-                  <select multiple id="newPlantSeason" formControlName="newPlantSeason" placeholder='اختر موسم الزراعة'>
-                    <option [ngValue]="Jan">يناير</option>
-                    <option [ngValue]="Feb">فبراير</option>
-                    <option [ngValue]="Mar">مارس</option>
-                    <option [ngValue]="Apr">ابريل</option>
-                    <option [ngValue]="May">مايو</option>
-                    <option [ngValue]="Jun">يونيو</option>
-                    <option [ngValue]="Jul">يوليو</option>
-                    <option [ngValue]="Aug">اغسطس</option>
-                    <option [ngValue]="Sep">سبتمبر</option>
-                    <option [ngValue]="Oct">اكتوبر</option>
-                    <option [ngValue]="Nov">نوفمبر</option>
-                    <option [ngValue]="Dec">ديسمبر</option>
-                    <option [ngValue]="always">دائمة</option>
-                  </select>
-                  <!-- <div *ngIf="oldPlantCategory.invalid && (oldPlantCategory.dirty || oldPlantCategory.touched)">
-                    <div *ngIf="oldPlantCategory.errors.required" class="error-msg"> -->
-                  <div *ngIf="newPlantSeason.invalid && (newPlantSeason.dirty || newPlantSeason.touched)">
-                    <div *ngIf="newPlantSeason.errors.required" class="error-msg">
-                      يجب اختيار موسم الزراعة
-                    </div>
-                  </div>
-                </div>
-                <!-- plant humidity -->
-                <div class="form-group mb-5">
-                  <label>الرطوبة</label>
-                    <input type="radio" formControlName="newPlantHumidity" value="high" > عالية
-                    <input type="radio" formControlName="newPlantHumidity" value="low" > منخفضة
-                </div>
-                <!-- <div *ngIf="newPlantHumidity.invalid && (newPlantHumidity.dirty || newPlantHumidity.touched)">
-                    <div *ngIf="newPlantHumidity.errors.required" class="error-msg">
-                      يجب اختيار الرطوبة
-                    </div>
-                  </div> -->
-                <!-- plant wind -->
-                <div class="form-group mb-5">
-                  <label>الرياح</label>
-                    <input type="radio" formControlName="newPlantWind" value="resist" > يقاوم
-                    <input type="radio" formControlName="newPlantWind" value="doesnot-resist" > لا يقاوم
-                </div>
-                 <!-- <div *ngIf="newPlantWind.invalid && (newPlantWind.dirty || newPlantWind.touched)">
-                    <div *ngIf="newPlantWind.errors.required" class="error-msg">
-                      يجب اختيار الرياح
-                    </div>
-                  </div> -->
-                <!-- plant irrigation -->
-                <div class="form-group mb-5">
-                    <label class="txt-arial-dark-bold-16">
-                      معدل الرى
-                    </label>
-                    <span>كل</span>
-                    <input type="number" min="1" max="10" formControlName="newPlantIrrigation">
-                    <span>يوم</span>
-                </div>
-                <div *ngIf="newPlantIrrigation.invalid && (newPlantIrrigation.dirty || newPlantIrrigation.touched)">
-                    <div *ngIf="newPlantIrrigation.errors.required" class="error-msg">
-                      يجب اختيار معدل الرى
-                    </div>
-                  </div>
-                <!-- plant steps -->
-                <div class="form-group mb-5">
-                    <label class="txt-arial-dark-bold-16">
-                     خطوات الزراعة
-                    </label>
-                    <textarea formControlName="newPlantSteps" cols="30" rows="10"></textarea>
-                </div>
-                <div *ngIf="newPlantSteps.invalid && (newPlantSteps.dirty || newPlantSteps.touched)">
-                    <div *ngIf="newPlantSteps.errors.required" class="error-msg">
-                      يجب اختيار خطوات الزراعة
-                    </div>
-                  </div>
-                <!-- plant extra information -->
-                <div class="form-group mb-5">
-                    <label class="txt-arial-dark-bold-16">
-                     معلومات إضافية
-                    </label>
-                    <textarea formControlName="newPlantInfo" cols="30" rows="10"></textarea>
-                </div>
-            <button class="btn-custom btn-custom-primary" type="submit">Send</button>
-          </form>
+            
+          </div>
+        <!-- plant steps -->
+        <div class="form-group mb-3 pr-5 d-flex">
+          <label class="txt-arial-darkGrey-normal-20 ml-4">
+            خطوات الزراعة:
+          </label>
+          <textarea
+            formControlName="newPlantSteps"
+            cols="30"
+            rows="3"
+          ></textarea>
+        </div>
+        <div
+          *ngIf="
+            newPlantSteps.invalid &&
+            (newPlantSteps.dirty || newPlantSteps.touched)
+          "
+        >
+          <div *ngIf="newPlantSteps.errors.required" class="error-msg">
+            يجب ملء خطوات الزراعة
+          </div>
+        </div>
+        <!-- plant extra information -->
+        <div class="form-group mb-3 pr-5 d-flex">
+          <label class="txt-arial-darkGrey-normal-20 ml-4">
+            معلومات إضافية:
+          </label>
+          <textarea
+            formControlName="newPlantInfo"
+            cols="30"
+            rows="3"
+          ></textarea>
+        </div>
+        <button class="btn-custom btn-custom-primary" type="submit">
+          أضف النبات
+        </button>
+      </form>
     </div>
+  </div>
 </section>

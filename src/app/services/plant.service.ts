@@ -46,6 +46,8 @@ export class PlantService {
     if(this.authUserData) {
       if(this.authUserData.role == 2) {
         this.plantsCatURL = `plantations/plantation`
+      } else {
+        this.plantsCatURL = `plants/categories`;
       }
     }
     else {
@@ -60,7 +62,9 @@ export class PlantService {
     if(this.authUserData) {
       if(this.authUserData.role ==2) {
         this.plantsCatURL = `plantations/category/${catData}`
-      } 
+      } else {
+        this.plantsCatURL = `plants/category/${catData}`;
+      }
     }
     else {
       this.plantsCatURL = `plants/category/${catData}`;

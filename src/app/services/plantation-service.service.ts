@@ -50,8 +50,13 @@ export class PlantationServiceService {
   }
 
   // submit the added old plant
-  submitOldPlant(plantObj) {
+  submitPlant( plantObj, indicator, plantId? ) {
     let url = '';
+    if(indicator == 'old') {
+      url = `/${plantId}`;
+    } else if(indicator == 'new') {
+      url = ``;
+    }
     return this.httpService.postRequest(url, plantObj);
   }
 }
