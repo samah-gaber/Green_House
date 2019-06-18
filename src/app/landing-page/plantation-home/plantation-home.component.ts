@@ -10,9 +10,15 @@ import {
 } from '@angular/forms';
 import { CustomValidators } from "ng2-validation";
 import { validateConfig } from "@angular/router/src/config";
+<<<<<<< HEAD
 import { PlantationServiceService } from 'src/app/services/plantation-service.service';
+=======
+// import { PlantationServiceService } from 'src/app/services/plantation-service.service';
+// import { AddPlantCatRes, AddCatPlantsRes } from '../../interfaces/plant-interface';
+>>>>>>> e96e1142dc409599a34c8c70874beca9146bbb61
 import { PlantService } from '../../services/plant.service';
 import { Router } from '@angular/router';
+import { PlantationServiceService } from '../../services/plantation-service.service';
 
 @Component({
   selector: 'app-plantation-home',

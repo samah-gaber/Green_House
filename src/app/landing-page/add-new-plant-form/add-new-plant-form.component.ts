@@ -121,8 +121,8 @@ export class AddNewPlantFormComponent implements OnInit {
 
   ngOnInit() {
 
-    document.getElementById('add-new-plant').style.display = 'none';
-    // (<HTMLInputElement>document.getElementById('add-new-plant')).style.display = 'none';
+    // document.getElementById('add-new-plant').style.display = 'none';
+    (<HTMLInputElement>document.getElementById('add-new-plant')).style.display = 'none';
     
 
     // creating old plant form
@@ -284,10 +284,27 @@ export class AddNewPlantFormComponent implements OnInit {
     
     let formsArr = document.querySelectorAll('.add-plant-form');
     console.log('formsArr', formsArr);
-    formsArr.forEach(element => {
-      console.log('forms arr element', element);
-      (<HTMLInputElement>element).style.display = 'none';
+    // formsArr.forEach(element => {
+    //   console.log('forms arr element', element);
+    //   (<HTMLInputElement>element).style.display = 'none';
+    // });
+
+
+
+    // success !!!!!!!!!!!!
+    Array.from(formsArr).forEach((el) => { 
+      console.log(el);
+      el.setAttribute('style', 'display:none');
     });
+
+    // for(let node in formsArr){
+    //   console.log(node);
+    //   console.log(formsArr[node]);
+    //   console.log(<HTMLInputElement>formsArr[node]);
+    //   // formsArr[node].style.display = 'none';
+    //   // (<HTMLInputElement>formsArr[node]).style.display = 'none';
+    //   //formsArr[node].setAttribute('style', 'display:none');
+    // }
     (<HTMLInputElement>document.getElementById(tabName)).style.display = 'block';
   }
 
@@ -313,24 +330,28 @@ export class AddNewPlantFormComponent implements OnInit {
           itemContents: []
         }
       };
+      // console.log('form.value.oldGraftType', this.oldGraftPrice);
+      // console.log('form.value.oldSeedsType', this.oldSeedsType);
+      // console.log('form.value.oldSoilType', this.oldSoilType);
+      // console.log('form.value.oldFertType', this.oldFertType);
 
-      if(form.value.oldGraftType) {
-        console.log('form.value.oldGraftType', form.value.oldGraftType);
+      if(this.oldGraftType.value) {
+        console.log('form.value.oldGraftType', this.oldGraftType.value);
         let graftPrice = form.value.oldGraftPrice;
         this.addItemToPlant(graftPrice, 'graft');
       };
-      if(form.value.oldSeedsType) {
-        console.log('form.value.oldSeedsType', form.value.oldSeedsType);
+      if(this.oldSeedsType.value) {
+        console.log('form.value.oldSeedsType', this.oldSeedsType.value);
         let seedsPrice = form.value.oldSeedsPrice;
         this.addItemToPlant(seedsPrice, 'seeds');
       };
-      if(form.value.oldSoilType) {
-        console.log('form.value.oldSoilType', form.value.oldSoilType);
+      if(this.oldSoilType.value) {
+        console.log('form.value.oldSoilType', this.oldSoilType.value);
         let soilPrice = form.value.oldSoilPrice;
         this.addItemToPlant(soilPrice, 'soil');
       };
-      if(form.value.oldFertType) {
-        console.log('form.value.oldFertType', form.value.oldFertType);
+      if(this.oldFertType.value) {
+        console.log('form.value.oldFertType', this.oldFertType.value);
         let fertPrice = form.value.oldSoilPrice;
         this.addItemToPlant(fertPrice, 'fert');
       };
@@ -344,7 +365,8 @@ export class AddNewPlantFormComponent implements OnInit {
   }
 
   addItemToPlant(price, type) {
-    this.sentOldPlant.itemContents.push({
+    console.log(' this.sentOldPlant.itemContents', this.sentOldPlant.itemContents);
+    this.sentOldPlant.plant.itemContents.push({
       type: type,
       price: price
     })
