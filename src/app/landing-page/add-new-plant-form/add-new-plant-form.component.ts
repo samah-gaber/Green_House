@@ -27,59 +27,59 @@ export class AddNewPlantFormComponent implements OnInit {
   sentOldPlantId;
   
   
-  // plantCategories: AddPlantCatRes;  
-  // catPlants: AddCatPlantsRes;
+  plantCategories: AddPlantCatRes;  
+  catPlants: AddCatPlantsRes;
   // fertTypes: GetPlantFertTypes
 
-  plantCategories = {
-    category: [
-      {
-        id: 1,
-        name: 'flowers'
-      },
-      {
-        id: 2,
-        name: 'flowers'
-      },
-      {
-        id: 3,
-        name: 'flowers'
-      },
-      {
-        id: 4,
-        name: 'flowers'
-      },
-      {
-        id: 5,
-        name: 'flowers'
-      }
-    ]
-  }
+  // plantCategories = {
+  //   category: [
+  //     {
+  //       id: 1,
+  //       name: 'flowers'
+  //     },
+  //     {
+  //       id: 2,
+  //       name: 'flowers'
+  //     },
+  //     {
+  //       id: 3,
+  //       name: 'flowers'
+  //     },
+  //     {
+  //       id: 4,
+  //       name: 'flowers'
+  //     },
+  //     {
+  //       id: 5,
+  //       name: 'flowers'
+  //     }
+  //   ]
+  // }
 
-  catPlants = {
-    plant: [
-      {
-        id: 1,
-        name: 'rosemary'
-      },
-      {
-        id: 2,
-        name: 'rosemary'
-      },
-      {
-        id: 3,
-        name: 'rosemary'
-      },
-      {
-        id: 4,
-        name: 'rosemary'
-      },
-      {
-        id: 5,
-        name: 'rosemary'
-      },
-    ]
-  }
+  // catPlants = {
+  //   plant: [
+  //     {
+  //       id: 1,
+  //       name: 'rosemary'
+  //     },
+  //     {
+  //       id: 2,
+  //       name: 'rosemary'
+  //     },
+  //     {
+  //       id: 3,
+  //       name: 'rosemary'
+  //     },
+  //     {
+  //       id: 4,
+  //       name: 'rosemary'
+  //     },
+  //     {
+  //       id: 5,
+  //       name: 'rosemary'
+  //     },
+  //   ]
+  // }
 
   // months array
   months = [
@@ -402,9 +402,10 @@ export class AddNewPlantFormComponent implements OnInit {
       console.log('before submit', this.sentOldPlant);
 
       this.submitAddedPlant('old');
-    } else {
-      this.showOldEmptyOrderError = true;
-    }
+    } 
+    // else {
+    //   this.showOldEmptyOrderError = true;
+    // }
 
   }
 
@@ -464,11 +465,11 @@ export class AddNewPlantFormComponent implements OnInit {
 
 
   getPlantsCategories() {
-    // this.plantationService.addPlantFormGetPlantCategories().subscribe(
-    //   (res:AddPlantCatRes) => {
-    //     this.plantCategories = res;
-    //   }
-    // )
+    this.plantationService.addPlantFormGetPlantCategories().subscribe(
+      (res:AddPlantCatRes) => {
+        this.plantCategories = res;
+      }
+    )
   }
 
   onSelectCategory() {
@@ -477,11 +478,11 @@ export class AddNewPlantFormComponent implements OnInit {
     console.log('after selection selected cat',this.selectedCategory);
     (<HTMLInputElement>document.getElementById('newPlantName')).disabled = false;
 
-    // this.plantationService.addPlantFormGetCatPlants(catName).subscribe(
-    //   (res: AddCatPlantsRes) => {
-    //     this.catPlants = res;
-    //   }
-    // )
+    this.plantationService.addPlantFormGetCatPlants(catName).subscribe(
+      (res: AddCatPlantsRes) => {
+        this.catPlants = res;
+      }
+    )
   }
 
   submitAddedPlant(indicator) {
@@ -489,20 +490,20 @@ export class AddNewPlantFormComponent implements OnInit {
     let submitPlantMethod;
     if(indicator == 'old') {
       plantObj = this.sentOldPlant;
-      // submitPlantMethod = this.plantationService.submitPlant(plantObj, indicator, this.sentOldPlantId).subscribe( 
-      //   res => {
-      //     console.log(res);
-      //     this.router.navigateByUrl('/');
-      //   }
-      // );
+      submitPlantMethod = this.plantationService.submitPlant(plantObj, indicator, this.sentOldPlantId).subscribe( 
+        res => {
+          console.log(res);
+          this.router.navigateByUrl('/');
+        }
+      );
     } else if(indicator == 'new') {
       plantObj = this.sentNewPlant;
-      // submitPlantMethod = this.plantationService.submitPlant(plantObj, indicator).subscribe( 
-      //   res => {
-      //     console.log(res);
-      //     this.router.navigateByUrl('/');
-      //   }
-      // );
+      submitPlantMethod = this.plantationService.submitPlant(plantObj, indicator).subscribe( 
+        res => {
+          console.log(res);
+          this.router.navigateByUrl('/');
+        }
+      );
     }
     console.log(plantObj);
   }

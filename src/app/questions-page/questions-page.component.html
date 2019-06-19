@@ -1,4 +1,4 @@
-<button  *ngIf="userRole==1" class="btn-custom btn-custom-primary mb-2 mr-2 fixed-bottom" (click)="openBackDropCustomClass(content)">اسأل</button>
+<button  *ngIf="userRole==1" class="btn-custom btn-custom-primary fixed-bottom btn-custom-float text-center" (click)="openBackDropCustomClass(content)">اسأل</button>
 <div class="container mb-5 pt-5">
   <div class="row">
       <div *ngIf="objData">
@@ -10,32 +10,37 @@
     <!-- modal -->
     <div class="row">
         <ng-template #content let-modal>
-            <div class="modal-header">
-              <h4 class="modal-title"> يمكينك الان كتابة سؤالك</h4>
+            <div class="modal-header px-5">
+              <h4 class="modal-title title text-center txt-arial-dark-bold-30">أضف سؤالك</h4>
               <button type="button" class="close  " aria-label="Close" (click)="modal.dismiss('Cross click')">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body">
-              <p>One fine body&hellip;</p>
-            </div>
-            <form [formGroup]="questionForm" (ngSubmit)="handleSend(questionForm)">
-                <textarea type="text"  formControlName="userQuestion" class="form-control"></textarea>
-                  <div class="container">
-                      <div class="row">
-                          <select formControlName="selectCategory" (change)="categorySelected()" class="col-6 ml-2">
-                              <option  *ngFor="let category of questionCategoryOptions" [value]="category.name">{{category.name}}</option>
-                            </select>
-                            <select formControlName="selectPlant" [disabled] = "selectedCategory==null" (change)="plantSelected()" class="col-6 mr-2" >
+            <div class="modal-body px-5 user-add-qustion-modal">
+              <form [formGroup]="questionForm" (ngSubmit)="handleSend(questionForm)">
+                  <textarea type="text"  formControlName="userQuestion" class="form-control p-2 mb-3" rows='3'></textarea>
+                    <div class="container">
+                        <div class="row">
+                          <div class="col-6">
+                            <label class="txt-arial-dark-bold-20 ml-4">فئة النبات</label>
+                              <select formControlName="selectCategory" (change)="categorySelected()" class="ml-2 d-inline-block">
+                                  <option  *ngFor="let category of questionCategoryOptions" [value]="category.name">{{category.name}}</option>
+                                </select>
+                          </div>
+                          <div class="col-6">
+                            <label class="txt-arial-dark-bold-20 ml-4">اسم النبات</label>
+                            <select formControlName="selectPlant" [disabled] = "selectedCategory==null" (change)="plantSelected()" class="mr-2 d-inline-block" >
                               <option  *ngFor="let plant of questionPlantOptions" [value]="plant.id">{{plant.name}}</option>
                               </select>
-                      </div>
+                          </div>
+                        </div>
+                    </div>
+                  <div class="modal-footer justify-content-center px-5">
+                      <button type="submit" class="btn-custom btn-custom-primary ">ارسل</button>
+                      <!-- <button type="button" class="btn btn-light" (click)="modal.close('Close click')">اغلق</button> -->
                   </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn-custom btn-custom-primary ">ارسل</button>
-                    <!-- <button type="button" class="btn btn-light" (click)="modal.close('Close click')">اغلق</button> -->
-                </div>
-            </form>
+              </form>
+            </div>
           </ng-template>
     </div>
     <div class="row">

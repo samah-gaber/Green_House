@@ -1,0 +1,41 @@
+{
+    "category": [
+      {
+        "id": 1,
+        "name": "cat1"
+      },
+      {
+        "id": 2,
+        "name": "cat1"
+      },
+      {
+        "id": 3,
+        "name": "cat1"
+      },
+      {
+        "id": 4,
+        "name": "cat1"
+      },
+      {
+        "id": 5,
+        "name": "cat1"
+      }
+    ],
+    "plant": [
+      {
+        "id": 1,
+        "name": "cat1",
+        "image": "cat1"
+      },
+      {
+        "id": 2,
+        "name": "cat1",
+        "image": "cat1"
+      },
+      {
+        "id": 3,
+        "name": "cat1",
+        "image": "cat1"
+      }
+    ]
+  }

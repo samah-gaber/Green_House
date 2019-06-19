@@ -44,6 +44,8 @@ export class PlantService {
     } else {
       this.plantsCatURL = `plants/categories`;
     }
+
+    this.plantsCatURL = `/assets/plantCategories.json`;
     return this.httpService.getRequest(this.plantsCatURL);
   }
 

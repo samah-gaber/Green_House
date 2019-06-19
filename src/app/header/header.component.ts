@@ -43,7 +43,7 @@ export class HeaderComponent implements OnInit {
       id: 1,
       userName: 'ali',
       token: 'ffhbgfg43434',
-      role:2
+      role:1
     }))
     this.checkUserAuthenticated();
     
