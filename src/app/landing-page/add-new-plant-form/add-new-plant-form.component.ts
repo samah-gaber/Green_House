@@ -11,6 +11,7 @@ import { CustomValidators } from "ng2-validation";
 import { validateConfig } from "@angular/router/src/config";
 import { PlantationServiceService } from '../../services/plantation-service.service';
 import { AddPlantCatRes, AddCatPlantsRes, GetPlantFertTypes } from '../../interfaces/plantation-interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-new-plant-form',
@@ -23,6 +24,7 @@ export class AddNewPlantFormComponent implements OnInit {
   showOldEmptyOrderError = false;
   sentOldPlant;
   sentNewPlant;
+  sentOldPlantId;
   
   
   // plantCategories: AddPlantCatRes;  
@@ -79,6 +81,58 @@ export class AddNewPlantFormComponent implements OnInit {
     ]
   }
 
+  // months array
+  months = [
+    {
+      name: 'يناير',
+      value: 'Jan'
+    },
+    {
+      name: 'فبراير',
+      value: 'Feb'
+    },
+    {
+      name: 'مارس',
+      value: 'Mar'
+    },
+    {
+      name: 'ابريل',
+      value: 'Apr'
+    },
+    {
+      name: 'مايو',
+      value: 'May'
+    },
+    {
+      name: 'يونيو',
+      value: 'Jun'
+    },
+    {
+      name: 'يوليو',
+      value: 'Jul'
+    },
+    {
+      name: 'اغسطس',
+      value: 'Aug'
+    },
+    {
+      name: 'سبتمبر',
+      value: 'Sep'
+    },
+    {
+      name: 'اكتوبر',
+      value: 'Oct'
+    },
+    {
+      name: 'نوفمبر',
+      value: 'Nov'
+    },
+    {
+      name: 'ديسمبر',
+      value: 'Dec'
+    },
+  ]
+
   // old plant form
   addOldPlantForm: FormGroup;
   oldPlantType: FormGroup;
@@ -102,10 +156,10 @@ export class AddNewPlantFormComponent implements OnInit {
   newGraftPrice: FormControl;
   newSeedsType: FormControl;
   newSeedsPrice: FormControl;
-  newSoilType: FormControl;
-  newSoilPrice: FormControl;
-  newFertType: FormControl;
-  newFertPrice: FormControl;
+  // newSoilType: FormControl;
+  // newSoilPrice: FormControl;
+  // newFertType: FormControl;
+  // newFertPrice: FormControl;
   newPlantSeason: FormControl;
   newPlantHumidity: FormControl;
   newPlantWind: FormControl;
@@ -116,14 +170,14 @@ export class AddNewPlantFormComponent implements OnInit {
   
   constructor(
     private fb: FormBuilder,
-    private plantationService: PlantationServiceService
+    private plantationService: PlantationServiceService,
+    private router: Router
   ) { }
 
   ngOnInit() {
 
     // document.getElementById('add-new-plant').style.display = 'none';
-    (<HTMLInputElement>document.getElementById('add-new-plant')).style.display = 'none';
-    
+    (<HTMLInputElement>document.getElementById('add-new-plant')).setAttribute('style','display:none');
 
     // creating old plant form
     this.createFormControls('old');
@@ -150,9 +204,10 @@ export class AddNewPlantFormComponent implements OnInit {
     } else if (indicator === 'new') {
       if (
         !formGroup.controls["newGraftType"].value &&
-        !formGroup.controls["newSeedsType"].value &&
-        !formGroup.controls["newSoilType"].value &&
-        !formGroup.controls["newFertType"].value
+        !formGroup.controls["newSeedsType"].value 
+        // &&
+        // !formGroup.controls["newSoilType"].value &&
+        // !formGroup.controls["newFertType"].value
       ) {
         return { validateOrderForm: true };
       } else {
@@ -190,24 +245,22 @@ export class AddNewPlantFormComponent implements OnInit {
       this.newPlantName= new FormControl('', Validators.required);
       this.newGraftType= new FormControl('');
       this.newGraftPrice= new FormControl('', [
-        Validators.required,
         CustomValidators.digits
       ]);
       this.newSeedsType= new FormControl('');
       this.newSeedsPrice= new FormControl('', [
-        Validators.required,
         CustomValidators.digits
       ]);
-      this.newSoilType= new FormControl('');
-      this.newSoilPrice= new FormControl('', [
-        Validators.required,
-        CustomValidators.digits
-      ]);
-      this.newFertType= new FormControl('');
-      this.newFertPrice= new FormControl('', [
-        Validators.required,
-        CustomValidators.digits
-      ]);
+      // this.newSoilType= new FormControl('');
+      // this.newSoilPrice= new FormControl('', [
+      //   Validators.required,
+      //   CustomValidators.digits
+      // ]);
+      // this.newFertType= new FormControl('');
+      // this.newFertPrice= new FormControl('', [
+      //   Validators.required,
+      //   CustomValidators.digits
+      // ]);
       this.newPlantSeason = new FormControl('', Validators.required);
       this.newPlantHumidity = new FormControl('high', Validators.required);
       this.newPlantWind = new FormControl('resist', Validators.required);
@@ -248,10 +301,10 @@ export class AddNewPlantFormComponent implements OnInit {
           newGraftPrice: this.newGraftPrice,
           newSeedsType: this.newSeedsType,
           newSeedsPrice: this.newSeedsPrice,
-          newSoilType: this.newSoilType,
-          newSoilPrice: this.newSoilPrice,
-          newFertType: this.newFertType,
-          newFertPrice: this.newFertPrice
+          // newSoilType: this.newSoilType,
+          // newSoilPrice: this.newSoilPrice,
+          // newFertType: this.newFertType,
+          // newFertPrice: this.newFertPrice
         },
         {
           validator: (formGroup: FormGroup) => {
@@ -273,44 +326,32 @@ export class AddNewPlantFormComponent implements OnInit {
   // this function toggles between the tabs
   showTabForm(event) {
     let tabName = event.target.getAttribute('name');
-    console.log('tabName', tabName);
     let buttons = document.querySelectorAll('.tab-btn');
-    console.log('buttons', buttons);
-    buttons.forEach(element => {
-      console.log('buttons element', element);
-      (<HTMLInputElement>element).classList.remove('active');
-    });
+
+    Array.from(buttons).forEach( el => {
+      el.classList.remove('active');
+    })
     event.target.classList.add('active');
     
     let formsArr = document.querySelectorAll('.add-plant-form');
-    console.log('formsArr', formsArr);
-    // formsArr.forEach(element => {
-    //   console.log('forms arr element', element);
-    //   (<HTMLInputElement>element).style.display = 'none';
-    // });
 
-
-
-    // success !!!!!!!!!!!!
     Array.from(formsArr).forEach((el) => { 
       console.log(el);
       el.setAttribute('style', 'display:none');
     });
 
-    // for(let node in formsArr){
-    //   console.log(node);
-    //   console.log(formsArr[node]);
-    //   console.log(<HTMLInputElement>formsArr[node]);
-    //   // formsArr[node].style.display = 'none';
-    //   // (<HTMLInputElement>formsArr[node]).style.display = 'none';
-    //   //formsArr[node].setAttribute('style', 'display:none');
-    // }
-    (<HTMLInputElement>document.getElementById(tabName)).style.display = 'block';
+    (<HTMLInputElement>document.getElementById(tabName)).setAttribute('style', 'display:block');
   }
 
-  enablePriceInput(event) {
-    this.showOldEmptyOrderError = false;
-    const nameAttr = event.target.getAttribute("name");
+  enablePriceInput(event, indicator) {
+    // this.showOldEmptyOrderError = false;
+    // debugger;
+    let nameAttr = event.target.getAttribute("name");
+    if(indicator == 'old') {
+      nameAttr = `old${nameAttr}`;
+    } else if(indicator == 'new') {
+      nameAttr = `new${nameAttr}`;
+    }
     if (event.target.checked) {
       (<HTMLInputElement>document.getElementById(nameAttr)).disabled = false;
     } else {
@@ -323,37 +364,40 @@ export class AddNewPlantFormComponent implements OnInit {
   onAddOldPlant(form:FormGroup) {
     console.log('enter onAddOldPlant');
     if(form.valid) {
+      let plantName = form.value.oldPlantName;
+      console.log('plantName', plantName);
+      
+      this.catPlants.plant.forEach(elt => {
+        if(plantName == elt.name) {
+          this.sentOldPlantId = elt.id;
+        }
+      });
       console.log('form submitted');
       this.sentOldPlant = {
         plant: {
-          plantId: form.value.oldPlantName,
           itemContents: []
         }
       };
-      // console.log('form.value.oldGraftType', this.oldGraftPrice);
-      // console.log('form.value.oldSeedsType', this.oldSeedsType);
-      // console.log('form.value.oldSoilType', this.oldSoilType);
-      // console.log('form.value.oldFertType', this.oldFertType);
 
       if(this.oldGraftType.value) {
         console.log('form.value.oldGraftType', this.oldGraftType.value);
-        let graftPrice = form.value.oldGraftPrice;
-        this.addItemToPlant(graftPrice, 'graft');
+        let graftPrice = this.oldGraftPrice.value;
+        this.addItemToPlant(graftPrice, 'plant', 'old');
       };
       if(this.oldSeedsType.value) {
         console.log('form.value.oldSeedsType', this.oldSeedsType.value);
-        let seedsPrice = form.value.oldSeedsPrice;
-        this.addItemToPlant(seedsPrice, 'seeds');
+        let seedsPrice = this.oldSeedsPrice.value;
+        this.addItemToPlant(seedsPrice, 'seed', 'old');
       };
       if(this.oldSoilType.value) {
         console.log('form.value.oldSoilType', this.oldSoilType.value);
-        let soilPrice = form.value.oldSoilPrice;
-        this.addItemToPlant(soilPrice, 'soil');
+        let soilPrice =  this.oldSoilPrice.value;
+        this.addItemToPlant(soilPrice, 'soil', 'old');
       };
       if(this.oldFertType.value) {
         console.log('form.value.oldFertType', this.oldFertType.value);
-        let fertPrice = form.value.oldSoilPrice;
-        this.addItemToPlant(fertPrice, 'fert');
+        let fertPrice = this.oldFertPrice.value;
+        this.addItemToPlant(fertPrice, 'fertilizer', 'old');
       };
       console.log('before submit', this.sentOldPlant);
 
@@ -364,9 +408,54 @@ export class AddNewPlantFormComponent implements OnInit {
 
   }
 
-  addItemToPlant(price, type) {
-    console.log(' this.sentOldPlant.itemContents', this.sentOldPlant.itemContents);
-    this.sentOldPlant.plant.itemContents.push({
+  onAddNewPlant(form: FormGroup) {
+    console.log('enter onAddNewPlant');
+    if(form.valid) {
+      console.log('form submitted');
+      let catName = form.value.newPlantCategory;
+      let catId;
+      console.log('catName', catName);
+      this.plantCategories.category.forEach(elt => {
+        if(catName == elt.name) {
+          catId = elt.id;
+        }
+      });
+      this.sentNewPlant = {
+        plant: {
+          catid: catId,
+          plantname: form.value.newPlantName,
+          itemContents: [],
+          season: (form.value.newPlantSeason).toString(),
+          irrigation: form.value.newPlantIrrigation,
+          humidity: form.value.newPlantHumidity,
+          wind: form.value.newPlantWind
+        }
+      };
+
+      if(this.newGraftType.value) {
+        console.log('form.value.oldGraftType', this.newGraftType.value);
+        let graftPrice = this.newGraftType.value;
+        this.addItemToPlant(graftPrice, 'plant', 'new');
+      };
+      if(this.newSeedsType.value) {
+        console.log('form.value.oldSeedsType', this.newSeedsType.value);
+        let seedsPrice = this.newSeedsType.value;
+        this.addItemToPlant(seedsPrice, 'seed', 'new');
+      };
+      console.log('before submit', this.sentNewPlant);
+      this.submitAddedPlant('new');
+      
+    }
+  }
+
+  addItemToPlant(price, type, indicator) {
+    let plantSent;
+    if(indicator == 'old') {
+      plantSent = this.sentOldPlant;
+    } else if (indicator == 'new') {
+      plantSent = this.sentNewPlant
+    }
+    plantSent.plant.itemContents.push({
       type: type,
       price: price
     })
@@ -395,21 +484,30 @@ export class AddNewPlantFormComponent implements OnInit {
     // )
   }
 
-  onSelectPlant() {
-    let plantId = this.oldPlantName.value;
-    // this.plantationService.addPlantFormGetFertTypes(plantId).subscribe(
-    //   (res: GetPlantFertTypes) => {
-    //     this.fertTypes = res;
-    //   }
-    // )
+  submitAddedPlant(indicator) {
+    let plantObj;
+    let submitPlantMethod;
+    if(indicator == 'old') {
+      plantObj = this.sentOldPlant;
+      // submitPlantMethod = this.plantationService.submitPlant(plantObj, indicator, this.sentOldPlantId).subscribe( 
+      //   res => {
+      //     console.log(res);
+      //     this.router.navigateByUrl('/');
+      //   }
+      // );
+    } else if(indicator == 'new') {
+      plantObj = this.sentNewPlant;
+      // submitPlantMethod = this.plantationService.submitPlant(plantObj, indicator).subscribe( 
+      //   res => {
+      //     console.log(res);
+      //     this.router.navigateByUrl('/');
+      //   }
+      // );
+    }
+    console.log(plantObj);
   }
 
-  submitAddedPlant(indicator) {
-    if(indicator == 'old') {
-      // this.plantationService.submitOldPlant(this.sentOldPlant);
-      console.log('after submit', this.sentOldPlant);
-    }
-  }
+  
 
 
 }

@@ -32,7 +32,7 @@
         input {
             border: none;
             background-color: $separatorTextGreyColor;
-            width: 90%;
+            width: 85%;
             height: 38px;
             &::placeholder {
                 font-size: 0.8rem;
@@ -60,7 +60,7 @@
         background-color: $secondaryColor;
         border-radius: 10px;
         position: relative;
-        padding: 8px;
+        padding: 5px 8px 5px 37px;
         .fa-shopping-cart {
             color: $whiteColor;
             font-size: 2rem;
@@ -71,6 +71,10 @@
             right: 45%;
             font-weight: bold;
         }
+    }
+    .fa-bell {
+        font-size: 25px;
+        color: $darkColor;
     }
     .signin-link {
         font-weight: bold;

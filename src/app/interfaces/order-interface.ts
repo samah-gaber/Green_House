@@ -58,6 +58,7 @@ export interface CartOrders {
     itemContents: [
         {
             type: string;
+            arType: string;
             price: number;
             quantity: number;
             totalPrice: number;

@@ -48,7 +48,7 @@
               alt="green house logo"
           /></a>
         </div>
-        <div class="col-md-6 col-4">
+        <div class="col-md-5 col-4">
           <form class="form-inline my-2 my-lg-0" [formGroup]='searchBarForm'>
             <input
               class="form-control mr-sm-2"
@@ -62,7 +62,7 @@
             </button>
           </form>
         </div>
-        <div class="signin-cart col-md-2 col-4 text-left">
+        <div class="signin-cart col-md-3 col-4 text-left">
           <div class="row align-items-center" >
             <!-- <div class="cart col-4"> -->
             <div class="cart col-4" *ngIf="(userData && userData.role==1) || userData == undefined ">
@@ -71,16 +71,33 @@
                 {{totalCartCount}}
               </p>
             </div>
-            <div class="col-8 text-center">
+
+
+            <!-- <div class="col-3 notifications">
+              <i class="fas fa-bell"></i>
+            </div> -->
+
+            <!-- <div class="btn-group col-3 notifications" mdbDropdown>
+              <button mdbDropdownToggle type="button" class="dropdown-toggle waves-light" mdbWavesEffect (click)='getNotifications()'>
+                <i class="fas fa-bell"></i>
+              </button>
+
+              <div class="dropdown-menu dropdown-primary">
+                <a class="dropdown-item" *ngFor="let msg of notificationMsgs.all">{{msg}}</a>
+              </div>
+            </div> -->
+
+
+            <div class="col-6 text-center">
               <div class="btn-group" mdbDropdown *ngIf="showUserName; else signinBtn">
                 <button
                   mdbDropdownToggle
                   type="button"
                   size="sm"
-                  class="dropdown-toggle waves-light txt-arial-dark-bold-14"
+                  class="dropdown-toggle waves-light txt-arial-dark-bold-18"
                   mdbWavesEffect
                 >
-                  {{ userData.userName }}
+                  {{ userName }}
                 </button>
 
                 <div class="dropdown-menu dropdown-primary">
