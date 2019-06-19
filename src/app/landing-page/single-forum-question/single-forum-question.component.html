@@ -39,30 +39,40 @@
         </div>
       </div>
     </div>
-    <div *ngIf="userRole == 2" class="d-flex align-items-end">
-      <textarea id="plantationQuestion{{question.questionId}}" placeholder="اضف رد" cols="40"></textarea>
-      <button class="btn-custom btn-custom-primary mr-2" (click)="submitComment()">اسأل</button>
+    <div *ngIf="userRole == 2" class="d-flex align-items-end  justify-content-start">
+      <div class="row d-flex justify-content-start">
+        <div class="col-12 d-flex justify-content-start">
+          <textarea id="plantationQuestion{{question.questionId}}" placeholder="اضف رد" cols="50"  class="p-2 mb-4" required ></textarea>
+        </div>
+        <div class="col-12 d-flex justify-content-start align-items-center">
+
+          <span class="txt-arial-faintGrey-normal-18 ml-lg-5">إذا كنت قد قمت بإجابه من قبل يرجى تعديل
+          </span>
+          <button class="btn-custom btn-custom-primary mr-lg-5" (click)="submitComment()">رد</button>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <div class="row">
   <ng-template #editCommentModal let-modal>
-    <div class="modal-header">
-      <h4 class="modal-title">اسأل</h4>
+    <div class="modal-header mt-4">
+      <h4 class="modal-title txt-arial-dark-bold-26">يمكنك الآن تعديل الإجابه من هنا
+      </h4>
       <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
-    <div class="modal-body">
+    <!-- <div class="modal-body">
       <p>One fine body&hellip;</p>
-    </div>
-    <form [formGroup]="plantCommentForm" (ngSubmit)="submitEditedComment(plantCommentForm)">
+    </div> -->
+    <form [formGroup]="plantCommentForm" (ngSubmit)="submitEditedComment(plantCommentForm)" class="p-5">
       <textarea [(ngModel)]='answerTextBeingEdited' id="editCommentTextArea" type="text" formControlName="plantComment"
-        class="form-control"></textarea>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-light">ارسل</button>
-        <button type="button" class="btn btn-light" (click)="modal.close('Close click')">اغلق</button>
+        class="form-control pt-3" rows="5"></textarea>
+      <div class="d-flex justify-content-center">
+        <button type="submit" class=" btn-custom btn-custom-primary my-4 ">ارسل</button>
+        <!-- <button type="button" class="btn btn-light" (click)="modal.close('Close click')">اغلق</button> -->
       </div>
     </form>
   </ng-template>

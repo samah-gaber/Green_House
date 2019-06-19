@@ -24,14 +24,14 @@ export class OrderServiceService {
 
   // initiateOrderRequest(): Observable<any> {
   initiateUserOrderRequest() {
-    // return this.http.get(this.orderURL);
-    return this.httpService.getRequest(this.orderURL);
+    return this.http.get(this.orderURL);
+    // return this.httpService.getRequest(this.orderURL);
   }
 
   initiatePlantationOrderRequest() {
 
-    //let url = `plantations/plantationorder`;
-    //return this.httpService.getRequest(url);
+    // let url = `plantations/plantationorder`;
+    // return this.httpService.getRequest(url);
 
      return this.httpService.getRequest("./assets/plantationOrders.json");
   }

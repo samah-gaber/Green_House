@@ -10,7 +10,7 @@
           <div class="">
               <i class="fas fa-eye ml-2" (click)='showPlantDetails()'></i>
               <i *ngIf="userRole==2" class="far fa-comment-alt mr-md-2" (click)='openBackDropCustomClass(addCommentModal)'></i>
-              <i *ngIf="userRole!=2" class="fas fa-heart" (click)='toggleFav($event)'></i>
+              <i *ngIf="(userData && userData.role==1) || userData == undefined " class="fas fa-heart" (click)='toggleFav($event)'></i>
           </div>
       </div>
     </div>

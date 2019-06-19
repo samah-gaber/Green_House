@@ -12,6 +12,7 @@ import { UserPagesComponent } from './user-pages/user-pages.component';
 import { QuestionsPageComponent } from '../questions-page/questions-page.component';
 import {NgbModule, NgbDropdownModule} from '@ng-bootstrap/ng-bootstrap';
 import { CartComponent } from '../cart/cart.component';
+import { SuggestedQuestionsComponent } from '../suggested-questions/suggested-questions.component';
 
 
 const routes: Routes = [
@@ -31,11 +32,11 @@ const routes: Routes = [
       {
         path: 'cart', component: CartComponent
       },
+      {
+        path: 'questions/suggestedquestions', component: SuggestedQuestionsComponent
+      }
       // {
-      //   path: 'orders', component:  
-      // },
-      // {
-      //   path: 'question', component: 
+      //   path: 'question', component:
       // }
     ]
   }
@@ -44,14 +45,15 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    UserFavPageComponent, 
+    UserFavPageComponent,
     QuestionsPageComponent,
-    UserPagesComponent, 
-    OrdersViewPageComponent, 
-    SingleOrderCardComponent,
-    UserFavPageComponent,  
     UserPagesComponent,
-    CartComponent
+    OrdersViewPageComponent,
+    SingleOrderCardComponent,
+    UserFavPageComponent,
+    UserPagesComponent,
+    CartComponent,
+    SuggestedQuestionsComponent
   ],
   imports: [
     CommonModule,

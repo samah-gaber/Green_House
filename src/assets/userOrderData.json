@@ -6,7 +6,7 @@
           "plantation_id": 1,
           "plantation_name": "blkona",
           "totalprice": 50,
-          "flag": 35,
+          "flag": true,
           "items": [
               {
                   "plantid": 2,
@@ -80,7 +80,7 @@
           "plantation_id": 2,
           "plantation_name": "amira",
           "totalprice": 60,
-          "flag": 50,
+          "flag": false,
           "items": [
               {
                   "plantid": 3,

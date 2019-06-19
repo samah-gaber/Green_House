@@ -19,6 +19,7 @@ export class SingleOrderCardComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log('single order card', this.orderData);
   }
 
 }

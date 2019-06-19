@@ -2,14 +2,22 @@
   <div class="row">
     <div class="card col-12">
       <div class="card-body">
-        <div class="row ">
-          <div class=" d-flex justify-content-between col-12">
-            <h4 *ngIf="userRole==1" class="txt-arial-dark-bold-20">البائع: {{orderData.plantation_name}}</h4>
-            <h4 *ngIf="userRole==2" class="txt-arial-dark-bold-20">المشتري: {{orderData.user_name}}</h4>
-            <h4 class="txt-arial-dark-bold-20"> التاريخ : {{orderData.orderdate}}</h4>
-          </div>
-        </div>
+        <div class="row d-flex justify-content-between ">
+          <div class=" d-flex justify-content-start col-9">
+            <div class="row">
+              <h4 *ngIf="userRole==1" class="txt-arial-dark-bold-20 col-12">البائع: {{orderData.plantation_name}}</h4>
+              <h4 *ngIf="userRole==2" class="txt-arial-dark-bold-20 col-12">المشتري: {{orderData.user_name}}</h4>
+              <h4 *ngIf="userRole==2" class="txt-arial-dark-bold-20 col-12">العنوان: {{orderData.user_address}}</h4>
+            </div>
+              </div>
+              <div class=" d-flex justify-content-start col-3">
+                 <div class="row">
+                    <h4 class="txt-arial-dark-bold-20 col-12"> التاريخ : {{orderData.orderdate}}</h4>
+                  <h4 *ngIf="userRole==2" class="txt-arial-dark-bold-20 col-12">التليفون: {{orderData.user_phone}}</h4>
 
+                 </div>
+              </div>
+        </div>
 
         <div *ngFor="let item of orderData.items">
           <div class="card mb-3 " >
@@ -25,7 +33,7 @@
                   <div *ngFor="let itemContent of item.itemContents" >
                     <div class="d-flex justify-content-between mb-2 ">
                       <span class="card-text txt-arial-dark-bold-20 "> تم شراء : <span class="txt-arial-dark-bold-24 ">{{itemContent.type}}</span> </span>
-                      <span class="txt-arial-dark-bold-20">عدد: <span class="btn-custom btn-custom-primary color-white"> {{itemContent.quantity}}</span></span>
+                      <span class="txt-arial-dark-bold-20">عدد: <span class=""> {{itemContent.quantity}}</span></span>
                     </div>
                     <!-- <p class="card-text">تم شراء : {{itemContent.type}} عدد :<span class="btn-custom btn-custom-primary"> {{itemContent.quantity}}</span></p> -->
 
@@ -36,11 +44,23 @@
           </div>
         </div >
         <div class="row d-flex justify-content-between align-items-center">
-            <h3 class="txt-arial-lightGrey-normal-20 txt-arial-dark-bold-30 col-md-4 col-6">المجموع: {{orderData.totalprice}} جنيه</h3>
-            <div class="col-8">
-              <div *ngIf="userRole==1"  class="row">
-                  <span class=" txt-arial-dark-bold-20 col-md-2 col-12">حالة الطلب :</span>
-                  <span  class=" col-md-10 col-12"><ngb-progressbar [value]="orderData.flag"></ngb-progressbar></span>
+            <h3 class="txt-arial-lightGrey-normal-20 txt-arial-dark-bold-30 col-md-6 col-6">المجموع: {{orderData.totalprice}} جنيه</h3>
+            <div class="col-12 col-md-4">
+              <div  class="row  align-items-center text-left">
+                 <span class=" txt-arial-dark-bold-20 col-6 text-left">حالة الطلب :</span>
+                 <div  *ngIf="userRole==2" class="col-6 text-left">
+
+                       <button  class="btn-custom btn-custom-primary " > قيد التأكيد </button>
+                       <button  class="btn-custom btn-custom-ghost mr-2" >تم التأكيد </button>
+
+                 </div>
+                 <div  *ngIf="userRole==1" class="col-6 text-left">
+
+                       <button  class="btn-custom btn-custom-primary " *ngIf="orderData.flag" >تأكيد </button>
+                       <button  class="btn-custom btn-custom-ghost  sass-color-btm-orders" *ngIf="!orderData.flag" >رفض</button>
+
+                 </div>
+                  <!-- <span  class=" col-md-10 col-12"><ngb-progressbar [value]="orderData.flag"></ngb-progressbar></span> -->
               </div>
 
             </div>

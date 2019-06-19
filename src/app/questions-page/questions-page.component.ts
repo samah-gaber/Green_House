@@ -5,7 +5,7 @@ import { FormControl, FormGroup, FormBuilder } from "@angular/forms";
 import { UserQuestionServiceService } from "../services/user-question-service.service";
 import { Component, OnInit, ViewEncapsulation, ViewChild, EventEmitter, Output } from "@angular/core";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { AuthUserData } from "../interfaces/user-interface";
 
 @Component({
@@ -42,7 +42,7 @@ export class QuestionsPageComponent implements OnInit {
     private timeService: TimeServiceService,
     private userService: UserService,
     private plantataionQuestionService: PlantationQuestionServiceService,
-
+    private router: Router
   ) {
     this.userRole = userService.returnAuthUserData().role;
     if (this.userRole == 1) {
@@ -101,7 +101,9 @@ export class QuestionsPageComponent implements OnInit {
         this.successAlert = true;
         this.modalService.dismissAll();
         if(response.questions.length > 0){
-          this.modalService.open(this.checkIfQuestionExistsModal, { backdropClass: "light-blue-backdrop" });
+          // this.modalService.open(this.checkIfQuestionExistsModal, { backdropClass: "light-blue-backdrop" });
+          this.userQuestionService.getQuestRes(response);
+          this.router.navigate(['/user/questions/suggestedquestions'], { queryParams: { questid: this.generateQuestionIdAfterSubmitting}})
         }
         else{
           this.modalService.open(this.questionSentSuccessModal, { backdropClass: "light-blue-backdrop" });
@@ -142,28 +144,28 @@ export class QuestionsPageComponent implements OnInit {
     this.selectedPlant = this.selectPlant.value;
   }
 
-  imokDontSend(){
-    const body={
-      flag:true,
-      questionID:this.generateQuestionIdAfterSubmitting
-    }
-    this.modalService.dismissAll();
-    this.userQuestionService.resendQuestion(body).subscribe((response) =>{
-      this.modalService.open(this.questionSentSuccessModal, { backdropClass: "light-blue-backdrop" });
-    });
-  }
+  // imokDontSend(){
+  //   const body={
+  //     flag:true,
+  //     questionID:this.generateQuestionIdAfterSubmitting
+  //   }
+  //   this.modalService.dismissAll();
+  //   this.userQuestionService.resendQuestion(body).subscribe((response) =>{
+  //     this.modalService.open(this.questionSentSuccessModal, { backdropClass: "light-blue-backdrop" });
+  //   });
+  // }
 
-  resendComment() {
-    const body={
-      flag:false,
-      questionID:this.generateQuestionIdAfterSubmitting
-    };
-    this.modalService.dismissAll();
+  // resendComment() {
+  //   const body={
+  //     flag:false,
+  //     questionID:this.generateQuestionIdAfterSubmitting
+  //   };
+  //   this.modalService.dismissAll();
 
-    this.userQuestionService.resendQuestion(body).subscribe((response) =>{
-      this.modalService.open(this.questionSentSuccessModal, { backdropClass: "light-blue-backdrop" });
-    });
-  }
+  //   this.userQuestionService.resendQuestion(body).subscribe((response) =>{
+  //     this.modalService.open(this.questionSentSuccessModal, { backdropClass: "light-blue-backdrop" });
+  //   });
+  // }
 
   refreshQuestionPageTrigger(){
     console.log("Refresh question page trigger");

@@ -21,12 +21,12 @@ export class HeaderComponent implements OnInit {
   showUserName: boolean = false;
   userData: AuthUserData;
   totalCartCount: number;
-  
+
   // notifications service
   notificationMsgs: any[];
 
 
-  constructor( 
+  constructor(
     private router: Router,
     private userService: UserService,
     private authService: AuthService,
@@ -36,36 +36,38 @@ export class HeaderComponent implements OnInit {
     // notifications service
     // public notificationsService: NotificationsService
   ) { }
-  
+
   ngOnInit() {
-    // localStorage.setItem('authUserData', JSON.stringify({
-    //   id: 1,
-    //   userName: 'ali',
-    //   token: 'ffhbgfg43434',
-    //   role:2
-    // }))
+    localStorage.setItem('authUserData', JSON.stringify({
+      id: 1,
+      userName: 'ali',
+      token: 'ffhbgfg43434',
+      role:1
+    }))
     this.checkUserAuthenticated();
-    
+
     this.searchBarForm = this.fb.group ({
       seachBar: ''
     })
-    
+
     this.totalCartCount = this.getCartCount();
-    
+
     this.cartService.getCartCount().subscribe( cartCount => {
       this.totalCartCount = cartCount;
     })
-    
+
     // notifications service
     // this.notificationsService.msgService();
-    
+
   }
 
   onSignIn() {
     this.router.navigateByUrl('/auth/signin');
   }
-  
+
   checkUserAuthenticated() {
+    console.log('this.authService.isAuthenticated()', this.authService.isAuthenticated());
+    console.log(this.userData);
     if( this.authService.isAuthenticated() ) {
       this.showUserName = true;
       this.userData = this.userService.returnAuthUserData();
@@ -73,7 +75,7 @@ export class HeaderComponent implements OnInit {
       console.log("User is authenticated role", this.userData.role);
     }
   }
-  
+
   goToCart() {
     this.router.navigateByUrl('/user/cart');
   }
@@ -82,7 +84,7 @@ export class HeaderComponent implements OnInit {
     let cartCount: number = 0;
     if(this.cartService.getStoredCartCount()) {
       cartCount = this.cartService.getStoredCartCount();
-    } 
+    }
     return cartCount;
     // let ordersArr = [];
     // for( let i = 0; i<localStorage.length; i++ ) {

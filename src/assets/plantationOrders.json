@@ -5,6 +5,8 @@
           "orderdate": "2/2/2002",
           "user_id": 1,
           "user_name": "mouffy",
+          "user_address":"21 ibrahem sherif,moustafa kamel.smuha",
+          "user_phone":"0125600987",
           "totalprice": 50,
           "flag": 35,
           "items": [
@@ -79,6 +81,8 @@
           "orderdate": "3/3/2003",
           "user_id": 2,
           "user_name": "koko",
+          "user_address":"21 ibrahem sherif,moustafa kamel.smuha",
+          "user_phone":"01000547010",
           "totalprice": 60,
           "flag": 50,
           "items": [

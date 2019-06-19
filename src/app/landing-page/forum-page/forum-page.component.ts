@@ -1,7 +1,6 @@
 import { UserService } from './../../services/user.service';
 import { ForumServiceService } from './../../services/forum-service.service';
 import { Component, OnInit } from '@angular/core';
-// import { FormBuilder, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-forum-page',
   templateUrl: './forum-page.component.html',
