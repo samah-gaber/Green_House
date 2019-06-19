@@ -19,22 +19,22 @@ export class UserQuestionServiceService {
   ) { }
 
   getQuestions() {
-    // let url = 'client/Getquestions';
-    let url = './assets/genericQuestionObject.json';
+    let url = 'client/Getquestions';
+    // let url = './assets/genericQuestionObject.json';
     return this.httpService.getRequest(url);
 
   }
 
   getUserQuestionCategories() {
-    // let url = 'plants/allcategories';
-    let url = './assets/userQuestionCategories.json';
+    let url = 'plants/allcategories';
+    // let url = './assets/userQuestionCategories.json';
     return this.httpService.getRequest(url);
   }
 
   getUserQuestionPlantByCategoryId(catId) {
-    // console.log('getting plants ');
-    // let url = `plants/category/${catId}`;
-    let url = './assets/userQuestionPlants.json';
+    console.log('getting plants ');
+    let url = `plants/category/${catId}`;
+    // let url = './assets/userQuestionPlants.json';
 
     return this.httpService.getRequest(url);
   }

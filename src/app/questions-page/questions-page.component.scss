@@ -2,8 +2,16 @@
  @import "../../styles.scss";
 //  @import "../plant-details-page-module/single-question/single-question.component.scss";
  // model style
+ .user-add-qustion-modal {
+   select {
+     width: 45%;
+   }
+ }
  .light-blue-backdrop {
    background-color:$primaryColor !important;
+ }
+ .modal-header, .modal-footer {
+   border: none;
  }
  .modal-content .close{
    left:12px;

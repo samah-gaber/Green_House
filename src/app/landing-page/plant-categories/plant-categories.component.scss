@@ -1,12 +1,21 @@
 // import sytle files
 @import "../../../styles.scss";
 
-#active {
-    background-color: $secondaryColor;
-    color: $whiteColor;
-    border-radius: 20px;
-    padding: 5px 15px;
-}
-.plantsGallery p {
-    margin-top: -30px;
+.plants-categories {
+    // [_ngcontent-lda-c6].active {
+    //     color: $secondaryColor;
+    //     border-color: $secondaryColor;
+    //     // color: $whiteColor;
+    //     // border-radius: 20px;
+    //     // padding: 5px 15px;
+    // }
+    .plantsGallery p {
+        margin-top: -30px;
+    }
+    // [_ngcontent-lda-c6].cat-tab {
+    //     border-bottom: 1px solid transparent;
+    // }
+    a {
+        color: #2A6652 !important;
+    }
 }

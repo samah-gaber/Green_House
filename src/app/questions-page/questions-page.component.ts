@@ -52,7 +52,8 @@ export class QuestionsPageComponent implements OnInit {
         .subscribe((questionCategories: any) => {
           this.questionCategoryOptions = questionCategories.category;
         });
-        console.log('question page', this.questionService);
+      console.log('this.questionCategoryOptions', this.questionCategoryOptions);
+        
     } else {
       this.questionService = this.plantataionQuestionService;
     }
